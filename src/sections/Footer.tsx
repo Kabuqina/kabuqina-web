@@ -45,6 +45,16 @@ export default function Footer() {
             联系方式：<a href="mailto:lilyreso@163.com" className="text-[#D4C5E2] hover:underline">lilyreso@163.com</a>
           </p>
         </div>
+        <div className="flex justify-center mt-4">
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300"
+          >
+            粤ICP备2026062638号
+          </a>
+        </div>
       </div>
     </footer>
   );
