@@ -47,10 +47,10 @@ export default function App() {
       <main>
         <Hero />
         <Philosophy />
-        <Features />
+        <GetStarted />
         <Matrix />
         <Scenarios />
-        <GetStarted />
+        <Features />
         <Trust />
         <FooterCTA />
       </main>

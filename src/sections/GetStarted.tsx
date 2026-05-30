@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download, QrCode, Cpu, MessageSquare, AlertTriangle } from 'lucide-react';
+import { Download, QrCode, Cpu, MessageSquare } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -125,12 +125,13 @@ export default function GetStarted() {
           })}
         </div>
 
-        <div className="mt-12 flex items-start gap-3 p-6 rounded-[12px] border border-[#E8E0ED] kq-glass-subtle">
-          <AlertTriangle className="w-5 h-5 text-[#D4A574] flex-shrink-0 mt-0.5" />
+        <div className="mt-12 flex items-start gap-3 p-4 rounded-[12px] border border-[#E8E0ED] kq-glass-subtle">
+          <Cpu className="w-5 h-5 text-[#7C5CFC] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-[#5A4A6A] leading-relaxed">
-            目前仅支持 Windows 10/11 64位系统。macOS 和 Linux 版本正在开发中，欢迎在 GitHub 关注进度。
+            当前支持 Windows 10/11 64位系统
           </p>
         </div>
+
       </div>
     </section>
   );
