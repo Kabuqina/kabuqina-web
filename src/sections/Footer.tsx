@@ -46,6 +46,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex justify-center items-center gap-4 mt-4">
+          <img src="/备案图标.png" alt="备案图标" className="h-6 w-auto" />
           <a
             href="https://beian.miit.gov.cn/"
             target="_blank"
