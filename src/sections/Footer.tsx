@@ -46,7 +46,6 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex justify-center items-center gap-4 mt-4">
-          <img src="/备案图标.png" alt="备案图标" className="h-6 w-auto" />
           <a
             href="https://beian.miit.gov.cn/"
             target="_blank"
@@ -56,6 +55,7 @@ export default function Footer() {
             粤ICP备2026062638号
           </a>
           <span className="text-sm text-[#8B7D9A]">|</span>
+          <img src="/备案图标.png" alt="备案图标" className="h-6 w-auto" />
           <a
             href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002013225"
             target="_blank"
