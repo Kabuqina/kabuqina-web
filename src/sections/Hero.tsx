@@ -1,6 +1,13 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { Download, Github, UserCheck, Cpu, MessageCircle, Shield } from 'lucide-react';
+import { Download, Github, BookOpen, FileSearch, ClipboardList, PenTool } from 'lucide-react';
+
+const layers = [
+  { icon: BookOpen, label: '读取', desc: '精读 PDF / 课件 / 代码', color: '#4F9DE8' },
+  { icon: FileSearch, label: '索引', desc: '构建证据地图与术语表', color: '#F5B642' },
+  { icon: ClipboardList, label: '规划', desc: '审阅提纲与假设', color: '#F05D93' },
+  { icon: PenTool, label: '写出', desc: '输出 .pptx / MD / LaTeX', color: '#6B5580' },
+];
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -16,6 +23,8 @@ export default function Hero() {
       gsap.fromTo('.hero-cta', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.6 });
       gsap.fromTo('.hero-meta', { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power3.out', delay: 0.8 });
       gsap.fromTo('.hero-badges', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.7 });
+      gsap.fromTo('.layer-card', { opacity: 0, y: 20, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12, delay: 0.9 });
     }, hero);
 
     return () => ctx.revert();
@@ -29,15 +38,10 @@ export default function Hero() {
     >
       {/* Subtle background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Purple orb top-right */}
         <div className="kq-orb absolute -top-40 -right-40 w-[600px] h-[600px] opacity-[0.12]"
-          style={{ background: 'radial-gradient(circle, #D4C5E2 0%, transparent 70%)' }}
-        />
-        {/* Warm orb bottom-left */}
+          style={{ background: 'radial-gradient(circle, #D4C5E2 0%, transparent 70%)' }} />
         <div className="kq-orb absolute -bottom-60 -left-40 w-[500px] h-[500px] opacity-[0.08]"
-          style={{ background: 'radial-gradient(circle, #D4A574 0%, transparent 70%)' }}
-        />
-        {/* Subtle grid */}
+          style={{ background: 'radial-gradient(circle, #D4A574 0%, transparent 70%)' }} />
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -57,7 +61,7 @@ export default function Hero() {
               style={{ backgroundColor: 'rgba(184,169,201,0.12)', borderColor: 'rgba(184,169,201,0.25)', color: '#6B5580' }}
             >
               <span className="w-2 h-2 rounded-full bg-[#6B5580] animate-pulse" />
-              开源 Windows 桌面 AI 助手
+              面向学生 · 开源 · Windows
             </div>
 
             {/* Main title */}
@@ -71,13 +75,17 @@ export default function Hero() {
                 卡布奇娜
               </h1>
             </div>
-            <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-8">
-              你的 AI 小娜，住在你的设备里
+            <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-4">
+              专为 Windows 学生打造的学术助手
+            </p>
+            <p className="hero-subtitle text-lg md:text-xl text-[#6B5580] font-medium mb-8 tracking-wide">
+              读论文 · 写报告 · 做 PPT · 解公式 · 解释代码
             </p>
 
             {/* Description */}
             <p className="hero-desc text-base md:text-lg text-[#8B7D9A] max-w-lg mb-10 leading-relaxed">
-              装在你的 Windows 电脑上，连接微信、飞书、钉钉。不是网页上的聊天机器人，是你桌面右下角随时在线的小助手。
+              装在你的 Windows 电脑上，把你的论文、课件、代码和笔记，转化为可编辑的课程报告、文献汇报、答辩 PPT 和代码说明。
+              不是只会聊天的机器人，是从阅读到交付的学术工作流。
             </p>
 
             {/* CTA Buttons */}
@@ -108,44 +116,32 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Right: Feature highlights (glass card) */}
+          {/* Right: Four-layer framework preview */}
           <div className="hero-badges hidden lg:block">
             <div className="kq-glass p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[#B8A9C9]/15 flex items-center justify-center">
-                  <UserCheck className="w-6 h-6 text-[#6B5580]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#49385E]">无需注册</h3>
-                  <p className="text-sm text-[#8B7D9A]">安装后直接使用</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[#B8A9C9]/15 flex items-center justify-center">
-                  <Cpu className="w-6 h-6 text-[#6B5580]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#49385E]">本地运行</h3>
-                  <p className="text-sm text-[#8B7D9A]">数据不出设备</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[#B8A9C9]/15 flex items-center justify-center">
-                  <MessageCircle className="w-6 h-6 text-[#60415F]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#49385E]">多平台接入</h3>
-                  <p className="text-sm text-[#8B7D9A]">微信 / 飞书 / 钉钉</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#B8A9C9]/15 flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-[#6B5580]" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#49385E]">零数据上报</h3>
-                  <p className="text-sm text-[#8B7D9A]">开源可审计</p>
-                </div>
+              <p className="text-sm font-medium text-[#8B7D9A] mb-5 uppercase tracking-wider">
+                学术工作流
+              </p>
+              <div className="space-y-4">
+                {layers.map((layer, i) => (
+                  <div key={layer.label} className="layer-card flex items-center gap-4">
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${layer.color}15` }}
+                    >
+                      <layer.icon className="w-5 h-5" style={{ color: layer.color }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base font-bold text-[#49385E]">{layer.label}</span>
+                        {i < layers.length - 1 && (
+                          <span className="text-[#D4C5E2] text-xs">→</span>
+                        )}
+                      </div>
+                      <p className="text-sm text-[#8B7D9A]">{layer.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

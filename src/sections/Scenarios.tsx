@@ -1,27 +1,38 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FileText, Microscope, Presentation, Calculator } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const scenarios = [
   {
-    time: '09:00',
-    title: '早安简报',
-    desc: '早上 9:00，小娜自动在微信给你发消息："早安！今天有 3 个会议，项目 A 的 PR 昨晚已合并，需要我帮你写日报草稿吗？"',
-    image: '/scene-morning.jpg',
+    icon: FileText,
+    emoji: '📄',
+    title: '课程报告与作业',
+    desc: '丢进 PDF / DOCX / PPTX / 代码片段，卡布奇娜读材料、建索引、出提纲。你审完确认，她写出来。',
+    color: '#4F9DE8',
   },
   {
-    time: '14:30',
-    title: '群里救场',
-    desc: '同事在飞书群里问："谁有上个月的销售数据？" 你 @小娜，她立即从本地 Excel 提取数据并生成图表发到群里。',
-    image: '/scene-team.jpg',
+    icon: Microscope,
+    emoji: '🔬',
+    title: '论文精读与汇报',
+    desc: '抽取论文结构、公式图表、关键结论，生成汇报大纲或课堂展示 PPT。从读到讲，一步到位。',
+    color: '#F5B642',
   },
   {
-    time: '18:30',
-    title: '下班备份',
-    desc: '晚上 6:30，小娜准时在钉钉提醒你："今日代码已自动备份到 NAS，本地日志清理完成。需要我生成今日工作摘要吗？"',
-    image: '/scene-evening.jpg',
+    icon: Presentation,
+    emoji: '🎤',
+    title: '课程与答辩 PPT',
+    desc: '围绕材料建立索引，先审提纲再生成 .pptx。适配课程汇报、论文精读、代码答辩。',
+    color: '#F05D93',
+  },
+  {
+    icon: Calculator,
+    emoji: '🧮',
+    title: '公式与代码处理',
+    desc: '从公式密集文档提取 LaTeX，公式转 Python/NumPy 实现，代码转数学说明。',
+    color: '#6B5580',
   },
 ];
 
@@ -57,41 +68,44 @@ export default function Scenarios() {
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="scenarios-title text-center mb-16 lg:mb-20">
+          <div className="kq-section-header inline-flex mx-auto mb-6">
+            <span className="text-sm font-medium text-[#6B5580]">学生场景</span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            小娜的一天
+            卡布奇娜能帮你做什么
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            看看她怎么融入你的工作流
+            从阅读材料到输出交付物，覆盖学生的高频学术场景
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {scenarios.map((s) => (
-            <div
-              key={s.title}
-              className="kq-scenario-card group rounded-[12px] overflow-hidden border border-[#E8E0ED] kq-glass-subtle"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white bg-[#6B5580]">
-                  {s.time}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {scenarios.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div
+                key={s.title}
+                className="kq-scenario-card group kq-glass p-8 flex items-start gap-5"
+              >
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: `${s.color}12` }}
+                >
+                  <Icon className="w-7 h-7" style={{ color: s.color }} />
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-[#49385E] mb-2">
+                    <span className="mr-2">{s.emoji}</span>
+                    {s.title}
+                  </h3>
+                  <p className="text-base text-[#5A4A6A] leading-relaxed">
+                    {s.desc}
+                  </p>
                 </div>
               </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-[#49385E] mb-3">
-                  {s.title}
-                </h3>
-                <p className="text-base text-[#5A4A6A] leading-relaxed">
-                  {s.desc}
-                </p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

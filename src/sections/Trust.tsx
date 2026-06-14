@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Lock, Shield, Users, ExternalLink } from 'lucide-react';
+import { Lock, Shield, Users, Key } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,14 +15,20 @@ const trustItems = [
   {
     icon: Shield,
     title: '零数据上报',
-    desc: '你的聊天记录、文件、记忆，全部存在本机 ~/.capuchina/。我们不会看到，也拿不到。',
+    desc: '你的聊天记录、文件、记忆，全部存在本机。不会上传，不收集，不追踪。',
     iconColor: '#6B5580',
   },
   {
     icon: Users,
     title: '社区驱动',
-    desc: '欢迎提交 Issue、贡献插件、分享你的"小娜技能配方"。我们一起把她养得更聪明。',
+    desc: '欢迎提交 Issue、贡献插件、分享技能配方。我们一起让学术工作流更好用。',
     iconColor: '#D4A574',
+  },
+  {
+    icon: Key,
+    title: '凭据安全',
+    desc: 'API Key 存入 Windows Credential Manager，不写入普通配置文件或日志。Python 子进程通过 Tauri loopback 获取密钥，全程不上云、不落盘。',
+    iconColor: '#F05D93',
   },
 ];
 
@@ -57,55 +63,44 @@ export default function Trust() {
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="trust-title text-center mb-16 lg:mb-20">
+          <div className="kq-section-header inline-flex mx-auto mb-6">
+            <span className="text-sm font-medium text-[#6B5580]">信任</span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            你的数据，你说了算
+            你的数据，永远属于你
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
             开源不只是口号，是每一行代码的透明
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {trustItems.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className="trust-card p-8 rounded-[12px] text-center"
-                style={{ backgroundColor: '#E8DFF0' }}
+                className="trust-card p-8 rounded-[12px] kq-glass kq-feature-card"
               >
-                <div className="w-14 h-14 mx-auto mb-6 rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: `${item.iconColor}15` }}
-                >
-                  <Icon className="w-7 h-7" style={{ color: item.iconColor }} />
+                <div className="flex items-start gap-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: `${item.iconColor}12` }}
+                  >
+                    <Icon className="w-6 h-6" style={{ color: item.iconColor }} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#49385E] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-base text-[#5A4A6A] leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-[#49385E] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-base text-[#5A4A6A] leading-relaxed">
-                  {item.desc}
-                </p>
               </div>
             );
           })}
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="https://github.com/Kabuqina/Kabuqina"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="kq-btn-primary"
-          >
-            <ExternalLink className="w-5 h-5" />
-            查看 GitHub 仓库
-          </a>
-          <a
-            href="#"
-            className="kq-btn-secondary"
-          >
-            加入讨论群
-          </a>
         </div>
       </div>
     </section>

@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Download, Github, MessageCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
-
 export default function FooterCTA() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -35,7 +34,7 @@ export default function FooterCTA() {
           </defs>
           <text fill="#D4C5E2" fontSize="13" fontWeight="500" letterSpacing="4">
             <textPath href="#circlePath">
-              安全 · 开源 · 本地 · 安全 · 开源 · 本地 ·
+              学术 · 开源 · 本地 · 学术 · 开源 · 本地 ·
             </textPath>
           </text>
         </svg>
@@ -43,7 +42,7 @@ export default function FooterCTA() {
 
       <div className="footer-cta-content w-full px-6 lg:px-12 max-w-4xl mx-auto text-center relative z-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8DFF0] mb-8 leading-tight">
-          准备好让小娜住进你的电脑了吗？
+          准备好从读材料到出交付物了吗？
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -75,7 +74,7 @@ export default function FooterCTA() {
             className="inline-flex items-center gap-2 px-10 py-5 bg-transparent text-[#E8DFF0] text-lg font-semibold rounded-[12px] border border-[#B8A9C9]/40 transition-all duration-300 hover:bg-[#D4C5E2]/15 hover:border-[#D4C5E2]/70 active:scale-[0.97]"
           >
             <MessageCircle className="w-5 h-5" />
-            加入微信讨论群
+            加入学生讨论群
           </a>
         </div>
       </div>

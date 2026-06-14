@@ -5,9 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
-import Philosophy from './sections/Philosophy';
-import Features from './sections/Features';
-import Matrix from './sections/Matrix';
+import FourLayerFramework from './sections/FourLayerFramework';
+import Capabilities from './sections/Capabilities';
 import Scenarios from './sections/Scenarios';
 import GetStarted from './sections/GetStarted';
 import Trust from './sections/Trust';
@@ -46,11 +45,10 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Philosophy />
-        <GetStarted />
-        <Matrix />
+        <FourLayerFramework />
         <Scenarios />
-        <Features />
+        <GetStarted />
+        <Capabilities />
         <Trust />
         <FooterCTA />
       </main>

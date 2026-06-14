@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 
 const navLinks = [
-  { label: '功能', href: '#features' },
+  { label: '能力', href: '#capabilities' },
   { label: '场景', href: '#scenarios' },
   { label: '下载', href: '#download' },
   { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },

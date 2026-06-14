@@ -1,42 +1,38 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download, QrCode, Cpu, MessageSquare } from 'lucide-react';
+import { FolderOpen, Search, CheckCircle, FileOutput } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
     num: '01',
-    title: '下载安装包',
-    desc: '点击下载 .exe，双击安装，30 秒完成',
-    icon: Download,
-    action: '下载 Windows 64位',
-    iconColor: '#5A4A6A', // download
+    title: '放入材料',
+    desc: '拖入论文 PDF、课件、录音、代码片段，什么格式都行',
+    icon: FolderOpen,
+    iconColor: '#4F9DE8',
   },
   {
     num: '02',
-    title: '选择 AI 模型',
-    desc: '支持 OpenAI / Claude / 国产大模型 / 本地部署。一键切换，随时更换',
-    icon: Cpu,
-    action: null,
-    iconColor: '#4F9DE8', // learn
+    title: '建立索引',
+    desc: '卡布奇娜自动拆出公式、表格、关键论点、引用位置',
+    icon: Search,
+    iconColor: '#F5B642',
   },
   {
     num: '03',
-    title: '开始工作',
-    desc: '在微信里 @小娜，或点击电脑右下角的托盘图标。直接对话，她会自己学习你的习惯',
-    icon: MessageSquare,
-    action: null,
-    iconColor: '#60415F', // writing
+    title: '审阅提纲',
+    desc: '你先看结构和假设，确认方向没问题再往下',
+    icon: CheckCircle,
+    iconColor: '#F05D93',
   },
   {
     num: '04',
-    title: '连接移动 Bot',
-    desc: '打开小娜，选择微信/飞书/钉钉，扫码授权。她就能在这些平台找到你了',
-    icon: QrCode,
-    action: null,
-    iconColor: '#F5B642', // folder
+    title: '拿到文件',
+    desc: '.pptx、Markdown、LaTeX、报告草稿——可继续修改，不是一次性回复',
+    icon: FileOutput,
+    iconColor: '#6B5580',
   },
 ];
 
@@ -65,18 +61,20 @@ export default function GetStarted() {
 
   return (
     <section
-      id="download"
       ref={sectionRef}
       className="relative w-full py-32 lg:py-40"
       style={{ backgroundColor: '#FAF8FB' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="getstarted-title text-center mb-16 lg:mb-20">
+          <div className="kq-section-header inline-flex mx-auto mb-6">
+            <span className="text-sm font-medium text-[#6B5580]">工作流</span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            4 步让小娜住进你的电脑
+            从资料到交付物，只需 4 步
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            比泡一杯咖啡还简单
+            不是聊天问答，是完整的学术交付流水线
           </p>
         </div>
 
@@ -88,37 +86,25 @@ export default function GetStarted() {
                 key={step.num}
                 className={`step-item relative ${i < steps.length - 1 ? 'kq-step-connector' : ''}`}
               >
-                <div className="relative p-8 rounded-[12px] h-full" style={{ backgroundColor: '#E8DFF0' }}>
+                <div className="kq-glass p-8 h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-6">
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: `${step.iconColor}18` }}
+                      style={{ backgroundColor: `${step.iconColor}15` }}
                     >
-                      <span className="text-lg font-bold" style={{ color: step.iconColor }}>
-                        {step.num}
-                      </span>
+                      <Icon className="w-6 h-6" style={{ color: step.iconColor }} />
                     </div>
-                    <Icon className="w-5 h-5" style={{ color: step.iconColor }} />
+                    <span className="text-sm font-bold text-[#D4C5E2] tracking-widest">
+                      STEP {step.num}
+                    </span>
                   </div>
 
                   <h3 className="text-xl font-bold text-[#49385E] mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-base text-[#5A4A6A] leading-relaxed mb-4">
+                  <p className="text-base text-[#5A4A6A] leading-relaxed flex-1">
                     {step.desc}
                   </p>
-
-                  {step.action && (
-                    <a
-                      href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.1.0_x64_en-US.msi"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="kq-btn-primary !px-5 !py-3 text-sm"
-                    >
-                      <Download className="w-4 h-4" />
-                      {step.action}
-                    </a>
-                  )}
                 </div>
               </div>
             );
@@ -126,12 +112,11 @@ export default function GetStarted() {
         </div>
 
         <div className="mt-12 flex items-start gap-3 p-4 rounded-[12px] border border-[#E8E0ED] kq-glass-subtle">
-          <Cpu className="w-5 h-5 text-[#7C5CFC] flex-shrink-0 mt-0.5" />
+          <CheckCircle className="w-5 h-5 text-[#6B5580] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-[#5A4A6A] leading-relaxed">
-            当前支持 Windows 10/11 64位系统
+            每一步你都可以审阅和修改，确认后才进入下一步——不会出现「直接写了一篇你没看过的报告」
           </p>
         </div>
-
       </div>
     </section>
   );
