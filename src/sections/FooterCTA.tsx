@@ -42,7 +42,7 @@ export default function FooterCTA() {
 
       <div className="footer-cta-content w-full px-6 lg:px-12 max-w-4xl mx-auto text-center relative z-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8DFF0] mb-8 leading-tight">
-          准备好从读材料到出交付物了吗？
+          下一份报告或 PPT，不必从空白页开始
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

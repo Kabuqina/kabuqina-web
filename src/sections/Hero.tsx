@@ -3,10 +3,10 @@ import gsap from 'gsap';
 import { Download, Github, BookOpen, FileSearch, ClipboardList, PenTool } from 'lucide-react';
 
 const layers = [
-  { icon: BookOpen, label: '读取', desc: '精读 PDF / 课件 / 代码', color: '#4F9DE8' },
-  { icon: FileSearch, label: '索引', desc: '构建证据地图与术语表', color: '#F5B642' },
-  { icon: ClipboardList, label: '规划', desc: '审阅提纲与假设', color: '#F05D93' },
-  { icon: PenTool, label: '写出', desc: '输出 .pptx / MD / LaTeX', color: '#6B5580' },
+  { icon: BookOpen, label: '读懂材料', desc: '解析论文、课件、代码和笔记', color: '#4F9DE8' },
+  { icon: FileSearch, label: '理清结构', desc: '提取重点、公式、表格和引用位置', color: '#F5B642' },
+  { icon: ClipboardList, label: '确认提纲', desc: '先看逻辑，再让它继续写', color: '#F05D93' },
+  { icon: PenTool, label: '生成文件', desc: '得到可编辑的 PPT、报告或说明文档', color: '#6B5580' },
 ];
 
 export default function Hero() {
@@ -61,7 +61,7 @@ export default function Hero() {
               style={{ backgroundColor: 'rgba(184,169,201,0.12)', borderColor: 'rgba(184,169,201,0.25)', color: '#6B5580' }}
             >
               <span className="w-2 h-2 rounded-full bg-[#6B5580] animate-pulse" />
-              面向学生 · 开源 · Windows
+              面向学生 · Windows 桌面端 · 开源
             </div>
 
             {/* Main title */}
@@ -76,16 +76,16 @@ export default function Hero() {
               </h1>
             </div>
             <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-4">
-              专为 Windows 学生打造的学术助手
+              把论文、课件和代码整理成报告与 PPT
             </p>
             <p className="hero-subtitle text-lg md:text-xl text-[#6B5580] font-medium mb-8 tracking-wide">
-              读论文 · 写报告 · 做 PPT · 解公式 · 解释代码
+              论文精读 · 课程报告 · 答辩 PPT · 公式整理 · 代码说明
             </p>
 
             {/* Description */}
             <p className="hero-desc text-base md:text-lg text-[#8B7D9A] max-w-lg mb-10 leading-relaxed">
-              装在你的 Windows 电脑上，把你的论文、课件、代码和笔记，转化为可编辑的课程报告、文献汇报、答辩 PPT 和代码说明。
-              不是只会聊天的机器人，是从阅读到交付的学术工作流。
+              卡布奇娜是面向学生的 Windows 桌面学术助手。它帮你读材料、理结构、审提纲，
+              最后生成可继续修改的 PPT、Markdown、LaTeX 或报告草稿。
             </p>
 
             {/* CTA Buttons */}
@@ -120,7 +120,7 @@ export default function Hero() {
           <div className="hero-badges hidden lg:block">
             <div className="kq-glass p-8">
               <p className="text-sm font-medium text-[#8B7D9A] mb-5 uppercase tracking-wider">
-                学术工作流
+                从材料到文件
               </p>
               <div className="space-y-4">
                 {layers.map((layer, i) => (

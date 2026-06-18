@@ -9,37 +9,37 @@ const readyFeatures = [
   {
     icon: FileSearch,
     title: '精确文档读取',
-    desc: '读取 PDF、DOCX、PPTX、XLSX、HTML、Markdown、CSV、图片',
+    desc: '读取 PDF、DOCX、PPTX、XLSX、HTML、Markdown、CSV 和图片',
     color: '#4F9DE8',
   },
   {
     icon: Presentation,
-    title: '学生 PPT 工作流',
-    desc: '读材料→建索引→审提纲→写出 .pptx',
+    title: 'PPT 生成流程',
+    desc: '先读材料、确认提纲，再写出可编辑的 .pptx',
     color: '#F5B642',
   },
   {
     icon: Search,
     title: '材料索引',
-    desc: '把原始材料拆成可引用的事实、公式、表格、代码',
+    desc: '把原始材料拆成可引用的事实、公式、表格和代码片段',
     color: '#F05D93',
   },
   {
     icon: FileOutput,
-    title: '提纲审阅',
-    desc: '写文件前先出结构、假设和待确认点',
+    title: '提纲确认',
+    desc: '写文件前先给结构、论点和待确认点',
     color: '#6B5580',
   },
   {
     icon: FileOutput,
-    title: '文件写出',
-    desc: '输出 PPTX、Markdown、LaTeX、报告草稿等可编辑文件',
+    title: '可编辑文件写出',
+    desc: '输出 PPTX、Markdown、LaTeX 和报告草稿',
     color: '#4F9DE8',
   },
   {
     icon: Shield,
-    title: '桌面凭据安全',
-    desc: 'API Key 存入 Windows Credential Manager，不入配置文件和日志',
+    title: '本地凭据保护',
+    desc: 'API Key 存入 Windows Credential Manager，不写进普通配置文件或日志',
     color: '#6B5580',
   },
 ];
@@ -49,21 +49,21 @@ const extensionFeatures = [
     icon: Calculator,
     title: '公式抽取与 LaTeX',
     desc: '从公式密集材料中抽取数学表达',
-    status: '需加载能力包',
+    status: '可扩展',
     color: '#4F9DE8',
   },
   {
     icon: Mic,
     title: '本地语音识别',
-    desc: '把课堂录音、口述笔记转成文本',
-    status: '需加载能力包',
+    desc: '把课堂录音和口述笔记转成文本',
+    status: '可扩展',
     color: '#F5B642',
   },
   {
     icon: BookOpen,
-    title: '数学表达工程',
-    desc: '公式清洗、公式转代码、代码转公式说明',
-    status: '方向性能力',
+    title: '数学表达处理',
+    desc: '整理公式、解释推导，并辅助生成代码说明',
+    status: '规划中',
     color: '#F05D93',
   },
 ];
@@ -103,13 +103,13 @@ export default function Capabilities() {
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="cap-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">能力详情</span>
+            <span className="text-sm font-medium text-[#6B5580]">处理能力</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            能力一览
+            它现在能处理什么
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            已就绪的核心能力 + 按需加载的能力包扩展
+            常用学术材料可以直接处理，进阶能力也能继续扩展
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export default function Capabilities() {
           <div className="cap-left">
             <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#6B5580]" />
-              已就绪能力
+              已支持
             </h3>
             <div className="space-y-4">
               {readyFeatures.map((f) => {
@@ -148,7 +148,7 @@ export default function Capabilities() {
           <div className="cap-right">
             <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#8B7D9A]" />
-              能力包扩展（按需加载）
+              可扩展能力
             </h3>
             <div className="space-y-4">
               {extensionFeatures.map((f) => {
@@ -170,8 +170,8 @@ export default function Capabilities() {
                         <span
                           className="text-xs px-2 py-0.5 rounded-full font-medium"
                           style={{
-                            backgroundColor: f.status === '方向性能力' ? 'rgba(184,169,201,0.15)' : 'rgba(79,157,232,0.1)',
-                            color: f.status === '方向性能力' ? '#6B5580' : '#4F9DE8',
+                            backgroundColor: f.status === '规划中' ? 'rgba(184,169,201,0.15)' : 'rgba(79,157,232,0.1)',
+                            color: f.status === '规划中' ? '#6B5580' : '#4F9DE8',
                           }}
                         >
                           {f.status}

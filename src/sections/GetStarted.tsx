@@ -8,29 +8,29 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     num: '01',
-    title: '放入材料',
-    desc: '拖入论文 PDF、课件、录音、代码片段，什么格式都行',
+    title: '放入资料',
+    desc: '把论文、课件、代码、表格或作业要求放进来',
     icon: FolderOpen,
     iconColor: '#4F9DE8',
   },
   {
     num: '02',
-    title: '建立索引',
-    desc: '卡布奇娜自动拆出公式、表格、关键论点、引用位置',
+    title: '整理重点',
+    desc: '自动提取关键论点、公式、表格、代码片段和引用位置',
     icon: Search,
     iconColor: '#F5B642',
   },
   {
     num: '03',
-    title: '审阅提纲',
-    desc: '你先看结构和假设，确认方向没问题再往下',
+    title: '确认方向',
+    desc: '先看提纲、逻辑和待补充点，确认没跑题再继续',
     icon: CheckCircle,
     iconColor: '#F05D93',
   },
   {
     num: '04',
-    title: '拿到文件',
-    desc: '.pptx、Markdown、LaTeX、报告草稿——可继续修改，不是一次性回复',
+    title: '拿到成稿',
+    desc: '生成 PPT、Markdown、LaTeX 或报告草稿，打开后还能继续修改',
     icon: FileOutput,
     iconColor: '#6B5580',
   },
@@ -71,10 +71,10 @@ export default function GetStarted() {
             <span className="text-sm font-medium text-[#6B5580]">工作流</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            从资料到交付物，只需 4 步
+            从资料到成稿，只需 4 步
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            不是聊天问答，是完整的学术交付流水线
+            每一步都能检查，不用把结果全交给黑箱
           </p>
         </div>
 
@@ -114,7 +114,7 @@ export default function GetStarted() {
         <div className="mt-12 flex items-start gap-3 p-4 rounded-[12px] border border-[#E8E0ED] kq-glass-subtle">
           <CheckCircle className="w-5 h-5 text-[#6B5580] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-[#5A4A6A] leading-relaxed">
-            每一步你都可以审阅和修改，确认后才进入下一步——不会出现「直接写了一篇你没看过的报告」
+            你可以在关键节点审阅和修改，确认后才进入下一步，减少「写出来才发现方向错了」的返工。
           </p>
         </div>
       </div>

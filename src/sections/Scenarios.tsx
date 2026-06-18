@@ -10,28 +10,28 @@ const scenarios = [
     icon: FileText,
     emoji: '📄',
     title: '课程报告与作业',
-    desc: '丢进 PDF / DOCX / PPTX / 代码片段，卡布奇娜读材料、建索引、出提纲。你审完确认，她写出来。',
+    desc: '把课件、论文、代码和作业要求放进去，先得到清晰提纲，再生成可继续修改的报告草稿。',
     color: '#4F9DE8',
   },
   {
     icon: Microscope,
     emoji: '🔬',
     title: '论文精读与汇报',
-    desc: '抽取论文结构、公式图表、关键结论，生成汇报大纲或课堂展示 PPT。从读到讲，一步到位。',
+    desc: '快速梳理研究问题、方法、公式图表和关键结论，帮你准备课堂汇报或文献分享。',
     color: '#F5B642',
   },
   {
     icon: Presentation,
     emoji: '🎤',
     title: '课程与答辩 PPT',
-    desc: '围绕材料建立索引，先审提纲再生成 .pptx。适配课程汇报、论文精读、代码答辩。',
+    desc: '先确认讲述逻辑和页面结构，再生成 .pptx，适合课程展示、论文精读和代码答辩。',
     color: '#F05D93',
   },
   {
     icon: Calculator,
     emoji: '🧮',
     title: '公式与代码处理',
-    desc: '从公式密集文档提取 LaTeX，公式转 Python/NumPy 实现，代码转数学说明。',
+    desc: '把公式、推导和代码讲清楚：整理 LaTeX 表达，生成代码说明，辅助理解实现思路。',
     color: '#6B5580',
   },
 ];
@@ -72,10 +72,10 @@ export default function Scenarios() {
             <span className="text-sm font-medium text-[#6B5580]">学生场景</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            卡布奇娜能帮你做什么
+            这些任务，不必从空白文档开始
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            从阅读材料到输出交付物，覆盖学生的高频学术场景
+            面向学生最常见的报告、汇报、答辩和材料整理场景
           </p>
         </div>
 

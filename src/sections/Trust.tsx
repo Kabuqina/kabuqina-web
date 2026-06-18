@@ -9,25 +9,25 @@ const trustItems = [
   {
     icon: Lock,
     title: '代码完全开源',
-    desc: 'MIT 协议，GitHub 公开仓库。每一行代码可审计，欢迎社区监督。',
+    desc: 'MIT 协议，GitHub 公开仓库。关心安全和实现细节的人，可以直接查看代码。',
     iconColor: '#4F9DE8',
   },
   {
     icon: Shield,
     title: '零数据上报',
-    desc: '你的聊天记录、文件、记忆，全部存在本机。不会上传，不收集，不追踪。',
+    desc: '你的资料、对话和生成过程优先留在本机。不会主动收集，也不会做行为追踪。',
     iconColor: '#6B5580',
   },
   {
     icon: Users,
     title: '社区驱动',
-    desc: '欢迎提交 Issue、贡献插件、分享技能配方。我们一起让学术工作流更好用。',
+    desc: '欢迎提交 Issue、贡献插件、分享使用方法。一起把学生真正需要的工作流做扎实。',
     iconColor: '#D4A574',
   },
   {
     icon: Key,
     title: '凭据安全',
-    desc: 'API Key 存入 Windows Credential Manager，不写入普通配置文件或日志。Python 子进程通过 Tauri loopback 获取密钥，全程不上云、不落盘。',
+    desc: 'API Key 存入 Windows Credential Manager，不写入普通配置文件或日志，减少误传和泄露风险。',
     iconColor: '#F05D93',
   },
 ];
@@ -67,10 +67,10 @@ export default function Trust() {
             <span className="text-sm font-medium text-[#6B5580]">信任</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
-            你的数据，永远属于你
+            你的资料，留在你的电脑里
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            开源不只是口号，是每一行代码的透明
+            首页先讲好用，底层也尽量做到透明、可查、可控
           </p>
         </div>
 

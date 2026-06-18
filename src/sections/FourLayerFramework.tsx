@@ -8,34 +8,34 @@ gsap.registerPlugin(ScrollTrigger);
 const layers = [
   {
     icon: BookOpen,
-    label: '读取',
-    title: '精读',
-    desc: '读取 PDF、DOCX、PPTX、XLSX、图片、代码',
-    io: '论文 PDF / 课件 / 录音 → 文本块、公式、表格',
+    label: '读材料',
+    title: '先理解',
+    desc: '读取论文、课件、表格、图片和代码片段',
+    io: '论文 PDF / 课件 / 代码 → 段落、公式、表格、重点',
     color: '#4F9DE8',
   },
   {
     icon: FileSearch,
-    label: '索引',
-    title: '整理',
-    desc: '把材料整理成可检索、可引用的证据地图',
-    io: '原始结构 → 证据地图、术语表、源位置',
+    label: '理结构',
+    title: '再整理',
+    desc: '把零散内容整理成可引用、可检查的材料清单',
+    io: '原始材料 → 重点清单、术语解释、引用位置',
     color: '#F5B642',
   },
   {
     icon: ClipboardList,
-    label: '规划',
-    title: '审阅',
-    desc: '先审提纲再生成，避免直接胡写',
-    io: '材料索引 + 作业要求 → 报告大纲、待补充清单',
+    label: '审提纲',
+    title: '你确认',
+    desc: '先给出结构和待确认点，避免直接写偏',
+    io: '材料 + 作业要求 → 报告大纲、PPT 结构、待补充点',
     color: '#F05D93',
   },
   {
     icon: PenTool,
-    label: '写出',
-    title: '交付',
-    desc: '输出可继续修改的交付物文件',
-    io: '已确认提纲 + 模板 → .pptx / Markdown / LaTeX',
+    label: '出文件',
+    title: '再交付',
+    desc: '生成能继续修改的文件，而不是一段临时答案',
+    io: '确认后的提纲 → .pptx / Markdown / LaTeX / 报告草稿',
     color: '#6B5580',
   },
 ];
@@ -102,15 +102,15 @@ export default function FourLayerFramework() {
         {/* Header */}
         <div className="fl-header text-center mb-16">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">四层学术工作流</span>
+            <span className="text-sm font-medium text-[#6B5580]">为什么不只是聊天</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-6 leading-tight">
-            从材料到交付物，四步完成
+            不是问一句答一句，而是一步步做出文件
           </h2>
           <p className="text-base md:text-lg text-[#8B7D9A] max-w-2xl mx-auto leading-relaxed">
-            卡布奇娜不是「问一句答一句」的聊天机器人。
+            普通聊天机器人容易直接给一段答案，但作业、汇报和答辩需要可检查的过程。
             <br className="hidden md:block" />
-            它是完整的学术交付流水线：先读清楚材料，再建可引用的索引，然后审阅提纲，最后写出可编辑的文件。
+            卡布奇娜先读清楚材料，再整理依据，让你确认提纲，最后写出可编辑的文件。
           </p>
         </div>
 
