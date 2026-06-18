@@ -1,0 +1,37 @@
+/*
+ * Noto Sans SC (思源黑体) — self-hosted subset.
+ * Each file contains ONLY the ~549 glyphs the site actually renders, fetched
+ * from Google Fonts' text-subsetting API at build time (see scripts/build-cjk-subset.py).
+ * No external CDN at runtime — works reliably in mainland China.
+ *
+ * ⚠ If you add NEW Chinese text to the site, re-run:  python scripts/build-cjk-subset.py
+ *   otherwise the new characters will fall back to the system font.
+ */
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./noto-sans-sc-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./noto-sans-sc-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./noto-sans-sc-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./noto-sans-sc-700.woff2') format('woff2');
+}

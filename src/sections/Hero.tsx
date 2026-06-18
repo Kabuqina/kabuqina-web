@@ -1,13 +1,6 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { Download, Github, BookOpen, FileSearch, ClipboardList, PenTool } from 'lucide-react';
-
-const layers = [
-  { icon: BookOpen, label: '读懂材料', desc: '解析论文、课件、代码和笔记', color: '#4F9DE8' },
-  { icon: FileSearch, label: '理清结构', desc: '提取重点、公式、表格和引用位置', color: '#F5B642' },
-  { icon: ClipboardList, label: '确认提纲', desc: '先看逻辑，再让它继续写', color: '#F05D93' },
-  { icon: PenTool, label: '生成文件', desc: '得到可编辑的 PPT、报告或说明文档', color: '#6B5580' },
-];
+import { Download, Github } from 'lucide-react';
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -23,8 +16,6 @@ export default function Hero() {
       gsap.fromTo('.hero-cta', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.6 });
       gsap.fromTo('.hero-meta', { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power3.out', delay: 0.8 });
       gsap.fromTo('.hero-badges', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.7 });
-      gsap.fromTo('.layer-card', { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12, delay: 0.9 });
     }, hero);
 
     return () => ctx.revert();
@@ -42,13 +33,6 @@ export default function Hero() {
           style={{ background: 'radial-gradient(circle, #D4C5E2 0%, transparent 70%)' }} />
         <div className="kq-orb absolute -bottom-60 -left-40 w-[500px] h-[500px] opacity-[0.08]"
           style={{ background: 'radial-gradient(circle, #D4A574 0%, transparent 70%)' }} />
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(#B8A9C9 1px, transparent 1px), linear-gradient(90deg, #B8A9C9 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32">
@@ -65,12 +49,7 @@ export default function Hero() {
             </div>
 
             {/* Main title */}
-            <div className="hero-title flex items-center gap-4 mb-4">
-              <img
-                src="/kabuqina_logo_128.png"
-                alt="卡布奇娜"
-                className="w-12 h-12 md:w-16 md:h-16 rounded-xl"
-              />
+            <div className="hero-title flex items-center mb-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#49385E] leading-tight tracking-tight">
                 卡布奇娜
               </h1>
@@ -116,33 +95,19 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Right: Four-layer framework preview */}
-          <div className="hero-badges hidden lg:block">
-            <div className="kq-glass p-8">
-              <p className="text-sm font-medium text-[#8B7D9A] mb-5 uppercase tracking-wider">
-                从材料到文件
-              </p>
-              <div className="space-y-4">
-                {layers.map((layer, i) => (
-                  <div key={layer.label} className="layer-card flex items-center gap-4">
-                    <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: `${layer.color}15` }}
-                    >
-                      <layer.icon className="w-5 h-5" style={{ color: layer.color }} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-base font-bold text-[#49385E]">{layer.label}</span>
-                        {i < layers.length - 1 && (
-                          <span className="text-[#D4C5E2] text-xs">→</span>
-                        )}
-                      </div>
-                      <p className="text-sm text-[#8B7D9A]">{layer.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* Right: mascot */}
+          <div className="hero-badges flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[180px] sm:max-w-[240px] lg:max-w-[340px]">
+              <div
+                className="absolute inset-x-8 bottom-6 h-16 rounded-full blur-3xl"
+                style={{ backgroundColor: 'rgba(184,169,201,0.25)' }}
+              />
+              <img
+                src="/mascot.png"
+                alt="卡布奇娜 mascot"
+                className="kq-float relative mx-auto w-full select-none object-contain drop-shadow-[0_20px_40px_rgba(73,56,94,0.14)]"
+                draggable={false}
+              />
             </div>
           </div>
         </div>

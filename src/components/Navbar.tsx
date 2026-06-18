@@ -42,13 +42,8 @@ export default function Navbar() {
       >
         <div className="w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <img
-                src="/kabuqina_logo_48.png"
-                alt="卡布奇娜"
-                className="w-8 h-8 md:w-9 md:h-9 rounded-lg transition-transform duration-300 group-hover:scale-105"
-              />
+            {/* Brand */}
+            <a href="#" className="flex items-center group">
               <div className="flex flex-col leading-tight">
                 <span className="text-lg md:text-xl font-bold tracking-tight text-[#49385E]">
                   卡布奇娜
