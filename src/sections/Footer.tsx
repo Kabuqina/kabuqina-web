@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
 
           <p className="text-sm text-[#8B7D9A]">
-            © 2026 卡布奇娜开源社区 · MIT License
+            © 2026 卡布奇娜开源社区 · Apache License 2.0
           </p>
         </div>
         <div className="flex justify-center mt-6 pt-6 border-t border-[#6B5580]">
@@ -55,7 +55,7 @@ export default function Footer() {
             粤ICP备2026062638号
           </a>
           <span className="text-sm text-[#8B7D9A]">|</span>
-          <img src="/备案图标.png" alt="备案图标" className="h-6 w-auto" />
+          <img src="/备案图标.png" alt="备案图标" className="h-5 w-auto" />
           <a
             href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002013225"
             target="_blank"

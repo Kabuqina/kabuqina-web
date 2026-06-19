@@ -48,7 +48,7 @@ export default function FooterCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           {/* Download - White button on dark bg → most prominent */}
           <a
-            href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.1.0_x64_en-US.msi"
+            href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.2.0_x64-setup.exe"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-5 bg-white text-[#49385E] text-lg font-semibold rounded-[12px] shadow-lg transition-all duration-300 hover:brightness-95 active:scale-[0.97]"

@@ -21,7 +21,7 @@ const modelMatrix = [
 const privacyItems = [
   { label: '零数据上报', desc: '不收集任何使用数据、不发送 telemetry' },
   { label: '本地存储', desc: '所有记忆文件仅在本地 ~/.capuchina/' },
-  { label: '开源可审计', desc: 'MIT 协议，GitHub 公开全部源码' },
+  { label: '开源可审计', desc: 'Apache 2.0 协议，GitHub 公开全部源码' },
   { label: '容器隔离', desc: 'Docker 执行环境可选安全加固' },
 ];
 

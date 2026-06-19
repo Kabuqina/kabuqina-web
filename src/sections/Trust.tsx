@@ -9,7 +9,7 @@ const trustItems = [
   {
     icon: Lock,
     title: '代码完全开源',
-    desc: 'MIT 协议，GitHub 公开仓库。关心安全和实现细节的人，可以直接查看代码。',
+    desc: 'Apache 2.0 协议，GitHub 公开仓库。关心安全和实现细节的人，可以直接查看代码。',
     iconColor: '#4F9DE8',
   },
   {

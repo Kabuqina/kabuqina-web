@@ -70,7 +70,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="hero-cta flex flex-col sm:flex-row items-start gap-4 mb-6">
               <a
-                href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.1.0_x64_en-US.msi"
+                href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.2.0_x64-setup.exe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="kq-btn-primary"
@@ -91,7 +91,7 @@ export default function Hero() {
 
             {/* Meta info */}
             <p className="hero-meta text-sm text-[#8B7D9A]">
-              最新版本 v0.1.0 · MIT 开源 · 64位 Windows
+              最新版本 v0.2.0 · Apache 2.0 开源 · 64位 Windows
             </p>
           </div>
 
