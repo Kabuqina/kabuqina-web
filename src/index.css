@@ -69,6 +69,10 @@
     --hd-card-gap: 20px;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: var(--kq-color-surface);
@@ -79,12 +83,18 @@
     text-rendering: optimizeLegibility;
     font-feature-settings: "liga" 1, "calt" 1;
     overflow-x: hidden;
+    overflow-wrap: break-word;
   }
 
   h1, h2, h3, h4, h5, h6 {
     word-break: keep-all;
     line-height: 1.25;
     letter-spacing: -0.01em;
+    min-width: 0;
+  }
+
+  p, a, span {
+    min-width: 0;
   }
 
   /* Section heading (left accent line) */
@@ -92,6 +102,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    max-width: 100%;
     padding: 0.5rem 1rem;
     background: rgba(243, 237, 246, 0.55);
     border-radius: var(--radius-shell);
@@ -189,6 +200,7 @@ html.lenis, html.lenis body {
 .kq-btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
   background: linear-gradient(135deg, #49385E, #6B5580);
@@ -212,6 +224,7 @@ html.lenis, html.lenis body {
 .kq-btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
   background: rgba(255, 255, 255, 0.72);
@@ -309,6 +322,32 @@ html.lenis, html.lenis body {
 @media (max-width: 768px) {
   .kq-step-connector::after {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2, h3, h4, h5, h6 {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  p, a, span {
+    overflow-wrap: anywhere;
+  }
+
+  .kq-section-header {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline: 0.875rem;
+  }
+
+  .kq-btn-primary,
+  .kq-btn-secondary {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 1rem;
+    text-align: center;
+    white-space: normal;
   }
 }
 

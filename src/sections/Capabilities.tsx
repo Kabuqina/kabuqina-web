@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FileSearch, Presentation, Search, FileOutput, Shield, CheckCircle, Mic, Calculator, BookOpen } from 'lucide-react';
+import { FileSearch, Presentation, Search, FileOutput, CheckCircle, Mic, Calculator, BookOpen } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,34 +37,26 @@ const readyFeatures = [
     color: '#4F9DE8',
   },
   {
-    icon: Shield,
-    title: '本地凭据保护',
-    desc: 'API Key 存入 Windows Credential Manager，不写进普通配置文件或日志',
-    color: '#6B5580',
+    icon: Calculator,
+    title: '公式抽取与 LaTeX',
+    desc: '从公式密集材料中抽取数学表达',
+    color: '#4F9DE8',
+  },
+  {
+    icon: BookOpen,
+    title: '数学表达处理',
+    desc: '整理公式、解释推导，并辅助生成代码说明',
+    color: '#F05D93',
   },
 ];
 
 const extensionFeatures = [
-  {
-    icon: Calculator,
-    title: '公式抽取与 LaTeX',
-    desc: '从公式密集材料中抽取数学表达',
-    status: '可扩展',
-    color: '#4F9DE8',
-  },
   {
     icon: Mic,
     title: '本地语音识别',
     desc: '把课堂录音和口述笔记转成文本',
     status: '可扩展',
     color: '#F5B642',
-  },
-  {
-    icon: BookOpen,
-    title: '数学表达处理',
-    desc: '整理公式、解释推导，并辅助生成代码说明',
-    status: '规划中',
-    color: '#F05D93',
   },
 ];
 
@@ -97,7 +89,7 @@ export default function Capabilities() {
     <section
       id="capabilities-detail"
       ref={sectionRef}
-      className="relative w-full py-32 lg:py-40"
+      className="relative w-full py-32 lg:py-40 overflow-hidden"
       style={{ backgroundColor: '#FAF8FB' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
@@ -113,14 +105,14 @@ export default function Capabilities() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left: Ready features */}
+        <div className="space-y-10 lg:space-y-12">
+          {/* Ready features */}
           <div className="cap-left">
-            <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#6B5580]" />
               已支持
             </h3>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {readyFeatures.map((f) => {
                 const Icon = f.icon;
                 return (
@@ -134,9 +126,9 @@ export default function Capabilities() {
                     >
                       <Icon className="w-5 h-5" style={{ color: f.color }} />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="text-base font-bold text-[#49385E] mb-1">{f.title}</h4>
-                      <p className="text-sm text-[#5A4A6A] leading-relaxed">{f.desc}</p>
+                      <p className="text-sm text-[#5A4A6A] leading-relaxed break-words">{f.desc}</p>
                     </div>
                   </div>
                 );
@@ -144,13 +136,13 @@ export default function Capabilities() {
             </div>
           </div>
 
-          {/* Right: Extension features */}
+          {/* Extension features */}
           <div className="cap-right">
-            <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#8B7D9A]" />
               可扩展能力
             </h3>
-            <div className="space-y-4">
+            <div className="mx-auto grid max-w-3xl grid-cols-1 gap-4">
               {extensionFeatures.map((f) => {
                 const Icon = f.icon;
                 return (
@@ -164,8 +156,8 @@ export default function Capabilities() {
                     >
                       <Icon className="w-5 h-5" style={{ color: f.color }} />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h4 className="text-base font-bold text-[#49385E]">{f.title}</h4>
                         <span
                           className="text-xs px-2 py-0.5 rounded-full font-medium"
@@ -177,7 +169,7 @@ export default function Capabilities() {
                           {f.status}
                         </span>
                       </div>
-                      <p className="text-sm text-[#5A4A6A] leading-relaxed">{f.desc}</p>
+                      <p className="text-sm text-[#5A4A6A] leading-relaxed break-words">{f.desc}</p>
                     </div>
                   </div>
                 );

@@ -41,7 +41,7 @@ export default function Hero() {
           <div className="text-left">
             {/* Brand tag */}
             <div
-              className="hero-title inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 border"
+              className="hero-title inline-flex max-w-full flex-wrap items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 border"
               style={{ backgroundColor: 'rgba(184,169,201,0.12)', borderColor: 'rgba(184,169,201,0.25)', color: '#6B5580' }}
             >
               <span className="w-2 h-2 rounded-full bg-[#6B5580] animate-pulse" />
@@ -68,12 +68,12 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="hero-cta flex flex-col sm:flex-row items-start gap-4 mb-6">
+            <div className="hero-cta flex w-full flex-col sm:w-auto sm:flex-row items-start gap-4 mb-6">
               <a
                 href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.2.0_x64-setup.exe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="kq-btn-primary"
+                className="kq-btn-primary sm:w-auto"
               >
                 <Download className="w-5 h-5" />
                 下载 Windows 版
@@ -82,7 +82,7 @@ export default function Hero() {
                 href="https://github.com/Kabuqina/Kabuqina"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="kq-btn-secondary"
+                className="kq-btn-secondary sm:w-auto"
               >
                 <Github className="w-5 h-5" />
                 在 GitHub 查看源码

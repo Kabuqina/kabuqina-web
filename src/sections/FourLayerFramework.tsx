@@ -117,7 +117,7 @@ export default function FourLayerFramework() {
         {/* Cards + Arrows */}
         <div className="fl-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {layers.map((layer, i) => (
-            <div key={layer.label} className="relative">
+            <div key={layer.label} className="relative min-w-0">
               {/* Card */}
               <div className="kq-glass p-6 h-full flex flex-col kq-feature-card">
                 {/* Step number */}
@@ -134,7 +134,7 @@ export default function FourLayerFramework() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-[#49385E] mb-1">
+                <h3 className="text-lg font-bold text-[#49385E] mb-1 break-words">
                   {layer.label}
                   <span className="text-[#8B7D9A] font-normal text-sm ml-2">{layer.title}</span>
                 </h3>
@@ -146,7 +146,7 @@ export default function FourLayerFramework() {
 
                 {/* IO example */}
                 <div className="bg-[#F3EDF6]/60 rounded-lg p-3 mt-auto">
-                  <p className="text-xs text-[#8B7D9A] leading-relaxed">
+                  <p className="text-xs text-[#8B7D9A] leading-relaxed break-words">
                     {layer.io}
                   </p>
                 </div>

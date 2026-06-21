@@ -45,13 +45,13 @@ export default function FooterCTA() {
           下一份报告或 PPT，不必从空白页开始
         </h2>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+        <div className="flex w-full flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           {/* Download - White button on dark bg → most prominent */}
           <a
             href="https://kabuqina-installer-1428509047.cos.ap-guangzhou.myqcloud.com/Kabuqina_0.2.0_x64-setup.exe"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-white text-[#49385E] text-lg font-semibold rounded-[12px] shadow-lg transition-all duration-300 hover:brightness-95 active:scale-[0.97]"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-10 py-5 bg-white text-[#49385E] text-lg font-semibold text-center rounded-[12px] shadow-lg transition-all duration-300 hover:brightness-95 active:scale-[0.97]"
           >
             <Download className="w-5 h-5" />
             下载 Windows 版
@@ -62,7 +62,7 @@ export default function FooterCTA() {
             href="https://github.com/Kabuqina/Kabuqina"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-[#D4C5E2] text-[#49385E] text-lg font-semibold rounded-[12px] border border-[#D4C5E2] transition-all duration-300 hover:bg-[#E0D4EC] active:scale-[0.97]"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-10 py-5 bg-[#D4C5E2] text-[#49385E] text-lg font-semibold text-center rounded-[12px] border border-[#D4C5E2] transition-all duration-300 hover:bg-[#E0D4EC] active:scale-[0.97]"
           >
             <Github className="w-5 h-5" />
             查看 GitHub 源码
@@ -71,7 +71,7 @@ export default function FooterCTA() {
           {/* Discuss - Ghost style on dark */}
           <a
             href="#"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-transparent text-[#E8DFF0] text-lg font-semibold rounded-[12px] border border-[#B8A9C9]/40 transition-all duration-300 hover:bg-[#D4C5E2]/15 hover:border-[#D4C5E2]/70 active:scale-[0.97]"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-10 py-5 bg-transparent text-[#E8DFF0] text-lg font-semibold text-center rounded-[12px] border border-[#B8A9C9]/40 transition-all duration-300 hover:bg-[#D4C5E2]/15 hover:border-[#D4C5E2]/70 active:scale-[0.97]"
           >
             <MessageCircle className="w-5 h-5" />
             加入学生讨论群
