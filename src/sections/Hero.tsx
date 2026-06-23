@@ -36,7 +36,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-center">
           {/* Left: Text */}
           <div className="text-left">
             {/* Brand tag */}
@@ -95,17 +95,25 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Right: mascot */}
+          {/* Right: product screenshot + mascot sticker */}
           <div className="hero-badges flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[180px] sm:max-w-[240px] lg:max-w-[340px]">
+            <div className="relative w-full max-w-[480px] sm:max-w-[560px] lg:max-w-[660px]">
               <div
-                className="absolute inset-x-8 bottom-6 h-16 rounded-full blur-3xl"
-                style={{ backgroundColor: 'rgba(184,169,201,0.25)' }}
+                className="absolute inset-x-8 bottom-6 h-20 rounded-full blur-3xl"
+                style={{ backgroundColor: 'rgba(184,169,201,0.28)' }}
               />
+              <div className="kq-float relative rounded-xl lg:rounded-2xl overflow-hidden border border-[#E8E0ED] bg-white shadow-[0_24px_60px_rgba(73,56,94,0.14)]">
+                <img
+                  src="/app-screenshot.png"
+                  alt="卡布奇娜主界面截图"
+                  className="w-full h-auto select-none"
+                  draggable={false}
+                />
+              </div>
               <img
                 src="/mascot.png"
                 alt="卡布奇娜 mascot"
-                className="kq-float relative mx-auto w-full select-none object-contain drop-shadow-[0_20px_40px_rgba(73,56,94,0.14)]"
+                className="absolute -bottom-5 -right-5 w-20 h-20 sm:w-24 sm:h-24 object-contain select-none rounded-full bg-white p-1.5 shadow-[0_10px_28px_rgba(73,56,94,0.18)] border border-[#E8E0ED] kq-float"
                 draggable={false}
               />
             </div>

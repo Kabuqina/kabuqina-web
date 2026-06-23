@@ -55,7 +55,7 @@ export default function Footer() {
             粤ICP备2026062638号
           </a>
           <span className="hidden sm:inline text-sm text-[#8B7D9A]">|</span>
-          <img src="/备案图标.png" alt="备案图标" className="h-4 w-auto sm:h-5" />
+          <img src="/备案图标.png" alt="备案图标" className="h-3 w-auto sm:h-4" />
           <a
             href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002013225"
             target="_blank"

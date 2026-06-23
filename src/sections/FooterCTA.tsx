@@ -41,7 +41,7 @@ export default function FooterCTA() {
       </div>
 
       <div className="footer-cta-content w-full px-6 lg:px-12 max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8DFF0] mb-8 leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8DFF0] mb-8 leading-snug">
           下一份报告或 PPT，不必从空白页开始
         </h2>
 
