@@ -1,6 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 
 const footerLinks = [
+  { label: '关于我们', href: './about.html' },
   { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
   { label: 'GitHub', href: 'https://github.com/Kabuqina/Kabuqina' },
   { label: '更新日志', href: 'https://github.com/Kabuqina/Kabuqina/releases' },
@@ -42,7 +43,7 @@ export default function Footer() {
         </div>
         <div className="flex justify-center mt-6 pt-6 border-t border-[#6B5580]">
           <p className="text-center text-sm text-[#8B7D9A] break-words">
-            联系方式：<a href="mailto:lilyreso@163.com" className="text-[#D4C5E2] hover:underline">lilyreso@163.com</a>
+            联系方式：<a href="mailto:contact@kabuqina.com" className="text-[#D4C5E2] hover:underline">contact@kabuqina.com</a>
           </p>
         </div>
         <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-4 px-2 text-center">
