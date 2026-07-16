@@ -1,72 +1,75 @@
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react'
+import { company, links } from '../lib/site'
 
-const footerLinks = [
-  { label: '关于我们', href: './about.html' },
-  { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
-  { label: 'GitHub', href: 'https://github.com/Kabuqina/Kabuqina' },
-  { label: '更新日志', href: 'https://github.com/Kabuqina/Kabuqina/releases' },
-  { label: '隐私政策', href: '#' },
-];
+type FooterGroup = {
+  title: string
+  links: Array<{ label: string; href: string; external?: boolean }>
+}
+
+const groups: FooterGroup[] = [
+  {
+    title: '网站',
+    links: [
+      { label: '首页', href: './index.html' },
+      { label: '关于我们', href: './about.html' },
+      { label: '联系我们', href: `mailto:${company.email}` },
+    ],
+  },
+  {
+    title: '卡布奇娜',
+    links: [
+      { label: '下载 Windows 版', href: links.download, external: true },
+      { label: 'GitHub', href: links.github, external: true },
+      { label: '更新日志', href: links.releases, external: true },
+    ],
+  },
+]
 
 export default function Footer() {
   return (
-    <footer className="w-full py-10 lg:py-12" style={{ backgroundColor: '#3D2E4E' }}>
-      <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <span className="text-base font-semibold text-[#E8DFF0]">
-              卡布奇娜
-            </span>
-            <span className="text-sm text-[#8B7D9A]">
-              Kabuqina
-            </span>
+    <footer className="company-footer">
+      <div className="company-container">
+        <div className="company-footer__main">
+          <div className="company-footer__brand">
+            <div className="company-wordmark company-wordmark--footer">
+              <span className="company-wordmark__mark" aria-hidden="true">A<span>&amp;</span>L</span>
+              <span className="company-wordmark__text">
+                <strong>爱与逻辑</strong>
+                <small>AI &amp; LOGIC SOFTWARE</small>
+              </span>
+            </div>
+            <p>{company.nameZh}</p>
+            <p className="company-footer__tagline">设计、开发并长期维护<br />真正有用的智能软件。</p>
+            <a href={`mailto:${company.email}`} className="footer-email"><Mail aria-hidden="true" />{company.email}</a>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:gap-6">
-            {footerLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-1 text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300"
-              >
-                {link.label}
-                {link.href.startsWith('http') && <ExternalLink className="w-3 h-3" />}
-              </a>
+          <div className="company-footer__nav">
+            {groups.map((group) => (
+              <div key={group.title}>
+                <h2>{group.title}</h2>
+                {group.links.map((link) => (
+                  <a key={link.label} href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
+                    {link.label}{link.external && <ArrowUpRight aria-hidden="true" />}
+                  </a>
+                ))}
+              </div>
             ))}
           </div>
+        </div>
 
-          <p className="text-center text-sm text-[#8B7D9A] break-words">
-            © 2026 卡布奇娜开源社区 · Apache License 2.0
-          </p>
-        </div>
-        <div className="flex justify-center mt-6 pt-6 border-t border-[#6B5580]">
-          <p className="text-center text-sm text-[#8B7D9A] break-words">
-            联系方式：<a href="mailto:contact@kabuqina.com" className="text-[#D4C5E2] hover:underline">contact@kabuqina.com</a>
-          </p>
-        </div>
-        <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-4 px-2 text-center">
-          <a
-            href="https://beian.miit.gov.cn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300 break-all"
-          >
-            粤ICP备2026062638号
-          </a>
-          <span className="hidden sm:inline text-sm text-[#8B7D9A]">|</span>
-          <img src="/备案图标.png" alt="备案图标" className="h-3 w-auto sm:h-4" />
-          <a
-            href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002013225"
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300 break-all"
-          >
-            粤公网安备44030002013225号
-          </a>
+        <div className="company-footer__legal">
+          <div>
+            <p>© 2026 {company.nameEn} All rights reserved.</p>
+            <p>Kabuqina 源代码按 Apache License 2.0 开放。</p>
+          </div>
+          <div className="company-footer__filings">
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">粤 ICP 备 2026062638 号</a>
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002013225" target="_blank" rel="noreferrer">
+              <img src="/备案图标.png" alt="" />粤公网安备 44030002013225 号
+            </a>
+          </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -62,9 +62,13 @@ export default function Hero() {
             </p>
 
             {/* Description */}
-            <p className="hero-desc text-base md:text-lg text-[#8B7D9A] max-w-lg mb-10 leading-relaxed">
+            <p className="hero-desc text-base md:text-lg text-[#8B7D9A] max-w-lg mb-4 leading-relaxed">
               卡布奇娜是面向学生的 Windows 桌面学术助手。它帮你读材料、理结构、审提纲，
-              最后生成可继续修改的 PPT、Markdown、LaTeX 或报告草稿。产品由深圳市爱与逻辑软件有限责任公司开发和维护。
+              最后生成可继续修改的 PPT、Markdown、LaTeX 或报告草稿。
+            </p>
+
+            <p className="hero-desc mb-10 max-w-lg border-l-4 border-[#6B5580] bg-[#F3EDF6] px-4 py-3 text-sm font-semibold leading-relaxed text-[#49385E] md:text-base">
+              产品由深圳市爱与逻辑软件有限责任公司开发和维护。
             </p>
 
             {/* CTA Buttons */}

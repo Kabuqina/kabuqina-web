@@ -1,123 +1,102 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Github } from 'lucide-react';
+import { useEffect, useState } from 'react'
+import { Download, Menu, X } from 'lucide-react'
+import { links } from '../lib/site'
 
-const navLinks = [
-  { label: '能力', href: '#capabilities' },
-  { label: '场景', href: '#scenarios' },
-  { label: '下载', href: '#download' },
-  { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
-];
+type NavbarProps = {
+  page?: 'home' | 'about'
+}
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+export default function Navbar({ page = 'home' }: NavbarProps) {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const homePrefix = page === 'about' ? './index.html' : ''
+
+  const navLinks = page === 'home'
+    ? [
+        { label: '产品', href: '#product' },
+        { label: '工作流', href: '#workflow' },
+        { label: '能力', href: '#capabilities' },
+        { label: '开源与安全', href: '#trust' },
+        { label: '关于公司', href: './about.html', current: false },
+      ]
+    : [
+        { label: '旗舰产品', href: `${homePrefix}#product` },
+        { label: '工作流', href: `${homePrefix}#workflow` },
+        { label: '开源与安全', href: `${homePrefix}#trust` },
+        { label: '关于我们', href: './about.html', current: true },
+      ]
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    if (!mobileOpen) return
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-      setMobileOpen(false);
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileOpen(false)
     }
-  };
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [mobileOpen])
 
   return (
-    <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'kq-glass-subtle !bg-[rgba(250,248,251,0.85)] shadow-sm'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="w-full px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Brand */}
-            <a href="#" className="flex items-center group">
-              <div className="flex flex-col leading-tight">
-                <span className="text-lg md:text-xl font-bold tracking-tight text-[#49385E]">
-                  卡布奇娜
-                </span>
-                <span className="text-xs md:text-sm font-medium text-[#8B7D9A]">
-                  Kabuqina
-                </span>
-              </div>
-            </a>
+    <header className="site-header">
+      <div className="company-container site-header__inner">
+        {page === 'home' ? (
+          <a className="product-wordmark" href="./index.html" aria-label="卡布奇娜首页">
+            <img src="/kabuqina_logo_48.png" alt="" />
+            <span><strong>卡布奇娜</strong><small>KABUQINA</small></span>
+          </a>
+        ) : (
+          <a className="company-wordmark" href="./index.html" aria-label="爱与逻辑首页">
+            <span className="company-wordmark__mark" aria-hidden="true">A<span>&amp;</span>L</span>
+            <span className="company-wordmark__text">
+              <strong>爱与逻辑</strong>
+              <small>AI &amp; LOGIC SOFTWARE</small>
+            </span>
+          </a>
+        )}
 
-            {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium text-[#5A4A6A] transition-colors duration-300 hover:text-[#6B5580]"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
+        <nav className="desktop-nav" aria-label="主导航">
+          {navLinks.map((link) => (
+            <a key={link.label} href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
+          ))}
+        </nav>
 
-            {/* GitHub CTA */}
-            <div className="hidden md:flex items-center gap-4">
-              <a
-                href="https://github.com/Kabuqina/Kabuqina"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="kq-btn-secondary !px-5 !py-2.5 text-sm"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </a>
-            </div>
+        <a className="header-download" href={links.download} target="_blank" rel="noreferrer">
+          <Download aria-hidden="true" />
+          下载产品
+        </a>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-[#5A4A6A]"
-            >
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </nav>
+        <button
+          className="mobile-menu-button"
+          type="button"
+          onClick={() => setMobileOpen((open) => !open)}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          aria-label={mobileOpen ? '关闭导航' : '打开导航'}
+        >
+          {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+      </div>
 
-      {/* Mobile overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[#49385E]/95 backdrop-blur-md md:hidden">
-          <div className="flex flex-col items-center justify-center h-full gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-2xl font-medium text-[#E8DFF0] hover:text-[#D4C5E2] transition-colors"
-              >
-                {link.label}
+        <div id="mobile-menu" className="mobile-menu">
+          <nav aria-label="移动端导航">
+            {navLinks.map((link, index) => (
+              <a key={link.label} href={link.href} onClick={() => setMobileOpen(false)}>
+                <span>0{index + 1}</span>{link.label}
               </a>
             ))}
-            <a
-              href="https://github.com/Kabuqina/Kabuqina"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 text-lg font-medium bg-[#6B5580] text-white rounded-lg mt-4 hover:bg-[#7B6590] transition-colors"
-            >
-              <Github className="w-5 h-5" />
-              GitHub
+            <a className="mobile-menu__download" href={links.download} target="_blank" rel="noreferrer">
+              <Download aria-hidden="true" /> 下载卡布奇娜
             </a>
-          </div>
+          </nav>
         </div>
       )}
-    </>
-  );
+    </header>
+  )
 }
