@@ -37,12 +37,12 @@ export default function Footer() {
           </div>
 
           <p className="text-center text-sm text-[#8B7D9A] break-words">
-            © 2026 卡布奇娜开源社区 · Apache License 2.0
+            联系方式：<a href="mailto:contact@kabuqina.com" className="text-[#D4C5E2] hover:underline">contact@kabuqina.com</a>
           </p>
         </div>
         <div className="flex justify-center mt-6 pt-6 border-t border-[#6B5580]">
           <p className="text-center text-sm text-[#8B7D9A] break-words">
-            联系方式：<a href="mailto:lilyreso@163.com" className="text-[#D4C5E2] hover:underline">lilyreso@163.com</a>
+            © 2026 Shenzhen Ai and Logic Software Co., Ltd. All rights reserved.
           </p>
         </div>
         <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-4 px-2 text-center">
