@@ -16,7 +16,6 @@ const pageCopy = {
     heroLead: `${company.nameZh}是卡布奇娜的开发与长期维护团队。我们面向真实而复杂的信息工作，设计清晰、可靠、能够长期使用的智能软件。`,
     primaryAction: '认识卡布奇娜',
     secondaryAction: '与我们联系',
-    posterNote: '温度决定为什么做，逻辑决定怎样把它做好。',
     ledger: [
       { label: 'HEADQUARTERS', value: '深圳 · 中国' },
       { label: 'FOCUS', value: '智能生产力软件' },
@@ -87,7 +86,6 @@ const pageCopy = {
     heroLead: `${company.nameEn} is the team that designs, develops and maintains Kabuqina. We build clear, dependable intelligent software for real and complex information work.`,
     primaryAction: 'Meet Kabuqina',
     secondaryAction: 'Contact us',
-    posterNote: 'Care gives us a reason. Logic gives it form.',
     ledger: [
       { label: 'HEADQUARTERS', value: 'Shenzhen, China' },
       { label: 'FOCUS', value: 'Intelligent productivity software' },
@@ -195,21 +193,15 @@ export default function About() {
             <div className="about2-poster-wrap" aria-hidden="true">
               <div className="about2-poster-shadow" />
               <div className="about2-poster">
-                <div className="about2-poster__top">
-                  <strong className="about2-signature" aria-label={`${company.signature} / 2026`}>
-                    <span>Ai</span><i aria-hidden="true">❤</i><span>Logic</span><em>/ 2026</em>
-                  </strong>
-                  <span>SHENZHEN</span>
-                </div>
-                <div className="about2-poster__main">
-                  <div className="about2-poster__word"><small>CARE</small><span>爱</span></div>
-                  <b>&amp;</b>
-                  <div className="about2-poster__word about2-poster__word--right"><small>LOGIC</small><span>理</span></div>
-                </div>
-                <div className="about2-poster__line"><span /></div>
-                <div className="about2-poster__bottom"><span>SOFTWARE FOR</span><span>THOUGHTFUL WORK</span></div>
+                <img
+                  className="about2-poster__art"
+                  src="/about-care-logic-convergence.png"
+                  alt=""
+                  width={1136}
+                  height={1392}
+                  decoding="async"
+                />
               </div>
-              <p className="about2-poster-note">{copy.posterNote}</p>
             </div>
           </div>
 

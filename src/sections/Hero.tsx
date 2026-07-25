@@ -49,10 +49,16 @@ export default function Hero() {
             </div>
 
             {/* Main title */}
-            <div className="hero-title flex items-center mb-4">
+            <div className="hero-title flex flex-wrap items-end gap-x-4 gap-y-3 mb-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#49385E] leading-tight tracking-tight">
                 卡布奇娜
               </h1>
+              <a
+                href="./about.html"
+                className="mb-1 inline-flex whitespace-nowrap rounded-full border border-[#D4C5E2] bg-[#F1E9F5] px-3 py-1.5 text-[11px] font-semibold tracking-wide text-[#6B5580] transition-colors duration-300 hover:border-[#B8A9C9] hover:bg-[#E8DFF0] md:text-xs"
+              >
+                由深圳市爱与逻辑软件有限责任公司出品
+              </a>
             </div>
             <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-4">
               把论文、课件和代码整理成报告与 PPT
