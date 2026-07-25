@@ -1,6 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 
 const footerLinks = [
+  { label: '关于公司', href: './about.html' },
   { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
   { label: 'GitHub', href: 'https://github.com/Kabuqina/Kabuqina' },
   { label: '更新日志', href: 'https://github.com/Kabuqina/Kabuqina/releases' },

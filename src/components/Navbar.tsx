@@ -5,6 +5,7 @@ const navLinks = [
   { label: '能力', href: '#capabilities' },
   { label: '场景', href: '#scenarios' },
   { label: '下载', href: '#download' },
+  { label: '关于公司', href: './about.html' },
   { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
 ];
 
