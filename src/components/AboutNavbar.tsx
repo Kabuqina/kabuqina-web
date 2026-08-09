@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Download, Menu, X } from 'lucide-react'
-import { company, links } from '../lib/site'
+import { links } from '../lib/site'
 import type { SiteLocale } from '../lib/locale'
 
 type NavbarProps = {
@@ -74,10 +74,9 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
           </a>
         ) : (
           <a className="company-wordmark" href="./index.html" aria-label={isEnglish ? 'Ai & Logic home' : '爱与逻辑首页'}>
-            <span className="company-wordmark__mark" aria-hidden="true">A<span>&amp;</span>L</span>
+            <img src="/company-logo.png" alt="" className="company-wordmark__logo" />
             <span className="company-wordmark__text">
               <strong>爱与逻辑</strong>
-              <small>{company.shortNameEn}</small>
             </span>
           </a>
         )}

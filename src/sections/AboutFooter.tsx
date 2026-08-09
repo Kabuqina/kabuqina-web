@@ -58,11 +58,7 @@ export default function AboutFooter({ locale = 'zh' }: FooterProps) {
         <div className="company-footer__main">
           <div className="company-footer__brand">
             <div className="company-wordmark company-wordmark--footer">
-              <span className="company-wordmark__mark" aria-hidden="true">A<span>&amp;</span>L</span>
-              <span className="company-wordmark__text">
-                <strong>{isEnglish ? company.signature : '爱与逻辑'}</strong>
-                <small>{company.shortNameEn}</small>
-              </span>
+              <img src="/company-logo.png" alt="" className="company-wordmark__logo" />
             </div>
             <p>{isEnglish ? company.nameEn : company.nameZh}</p>
             <p className="company-footer__tagline">

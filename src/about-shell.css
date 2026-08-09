@@ -60,6 +60,12 @@
   gap: 11px;
 }
 
+.about-page-v2 .company-wordmark__logo {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
 .about-page-v2 .company-wordmark__mark {
   width: 42px;
   height: 42px;
@@ -224,9 +230,9 @@
   padding-bottom: 72px;
 }
 
-.about-page-v2 .company-wordmark--footer .company-wordmark__mark {
-  background: white;
-  color: var(--ink);
+.about-page-v2 .company-wordmark--footer .company-wordmark__logo {
+  height: 44px;
+  width: auto;
 }
 
 .about-page-v2 .company-wordmark--footer .company-wordmark__text small {
@@ -343,9 +349,8 @@
     width: min(100% - 32px, 1280px);
   }
 
-  .about-page-v2 .company-wordmark__mark {
-    width: 39px;
-    height: 39px;
+  .about-page-v2 .company-wordmark__logo {
+    height: 30px;
   }
 
   .about-page-v2 .company-wordmark__text strong {
