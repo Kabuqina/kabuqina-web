@@ -51,6 +51,12 @@
   font-weight: 500;
 }
 
+.about-page-v2 a:focus-visible,
+.about-page-v2 button:focus-visible {
+  outline: 2px solid var(--about-gold);
+  outline-offset: 4px;
+}
+
 .about-page-v2 .header-download {
   margin-left: 18px;
   font-size: 15px;
@@ -443,12 +449,10 @@
   align-items: start;
   padding: 42px 18px 44px;
   border-bottom: 1px solid rgba(37, 26, 43, 0.24);
-  transition: background 180ms ease, padding 180ms ease;
+  transition: background 180ms ease;
 }
 
 .about2-principles__list article:hover {
-  padding-right: 26px;
-  padding-left: 26px;
   background: rgba(255, 253, 248, 0.55);
 }
 
@@ -993,22 +997,24 @@
 
   .about2-hero__inner {
     min-height: auto;
-    padding-top: 70px;
-    padding-bottom: 82px;
+    gap: 54px;
+    padding-top: 58px;
+    padding-bottom: 68px;
   }
 
   .about2-hero h1 {
-    font-size: 48px;
+    font-size: 44px;
     line-height: 1.13;
   }
 
   .about2-hero__lead {
-    margin-top: 28px;
+    margin-top: 24px;
     font-size: 16px;
+    line-height: 1.75;
   }
 
   .about-page-v2[data-locale='en'] .about2-hero h1 {
-    font-size: 43px;
+    font-size: 40px;
   }
 
   .about-page-v2[data-locale='en'] .about2-hero__lead {
@@ -1019,7 +1025,7 @@
     align-items: stretch;
     flex-direction: column;
     gap: 13px;
-    margin-top: 34px;
+    margin-top: 28px;
   }
 
   .about2-button {
@@ -1057,7 +1063,13 @@
   }
 
   .about2-hero__ledger small {
-    width: 105px;
+    width: 96px;
+    flex: 0 0 96px;
+  }
+
+  .about2-hero__ledger span {
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .about2-thesis,
@@ -1105,7 +1117,7 @@
 
   .about2-thesis blockquote::after {
     right: 18px;
-    font-size: 42px;
+    font-size: 34px;
   }
 
   .about2-section-head {
