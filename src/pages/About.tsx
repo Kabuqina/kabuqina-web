@@ -259,7 +259,7 @@ export default function About() {
             <figure className="about2-product__screen">
               <div className="about2-product__chrome"><div><i /><i /><i /></div><span>KABUQINA / DESKTOP</span><span>01</span></div>
               <div className="about2-product__image">
-                <img src="/app-screenshot.png" alt={copy.screenshotAlt} width={1375} height={956} loading="lazy" decoding="async" />
+                <img src="/app-screenshot.png" alt={copy.screenshotAlt} width={1098} height={818} loading="lazy" decoding="async" />
               </div>
               <figcaption>
                 <img src="/kabuqina_logo_48.png" alt="" />

@@ -17,8 +17,6 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
 
   const navLinks = page === 'home'
     ? [
-        { label: '产品', href: '#product' },
-        { label: '工作流', href: '#workflow' },
         { label: '能力', href: '#capabilities' },
         { label: '开源与安全', href: '#trust' },
         { label: '关于公司', href: aboutHref, current: false },
@@ -28,14 +26,12 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
           { label: 'Kabuqina', href: homePrefix },
           { label: 'Capabilities', href: `${homePrefix}#capabilities` },
           { label: 'Scenarios', href: `${homePrefix}#scenarios` },
-          { label: 'Download', href: `${homePrefix}#download` },
           { label: 'About', href: aboutHref, current: true },
         ]
       : [
           { label: '卡布奇娜', href: homePrefix },
           { label: '能力', href: `${homePrefix}#capabilities` },
           { label: '场景', href: `${homePrefix}#scenarios` },
-          { label: '下载', href: `${homePrefix}#download` },
           { label: '关于我们', href: aboutHref, current: true },
         ]
 
