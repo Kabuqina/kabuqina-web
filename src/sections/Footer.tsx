@@ -46,24 +46,14 @@ export default function Footer() {
             © 2026 Shenzhen Ai and Logic Software Co., Ltd. All rights reserved.
           </p>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-4 px-2 text-center">
+        <div className="flex justify-center mt-2">
           <a
             href="https://beian.miit.gov.cn/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300 break-all"
+            className="text-xs text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300"
           >
-            粤ICP备2026062638号
-          </a>
-          <span className="hidden sm:inline text-sm text-[#8B7D9A]">|</span>
-          <img src="/备案图标.png" alt="备案图标" className="h-3 w-auto sm:h-4" />
-          <a
-            href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002013225"
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300 break-all"
-          >
-            粤公网安备44030002013225号
+            粤ICP备2026121865号-1
           </a>
         </div>
       </div>
