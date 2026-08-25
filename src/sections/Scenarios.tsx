@@ -64,14 +64,14 @@ export default function Scenarios() {
       id="scenarios"
       ref={sectionRef}
       className="relative w-full py-32 lg:py-40"
-      style={{ backgroundColor: '#FAF8FB' }}
+      style={{ backgroundColor: 'rgba(244, 238, 245, 0.78)' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="scenarios-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
             <span className="text-sm font-medium text-[#6B5580]">学生场景</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4" data-reveal>
             这些任务，不必从空白文档开始
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">

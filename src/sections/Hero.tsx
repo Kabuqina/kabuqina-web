@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { Download, Github } from 'lucide-react';
+import { Download, Github, Heart } from 'lucide-react';
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -25,14 +25,14 @@ export default function Hero() {
     <section
       ref={heroRef}
       className="relative w-full min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #f3edf6 0%, #fbf8fb 50%, #fffafa 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #e5d8ef 0%, #f8eee8 52%, #f6dfbd 100%)' }}
     >
       {/* Subtle background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="kq-orb absolute -top-40 -right-40 w-[600px] h-[600px] opacity-[0.12]"
-          style={{ background: 'radial-gradient(circle, #D4C5E2 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, #b8a9c9 0%, transparent 70%)' }} />
         <div className="kq-orb absolute -bottom-60 -left-40 w-[500px] h-[500px] opacity-[0.08]"
-          style={{ background: 'radial-gradient(circle, #D4A574 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, #d4a574 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32">
@@ -50,7 +50,7 @@ export default function Hero() {
 
             {/* Main title */}
             <div className="hero-title flex flex-wrap items-end gap-x-4 gap-y-3 mb-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#49385E] leading-tight tracking-tight">
+              <h1 className="hero-art-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" data-reveal>
                 卡布奇娜
               </h1>
               <a
@@ -103,12 +103,12 @@ export default function Hero() {
 
           {/* Right: product screenshot + mascot sticker */}
           <div className="hero-badges flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[480px] sm:max-w-[560px] lg:max-w-[660px]">
+            <div className="hero-product-visual relative w-full max-w-[540px] sm:max-w-[680px] lg:max-w-[760px]">
               <div
                 className="absolute inset-x-8 bottom-6 h-20 rounded-full blur-3xl"
                 style={{ backgroundColor: 'rgba(184,169,201,0.28)' }}
               />
-              <div className="kq-float relative rounded-xl lg:rounded-2xl overflow-hidden border border-[#E8E0ED] bg-white shadow-[0_24px_60px_rgba(73,56,94,0.14)]">
+              <div className="kq-float relative rounded-xl lg:rounded-2xl overflow-hidden border-2 border-[#8E76A5] bg-white shadow-[0_30px_80px_rgba(73,56,94,0.24)]">
                 <img
                   src="/app-screenshot.png"
                   alt="卡布奇娜主界面截图"
@@ -116,10 +116,12 @@ export default function Hero() {
                   draggable={false}
                 />
               </div>
+              <div className="hero-heart hero-heart--one" aria-hidden="true"><Heart /></div>
+              <div className="hero-heart hero-heart--two" aria-hidden="true"><Heart /></div>
               <img
                 src="/mascot.png"
                 alt="卡布奇娜 mascot"
-                className="absolute -bottom-5 -right-5 w-20 h-20 sm:w-24 sm:h-24 object-contain select-none rounded-full bg-white p-1.5 shadow-[0_10px_28px_rgba(73,56,94,0.18)] border border-[#E8E0ED] kq-float"
+                className="absolute -bottom-7 -right-7 w-24 h-24 sm:w-28 sm:h-28 object-contain select-none rounded-full bg-white p-1.5 shadow-[0_12px_34px_rgba(73,56,94,0.22)] border-2 border-[#D4A574] kq-float"
                 draggable={false}
               />
             </div>

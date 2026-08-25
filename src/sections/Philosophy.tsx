@@ -39,7 +39,8 @@ export default function Philosophy() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight uppercase"
               style={{
                 color: 'transparent',
-                WebkitTextStroke: '1.5px #D4C5E2',
+                WebkitTextStroke: '1.5px #6B5580',
+                textShadow: '2px 2px 0 rgba(212, 165, 116, 0.38)',
                 lineHeight: 1.05,
               }}
             >

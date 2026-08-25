@@ -70,7 +70,7 @@ export default function Matrix() {
     <section
       ref={sectionRef}
       className="relative w-full py-32 lg:py-40"
-      style={{ backgroundColor: '#FAF8FB' }}
+      style={{ backgroundColor: 'rgba(248, 244, 236, 0.8)' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="matrix-title text-center mb-16">

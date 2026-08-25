@@ -90,14 +90,14 @@ export default function Capabilities() {
       id="capabilities-detail"
       ref={sectionRef}
       className="relative w-full py-32 lg:py-40 overflow-hidden"
-      style={{ backgroundColor: '#FAF8FB' }}
+      style={{ backgroundColor: 'rgba(251, 243, 229, 0.76)' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="cap-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
             <span className="text-sm font-medium text-[#6B5580]">处理能力</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4" data-reveal>
             它现在能处理什么
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">

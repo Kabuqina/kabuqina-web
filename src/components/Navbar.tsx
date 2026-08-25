@@ -34,14 +34,14 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`home-navbar fixed top-0 left-0 right-0 z-50 border-b-2 border-[#B8A9C9]/25 bg-[rgba(248,244,250,0.72)] backdrop-blur-xl transition-all duration-500 ${
           scrolled
-            ? 'kq-glass-subtle !bg-[rgba(250,248,251,0.85)] shadow-sm'
-            : 'bg-transparent'
+            ? 'kq-glass-subtle !bg-[rgba(250,248,251,0.94)] shadow-[0_10px_34px_rgba(73,56,94,0.16)]'
+            : 'shadow-[0_4px_20px_rgba(73,56,94,0.04)]'
         }`}
       >
         <div className="w-full px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className={`flex items-center justify-between transition-[height] duration-500 ${scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-20'}`}>
             {/* Brand */}
             <a href="#" className="flex items-center group">
               <div className="flex flex-col leading-tight">

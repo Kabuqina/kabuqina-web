@@ -6,6 +6,63 @@ import AboutFooter from '../sections/AboutFooter'
 import { company, links } from '../lib/site'
 import type { SiteLocale } from '../lib/locale'
 
+/* ----- Whole-heading gradients: each character gets the interpolated color
+   at its position along the full sentence, so the gradient runs across the
+   whole line instead of repeating inside every single character. ----- */
+type GradientStop = readonly [percent: number, color: string]
+type GradientMap = Record<string, readonly GradientStop[]>
+
+const HEADING_GRADIENTS: GradientMap = {
+  'about-heading': [
+    [0, '#2d1040'],
+    [34, '#5c1e78'],
+    [58, '#97399b'],
+    [78, '#cd8a2d'],
+    [100, '#e2a63a'],
+  ],
+  'thesis-heading': [
+    [0, '#3c2a4c'],
+    [62, '#5f3d5c'],
+    [100, '#b5812e'],
+  ],
+  'principles-heading': [
+    [0, '#3c2a4c'],
+    [62, '#5f3d5c'],
+    [100, '#b5812e'],
+  ],
+  'company-heading': [
+    [0, '#3c2a4c'],
+    [62, '#5f3d5c'],
+    [100, '#b5812e'],
+  ],
+  'product-heading': [
+    [0, '#f7edfc'],
+    [64, '#d9aee3'],
+    [100, '#f2c76a'],
+  ],
+}
+
+function hexToRgb(hex: string): [number, number, number] {
+  const value = parseInt(hex.replace('#', ''), 16)
+  return [(value >> 16) & 255, (value >> 8) & 255, value & 255]
+}
+
+function lerpGradient(stops: readonly GradientStop[], t: number): string {
+  const clamped = Math.min(1, Math.max(0, t)) * 100
+  let i = 0
+  while (i < stops.length - 2 && clamped > stops[i + 1][0]) i++
+  const [p0, c0] = stops[i]
+  const [p1, c1] = stops[i + 1]
+  const local = p1 === p0 ? 0 : (clamped - p0) / (p1 - p0)
+  const a = hexToRgb(c0)
+  const b = hexToRgb(c1)
+  const r = Math.round(a[0] + (b[0] - a[0]) * local)
+  const g = Math.round(a[1] + (b[1] - a[1]) * local)
+  const bl = Math.round(a[2] + (b[2] - a[2]) * local)
+  return `rgb(${r}, ${g}, ${bl})`
+}
+
+
 const pageCopy = {
   zh: {
     metaTitle: '关于爱与逻辑 —— 深圳市爱与逻辑软件有限责任公司',
@@ -171,16 +228,85 @@ export default function About() {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', copy.metaDescription)
   }, [copy.metaDescription, copy.metaTitle, locale])
 
+  // Big headings: reveal characters one by one when scrolled into view.
+  useEffect(() => {
+    const root = document.querySelector('.about-page-v2') as HTMLElement | null
+    if (!root) return
+
+    const splitText = (el: HTMLElement) => {
+      if (el.dataset.revealDone === '1') return
+      el.dataset.revealDone = '1'
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
+      const textNodes: Text[] = []
+      while (walker.nextNode()) {
+        const node = walker.currentNode as Text
+        if (node.nodeValue && node.nodeValue.trim().length > 0) textNodes.push(node)
+      }
+      const total = textNodes.reduce((n, node) => n + (node.nodeValue ?? '').length, 0)
+      let globalIndex = 0
+      textNodes.forEach((node) => {
+        const inHeroEm = el.id === 'about-heading' && Boolean(node.parentElement?.closest('em'))
+        const inPunctuation = Boolean(node.parentElement?.closest('.about2-hero__punctuation'))
+        const gradient = inHeroEm || el.id !== 'about-heading' ? HEADING_GRADIENTS[el.id] : undefined
+        const frag = document.createDocumentFragment()
+        Array.from(node.nodeValue ?? '').forEach((ch, localIndex) => {
+          const span = document.createElement('span')
+          span.className = 'rv-char'
+          span.textContent = ch
+          span.style.setProperty('--rv-i', String(globalIndex))
+          if (inPunctuation) {
+            span.style.color = 'var(--about-ink)'
+          } else if (gradient) {
+            const gradientLength = inHeroEm ? (node.nodeValue?.length ?? 1) : total
+            const gradientIndex = inHeroEm ? localIndex : globalIndex
+            const t = gradientLength <= 1 ? 0 : gradientIndex / (gradientLength - 1)
+            span.style.color = lerpGradient(gradient, t)
+          }
+          frag.appendChild(span)
+          globalIndex++
+        })
+        node.parentNode?.replaceChild(frag, node)
+      })
+    }
+
+    const els = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement
+          // Characters fade out when the heading scrolls out of view and
+          // replay the float-up reveal every time it comes back in.
+          el.classList.toggle('is-revealed', entry.isIntersecting)
+        })
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -36px 0px' },
+    )
+    els.forEach((el) => {
+      splitText(el)
+      io.observe(el)
+    })
+    return () => io.disconnect()
+  }, [locale])
+
   return (
     <div className="company-site about-page-v2" data-locale={locale}>
       <AboutNavbar page="about" locale={locale} onLocaleChange={setLocale} />
 
       <main>
         <section className="about2-hero" aria-labelledby="about-heading">
+          <div className="about2-hero__ribbons" aria-hidden="true">
+            <span className="about2-ribbon about2-ribbon--one" />
+            <span className="about2-ribbon about2-ribbon--two" />
+            <span className="about2-ribbon about2-ribbon--three" />
+            <span className="about2-ribbon about2-ribbon--four" />
+          </div>
+
           <div className="about2-hero__inner company-container">
             <div className="about2-hero__copy">
               <p className="about2-label"><span>ABOUT</span><strong>{company.shortNameEn}</strong></p>
-              <h1 id="about-heading">{copy.heroTitleStart}<br />{copy.heroTitleMiddle}<em>{copy.heroTitleEmphasis}</em></h1>
+              <h1 id="about-heading">
+                {copy.heroTitleStart}<br />{copy.heroTitleMiddle}<span className="about2-hero__gradient-text">{copy.heroTitleEmphasis.slice(0, -1)}</span><span className="about2-hero__punctuation">{copy.heroTitleEmphasis.slice(-1)}</span>
+              </h1>
               <p className="about2-hero__lead">{copy.heroLead}</p>
               <div className="about2-hero__actions">
                 <a className="about2-button about2-button--solid" href="./index.html">
@@ -191,19 +317,26 @@ export default function About() {
             </div>
 
             <div className="about2-poster-wrap" aria-hidden="true">
-              <div className="about2-poster-shadow" />
               <div className="about2-poster">
                 <img
                   className="about2-poster__art"
-                  src="/about-care-logic-convergence.png"
-                  alt=""
-                  width={1136}
-                  height={1392}
+                  src="/about-love-logic-poster.png"
+                  alt="爱与逻辑汇合的抽象图形"
+                  width={900}
+                  height={1200}
                   decoding="async"
                 />
               </div>
             </div>
           </div>
+
+          <span className="about2-float-heart about2-float-heart--gold" style={{ top: '22%', right: '6%', fontSize: 23, animationDelay: '-0.8s' }} aria-hidden="true">♥</span>
+          <span className="about2-float-heart about2-float-heart--plum" style={{ top: '68%', left: '3%', fontSize: 15, animationDelay: '-3.2s' }} aria-hidden="true">♥</span>
+          <span className="about2-orb about2-orb--plum" style={{ top: '38%', left: '12%', ['--orb-size' as string]: '26px', animationDelay: '-1.1s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold" style={{ top: '58%', right: '14%', ['--orb-size' as string]: '18px', animationDelay: '-2.6s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--plum" style={{ top: '14%', left: '5%', ['--orb-size' as string]: '16px', animationDelay: '-0.4s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold" style={{ top: '76%', left: '4%', ['--orb-size' as string]: '21px', animationDelay: '-5.9s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--plum" style={{ top: '62%', left: '2%', ['--orb-size' as string]: '14px', animationDelay: '-2.9s' }} aria-hidden="true" />
 
           <div className="about2-hero__ledger">
             <div className="company-container">
@@ -216,18 +349,22 @@ export default function About() {
           <div className="company-container about2-thesis__layout">
             <div className="about2-section-index"><span>01</span><p>WHY WE EXIST<br />{copy.thesisIndex}</p></div>
             <div className="about2-thesis__content">
-              <h2 id="thesis-heading">{copy.thesisTitle[0]}<br />{copy.thesisTitle[1]}</h2>
+              <h2 id="thesis-heading" data-reveal>{copy.thesisTitle[0]}<br />{copy.thesisTitle[1]}</h2>
               <div className="about2-thesis__body">{copy.thesisBody.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
               <blockquote><span>“</span><p>{copy.quote[0]}<br />{copy.quote[1]}</p></blockquote>
             </div>
           </div>
+          <span className="about2-float-heart about2-float-heart--plum" style={{ top: '13%', right: '7%', fontSize: 17, animationDelay: '-1.6s' }} aria-hidden="true">♥</span>
+          <span className="about2-orb about2-orb--gold" style={{ top: '30%', right: '16%', ['--orb-size' as string]: '14px', animationDelay: '-4.4s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--plum" style={{ top: '62%', right: '30%', ['--orb-size' as string]: '18px', animationDelay: '-0.9s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold" style={{ top: '80%', left: '5%', ['--orb-size' as string]: '15px', animationDelay: '-6.3s' }} aria-hidden="true" />
         </section>
 
         <section className="about2-principles" aria-labelledby="principles-heading">
           <div className="company-container">
             <div className="about2-section-head">
               <div className="about2-section-index"><span>02</span><p>HOW WE BUILD<br />{copy.principlesIndex}</p></div>
-              <h2 id="principles-heading">{copy.principlesTitle[0]}<br />{copy.principlesTitle[1]}</h2>
+              <h2 id="principles-heading" data-reveal>{copy.principlesTitle[0]}<br />{copy.principlesTitle[1]}</h2>
             </div>
             <div className="about2-principles__list">
               {copy.principles.map((principle) => (
@@ -240,6 +377,10 @@ export default function About() {
               ))}
             </div>
           </div>
+          <span className="about2-float-heart about2-float-heart--gold" style={{ top: '38%', left: '2%', fontSize: 14, animationDelay: '-4.1s' }} aria-hidden="true">♥</span>
+          <span className="about2-orb about2-orb--plum" style={{ top: '18%', left: '22%', ['--orb-size' as string]: '22px', animationDelay: '-3.3s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold" style={{ top: '64%', right: '4%', ['--orb-size' as string]: '19px', animationDelay: '-2.2s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--plum" style={{ top: '82%', left: '6%', ['--orb-size' as string]: '15px', animationDelay: '-5.1s' }} aria-hidden="true" />
         </section>
 
         <section className="about2-product" aria-labelledby="product-heading">
@@ -247,7 +388,7 @@ export default function About() {
             <div className="about2-product__copy">
               <div className="about2-section-index about2-section-index--light"><span>03</span><p>PRODUCT STEWARDSHIP<br />{copy.productIndex}</p></div>
               <p className="about2-product__eyebrow">{copy.productEyebrow}</p>
-              <h2 id="product-heading">{copy.productTitle}</h2>
+              <h2 id="product-heading" data-reveal>{copy.productTitle}</h2>
               <p className="about2-product__lead">{copy.productLead}</p>
               <ul>{copy.stewardship.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul>
               <div className="about2-product__links">
@@ -267,13 +408,17 @@ export default function About() {
               </figcaption>
             </figure>
           </div>
+          <span className="about2-orb about2-orb--plum about2-orb--bright" style={{ top: '22%', right: '6%', ['--orb-size' as string]: '28px', animationDelay: '-2.1s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold about2-orb--bright" style={{ top: '60%', left: '48%', ['--orb-size' as string]: '16px', animationDelay: '-5.4s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold about2-orb--bright" style={{ top: '12%', left: '8%', ['--orb-size' as string]: '22px', animationDelay: '-3.7s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--plum about2-orb--bright" style={{ top: '76%', right: '14%', ['--orb-size' as string]: '17px', animationDelay: '-0.6s' }} aria-hidden="true" />
         </section>
 
         <section className="about2-company" aria-labelledby="company-heading">
           <div className="company-container">
             <div className="about2-company__intro">
               <div className="about2-section-index"><span>04</span><p>COMPANY<br />{copy.companyIndex}</p></div>
-              <div><h2 id="company-heading">{copy.companyTitle}</h2><p>{copy.companyLead}</p></div>
+              <div><h2 id="company-heading" data-reveal>{copy.companyTitle}</h2><p>{copy.companyLead}</p></div>
             </div>
             <div className="about2-company__details">
               <dl>
@@ -290,6 +435,10 @@ export default function About() {
               </aside>
             </div>
           </div>
+          <span className="about2-float-heart about2-float-heart--gold" style={{ top: '20%', right: '4%', fontSize: 20, animationDelay: '-5.2s' }} aria-hidden="true">♥</span>
+          <span className="about2-orb about2-orb--gold" style={{ top: '64%', left: '6%', ['--orb-size' as string]: '16px', animationDelay: '-1.9s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--plum" style={{ top: '16%', right: '24%', ['--orb-size' as string]: '15px', animationDelay: '-4.7s' }} aria-hidden="true" />
+          <span className="about2-orb about2-orb--gold" style={{ top: '84%', left: '3%', ['--orb-size' as string]: '24px', animationDelay: '-1.5s' }} aria-hidden="true" />
         </section>
       </main>
 

@@ -8,10 +8,15 @@
   --about-line: #d8cfc4;
   --about-plum: #6f4e68;
   --about-gold: #8f5b28;
+  --about-gold-bright: #c39756;
   --about-label-size: 13px;
   --about-small-size: 14px;
   --about-body-size: 17px;
-  background: var(--about-paper);
+  background:
+    radial-gradient(ellipse at 8% 4%, rgba(117, 82, 142, 0.16), transparent 31%),
+    radial-gradient(ellipse at 92% 20%, rgba(204, 157, 82, 0.14), transparent 29%),
+    linear-gradient(120deg, #f8f4ec 0%, #f4eef5 46%, #fbf3e5 100%);
+  background-attachment: fixed;
   color: var(--about-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -137,9 +142,7 @@
 }
 
 .about2-label span {
-  padding: 7px 10px;
-  background: var(--about-ink);
-  color: var(--about-white);
+  color: var(--about-gold);
   letter-spacing: 0.16em;
 }
 
@@ -152,9 +155,78 @@
 
 .about2-hero {
   position: relative;
-  background:
-    radial-gradient(circle at 82% 24%, rgba(183, 123, 67, 0.1), transparent 24%),
-    var(--about-paper);
+  background: linear-gradient(120deg, rgba(248, 244, 236, 0.72), rgba(244, 238, 245, 0.54) 48%, rgba(251, 243, 229, 0.68));
+}
+
+/* 紫金渐变柔光绸带背景层：大模糊椭圆光带，似丝绸反光晕开，与海报图同色系融合 */
+.about2-hero__ribbons {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.about2-ribbon {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(26px);
+  pointer-events: none;
+}
+
+.about2-ribbon--one {
+  top: 2%;
+  left: -8%;
+  width: 82%;
+  height: 130px;
+  background: linear-gradient(100deg, rgba(112, 40, 141, 0) 0%, rgba(112, 40, 141, 0.1) 30%, rgba(166, 74, 164, 0.09) 58%, rgba(215, 154, 50, 0.15) 85%, rgba(215, 154, 50, 0) 100%);
+  transform: rotate(-7deg);
+}
+
+.about2-ribbon--two {
+  top: 30%;
+  left: 14%;
+  width: 68%;
+  height: 105px;
+  background: linear-gradient(100deg, rgba(166, 74, 164, 0) 0%, rgba(166, 74, 164, 0.08) 42%, rgba(240, 181, 47, 0.13) 74%, rgba(240, 181, 47, 0) 100%);
+  transform: rotate(9deg);
+}
+
+.about2-ribbon--three {
+  top: 56%;
+  left: -6%;
+  width: 74%;
+  height: 115px;
+  background: linear-gradient(95deg, rgba(112, 40, 141, 0) 8%, rgba(215, 154, 50, 0.13) 40%, rgba(166, 74, 164, 0.09) 70%, rgba(112, 40, 141, 0) 95%);
+  transform: rotate(-12deg);
+}
+
+.about2-ribbon--four {
+  top: 78%;
+  left: 22%;
+  width: 58%;
+  height: 95px;
+  background: linear-gradient(100deg, rgba(215, 154, 50, 0) 0%, rgba(215, 154, 50, 0.12) 45%, rgba(112, 40, 141, 0.07) 80%, rgba(112, 40, 141, 0) 100%);
+  transform: rotate(6deg);
+}
+
+.about2-hero::after,
+.about2-principles::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: min(62vw, 820px);
+  height: 170px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(111, 78, 104, 0), rgba(111, 78, 104, 0.13) 35%, rgba(195, 151, 86, 0.17) 72%, rgba(195, 151, 86, 0));
+  filter: blur(15px);
+  pointer-events: none;
+  transform: rotate(-16deg);
+}
+
+.about2-hero::after {
+  top: 150px;
+  right: -170px;
 }
 
 .about2-hero::before {
@@ -189,14 +261,24 @@
 .about2-hero h1 {
   margin: 0;
   font-size: clamp(55px, 6.3vw, 92px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.065em;
+  color: var(--about-ink);
 }
 
-.about2-hero h1 em {
-  color: var(--about-plum);
+.about2-hero__gradient-text {
+  display: inline-block;
+  background: linear-gradient(112deg, #2d1040 0%, #5c1e78 38%, #97399b 72%, #b95f9e 88%, #d79a32 96%, #e2a63a 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   font-style: normal;
+}
+
+.about2-hero__punctuation {
+  color: var(--about-ink);
 }
 
 .about2-hero__lead {
@@ -250,30 +332,58 @@
 
 .about2-poster-wrap {
   position: relative;
-  width: min(100%, 470px);
+  width: min(100%, 620px);
   justify-self: end;
+  isolation: isolate;
 }
 
-.about2-poster-shadow {
+.about2-poster-wrap::before,
+.about2-poster-wrap::after {
+  content: '';
   position: absolute;
-  inset: 20px -18px -18px 24px;
-  border: 1px solid rgba(37, 26, 43, 0.22);
-  background: rgba(255, 253, 248, 0.38);
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(28px);
+}
+
+.about2-poster-wrap::before {
+  inset: 5% -16% 8% -11%;
+  background: rgba(140, 100, 170, 0.18);
+  transform: rotate(-10deg);
+}
+
+.about2-poster-wrap::after {
+  inset: 17% 5% 2% -15%;
+  aspect-ratio: 3 / 4;
+  background: rgba(220, 190, 140, 0.16);
+  transform: rotate(12deg);
 }
 
 .about2-poster {
   position: relative;
-  aspect-ratio: 1136 / 1392;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 1px solid var(--about-ink);
-  background: var(--about-paper-deep);
-  box-shadow: 0 24px 70px rgba(49, 32, 45, 0.1);
+  background: transparent;
 }
 
 .about2-poster__art {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
+  /* 透明度加高：整图半透明融入页面背景，边缘再通过 mask 渐隐 */
+  opacity: 0.6;
+  -webkit-mask-image: radial-gradient(122% 118% at 50% 45%, #000 62%, rgba(0, 0, 0, 0.88) 82%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
+  mask-image: radial-gradient(122% 118% at 50% 45%, #000 62%, rgba(0, 0, 0, 0.88) 82%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
+  animation: about2-poster-float 7s ease-in-out infinite;
+}
+
+
+@keyframes about2-poster-float {
+  0%, 100% { transform: translateY(-8px) scale(1.04); }
+  50% { transform: translateY(8px) scale(1.04); }
 }
 
 .about2-hero__ledger {
@@ -340,11 +450,14 @@
 }
 
 .about2-thesis {
+  position: relative;
   padding: 142px 0 150px;
-  background: var(--about-white);
+  background: rgba(255, 253, 248, 0.76);
 }
 
 .about2-thesis__layout {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 230px minmax(0, 1fr);
   gap: 80px;
@@ -356,13 +469,21 @@
 
 .about2-thesis h2,
 .about2-section-head h2,
-.about2-product h2,
 .about2-company h2 {
   margin: 0;
   font-size: clamp(42px, 5vw, 70px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.18;
   letter-spacing: -0.055em;
+}
+
+.about2-thesis h2,
+.about2-section-head h2,
+.about2-company h2 {
+  background: linear-gradient(112deg, #2c1140 0%, #5a1e76 58%, #8f3a96 78%, #d3942e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .about2-thesis__body {
@@ -387,8 +508,6 @@
   grid-template-columns: 70px 1fr;
   gap: 24px;
   margin: 80px 0 0;
-  padding: 42px 50px 46px;
-  background: var(--about-paper);
 }
 
 .about2-thesis blockquote::after {
@@ -415,6 +534,7 @@
   position: relative;
   z-index: 1;
   margin: 0;
+  color: var(--about-ink);
   font-size: clamp(24px, 2.7vw, 38px);
   font-weight: 600;
   line-height: 1.55;
@@ -422,8 +542,20 @@
 }
 
 .about2-principles {
+  position: relative;
   padding: 140px 0 152px;
-  background: var(--about-paper-deep);
+  background: rgba(236, 228, 216, 0.7);
+}
+
+.about2-principles::after {
+  top: 38%;
+  left: -190px;
+  transform: rotate(15deg);
+}
+
+.about2-principles > .company-container {
+  position: relative;
+  z-index: 1;
 }
 
 .about2-section-head {
@@ -472,9 +604,13 @@
 .about2-principles h3 {
   margin: -5px 0 0;
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.5;
   letter-spacing: -0.025em;
+  background: linear-gradient(112deg, #35184f 0%, #70288d 60%, #a64aa4 80%, #e0a52f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .about2-principle__text {
@@ -534,6 +670,10 @@
 .about2-product h2 {
   max-width: 620px;
   font-size: clamp(39px, 4.2vw, 60px);
+  background: linear-gradient(112deg, #f7edfc 0%, #d9aee3 58%, #e3b6e6 76%, #f2c76a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .about2-product__lead {
@@ -661,8 +801,14 @@
 }
 
 .about2-company {
+  position: relative;
   padding: 145px 0 150px;
-  background: var(--about-white);
+  background: rgba(255, 253, 248, 0.76);
+}
+
+.about2-company > .company-container {
+  position: relative;
+  z-index: 1;
 }
 
 .about2-company__intro {
@@ -726,8 +872,7 @@
 
 .about2-company aside {
   align-self: start;
-  padding: 34px;
-  background: var(--about-paper-deep);
+  padding: 34px 0 0;
 }
 
 .about2-company aside > p {
@@ -741,9 +886,13 @@
 .about2-company aside h3 {
   margin: 52px 0 38px;
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.45;
   letter-spacing: -0.035em;
+  background: linear-gradient(112deg, #35184f 0%, #70288d 60%, #a64aa4 80%, #e0a52f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .about2-company aside a {
@@ -1185,5 +1334,118 @@
 
   .about2-company aside a {
     grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+}
+
+/* ---------- Big headings: characters float up one by one on scroll ---------- */
+.about-page-v2 [data-reveal] .rv-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.52em);
+  transition:
+    opacity 480ms ease,
+    transform 700ms cubic-bezier(0.2, 0.62, 0.32, 1);
+  transition-delay: calc(min(var(--rv-i, 0), 30) * 24ms);
+  will-change: transform, opacity;
+}
+
+.about-page-v2 [data-reveal].is-revealed .rv-char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page-v2 [data-reveal] .rv-char {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- A few floating hearts, anchored inside sections (scroll with page) ---------- */
+.about2-float-heart {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  opacity: 0.32;
+  animation: about2-heart-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.about2-float-heart--gold {
+  color: #c39756;
+}
+
+.about2-float-heart--plum {
+  color: #9a7ba0;
+}
+
+@keyframes about2-heart-float {
+  0%,
+  100% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about2-float-heart,
+  .about2-poster__art {
+    animation: none;
+  }
+}
+
+/* ---------- A few purple / gold orbs: pulse (scale) + gentle float ---------- */
+.about2-orb {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+  width: var(--orb-size, 20px);
+  height: var(--orb-size, 20px);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: about2-orb-pulse 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.about2-orb--plum {
+  background: radial-gradient(circle at 32% 30%, #c3a3cd, #9a7ba0 58%, #7c5c84);
+  box-shadow:
+    0 0 14px 2px rgba(154, 123, 160, 0.35),
+    inset 0 -2px 5px rgba(60, 34, 70, 0.35);
+}
+
+.about2-orb--gold {
+  background: radial-gradient(circle at 32% 30%, #f2cf8e, #c39756 58%, #a37c3f);
+  box-shadow:
+    0 0 14px 2px rgba(195, 151, 86, 0.35),
+    inset 0 -2px 5px rgba(120, 88, 40, 0.35);
+}
+
+/* Brighter variant for the dark product section. */
+.about2-orb--bright {
+  opacity: 0.55;
+}
+
+@keyframes about2-orb-pulse {
+  0%,
+  100% {
+    transform: translateY(-9px) scale(0.82);
+  }
+  50% {
+    transform: translateY(9px) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about2-orb {
+    animation: none;
+    transform: scale(0.95);
   }
 }

@@ -40,8 +40,66 @@ export default function App() {
     };
   }, []);
 
+  // Art headings: reveal characters one by one when scrolled into view.
+  // Every character gets the same solid purple color (no gradient), a
+  // mid-tone violet that reads clearly on the light background and blends
+  // with the page; dark sections get a lighter violet for contrast.
+  useEffect(() => {
+    const root = document.querySelector('.home-shell') as HTMLElement | null;
+    if (!root) return;
+
+    const HEADLINE_COLORS: Record<'light' | 'dark', string> = {
+      light: '#6b3fa0',
+      dark: '#c9a0e0',
+    };
+
+    const splitHeadline = (el: HTMLElement) => {
+      if (el.dataset.kqSplit === '1') return;
+      el.dataset.kqSplit = '1';
+      const mode = el.dataset.reveal === 'dark' ? 'dark' : 'light';
+      const color = HEADLINE_COLORS[mode];
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode as Text;
+        if (node.nodeValue && node.nodeValue.trim().length > 0) textNodes.push(node);
+      }
+      let globalIndex = 0;
+      textNodes.forEach((node) => {
+        const frag = document.createDocumentFragment();
+        Array.from(node.nodeValue ?? '').forEach((ch) => {
+          const span = document.createElement('span');
+          span.className = 'kq-rv';
+          span.textContent = ch;
+          span.style.setProperty('--rv-i', String(globalIndex));
+          span.style.color = color;
+          frag.appendChild(span);
+          globalIndex++;
+        });
+        node.parentNode?.replaceChild(frag, node);
+      });
+    };
+
+    const els = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Characters fade out when the heading scrolls out of view and
+          // replay the float-up reveal every time it comes back in.
+          entry.target.classList.toggle('is-revealed', entry.isIntersecting);
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -36px 0px' },
+    );
+    els.forEach((el) => {
+      splitHeadline(el);
+      io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: '#FAF8FB' }}>
+    <div className="home-shell relative min-h-screen">
       <Navbar />
       <main>
         <Hero />

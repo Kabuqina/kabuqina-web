@@ -39,13 +39,25 @@
 }
 
 .about-page-v2 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(222, 215, 224, 0.82);
+  border-bottom: 2px solid rgba(222, 215, 224, 0.82);
   background: rgba(246, 243, 239, 0.91);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  transition: background 220ms ease, box-shadow 220ms ease, height 220ms ease;
+}
+
+.about-page-v2 .site-header.is-scrolled {
+  background: rgba(246, 243, 239, 0.97);
+  box-shadow: 0 10px 30px rgba(36, 26, 43, 0.12);
+}
+
+.about-page-v2 .site-header.is-scrolled .site-header__inner {
+  height: 64px;
 }
 
 .about-page-v2 .site-header__inner {

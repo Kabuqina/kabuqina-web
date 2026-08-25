@@ -11,6 +11,7 @@ type NavbarProps = {
 
 export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChange }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const isEnglish = locale === 'en'
   const homePrefix = page === 'about' ? './index.html' : ''
   const aboutHref = isEnglish ? './about.html?lang=en' : './about.html'
@@ -52,6 +53,13 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
     }
   }, [mobileOpen])
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const languageSwitch = onLocaleChange && (
     <div className="language-switch" aria-label={isEnglish ? 'Language' : '语言'}>
       <button type="button" aria-pressed={!isEnglish} onClick={() => onLocaleChange('zh')}>中文</button>
@@ -61,7 +69,7 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
   )
 
   return (
-    <header className="site-header">
+    <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="company-container site-header__inner">
         {page === 'home' ? (
           <a className="product-wordmark" href="./index.html" aria-label="卡布奇娜首页">

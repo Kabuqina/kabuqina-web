@@ -88,7 +88,7 @@ export default function FourLayerFramework() {
       id="capabilities"
       ref={sectionRef}
       className="relative w-full py-28 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FAF8FB' }}
+      style={{ backgroundColor: 'rgba(248, 244, 236, 0.78)' }}
     >
       {/* Subtle gradient accent */}
       <div className="absolute inset-0 pointer-events-none">
@@ -104,7 +104,7 @@ export default function FourLayerFramework() {
           <div className="kq-section-header inline-flex mx-auto mb-6">
             <span className="text-sm font-medium text-[#6B5580]">为什么不只是聊天</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-6 leading-tight" data-reveal>
             不是问一句答一句，而是一步步做出文件
           </h2>
           <p className="text-base md:text-lg text-[#8B7D9A] max-w-2xl mx-auto leading-relaxed">

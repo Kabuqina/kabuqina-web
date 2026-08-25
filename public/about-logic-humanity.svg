@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="820" gradientUnits="userSpaceOnUse"><stop stop-color="#DCE7EF"/><stop offset=".5" stop-color="#F3F0ED"/><stop offset="1" stop-color="#F3E2CF"/></linearGradient>
+    <linearGradient id="window" x1="180" y1="110" x2="1030" y2="700" gradientUnits="userSpaceOnUse"><stop stop-color="#F8FBFC" stop-opacity=".86"/><stop offset=".5" stop-color="#F6F1F3" stop-opacity=".78"/><stop offset="1" stop-color="#FFF3E6" stop-opacity=".86"/></linearGradient>
+    <linearGradient id="violetGold" x1="230" y1="150" x2="1020" y2="690" gradientUnits="userSpaceOnUse"><stop stop-color="#7188A1"/><stop offset=".42" stop-color="#806D91"/><stop offset=".78" stop-color="#C58B68"/><stop offset="1" stop-color="#E0B174"/></linearGradient>
+    <linearGradient id="core" x1="490" y1="260" x2="760" y2="510" gradientUnits="userSpaceOnUse"><stop stop-color="#AEBFCB"/><stop offset=".5" stop-color="#8A7496"/><stop offset="1" stop-color="#DCA36C"/></linearGradient>
+    <linearGradient id="ribbon" x1="550" y1="650" x2="1120" y2="250" gradientUnits="userSpaceOnUse"><stop stop-color="#D6945E" stop-opacity="0"/><stop offset=".42" stop-color="#D99E68" stop-opacity=".78"/><stop offset="1" stop-color="#A887B0" stop-opacity=".08"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#DCA979" stop-opacity=".26"/><stop offset=".58" stop-color="#927AA0" stop-opacity=".1"/><stop offset="1" stop-color="#F5F0EA" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#62758C" stroke-opacity=".16"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#5D536C" flood-opacity=".2"/></filter>
+    <filter id="blur" x="-20%" y="-30%" width="140%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1200" height="820" rx="42" fill="url(#bg)"/>
+  <ellipse cx="620" cy="420" rx="510" ry="390" fill="url(#halo)"/>
+  <path d="M0 0h470L210 820H0z" fill="url(#grid)" opacity=".72"/>
+  <g stroke="#657A90" stroke-opacity=".5" stroke-width="2"><path d="M66 174h130l82 82M70 642h134l90-90M1030 130h94v82M1080 660h-110l-70-72"/><path d="M150 120v80M72 350h110M1080 290v82" stroke-dasharray="5 9"/></g>
+  <g fill="#7188A1"><circle cx="66" cy="174" r="6"/><circle cx="196" cy="174" r="6"/><circle cx="204" cy="642" r="6"/><circle cx="1124" cy="212" r="6"/></g>
+  <path d="M300 680C430 610 420 466 550 420c127-45 180 85 302 31 90-40 117-143 267-156" stroke="url(#ribbon)" stroke-width="46" stroke-linecap="round" opacity=".56" filter="url(#blur)"/>
+  <path d="M300 680C430 610 420 466 550 420c127-45 180 85 302 31 90-40 117-143 267-156" stroke="url(#ribbon)" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+  <path d="M190 590C350 300 420 170 610 200c150 24 208 133 390 78" stroke="url(#violetGold)" stroke-width="3" opacity=".72"/>
+  <g filter="url(#shadow)">
+    <rect x="164" y="92" width="872" height="636" rx="38" fill="url(#window)" stroke="url(#violetGold)" stroke-width="3"/>
+    <path d="M164 166h872" stroke="#7B6D89" stroke-opacity=".3" stroke-width="2"/>
+    <circle cx="204" cy="130" r="7" fill="#C58B68"/><circle cx="228" cy="130" r="7" fill="#A48AAB"/><circle cx="252" cy="130" r="7" fill="#8295A8"/>
+    <path d="M310 130h170" stroke="#72879B" stroke-opacity=".44" stroke-width="9" stroke-linecap="round"/>
+    <rect x="204" y="210" width="166" height="326" rx="22" fill="#D8E4EA" fill-opacity=".38" stroke="#71869A" stroke-opacity=".28" stroke-width="2"/>
+    <path d="M232 254h88M232 282h108M232 330h74M232 358h105M232 406h84M232 434h112" stroke="#71869A" stroke-opacity=".58" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="246" cy="480" r="13" fill="#C99167" fill-opacity=".8"/><path d="M274 480h52" stroke="#71869A" stroke-opacity=".58" stroke-width="9" stroke-linecap="round"/>
+    <rect x="404" y="210" width="580" height="272" rx="28" fill="#FFFFFF" fill-opacity=".3" stroke="#FFFFFF" stroke-opacity=".68" stroke-width="2"/>
+    <path d="M450 402c55-68 89 10 145-46 48-48 87 31 140-13 49-40 81 15 145-45" stroke="url(#violetGold)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M450 444h176M650 444h84M770 444h132" stroke="#75899C" stroke-opacity=".4" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="450" cy="402" r="7" fill="#75899C"/><circle cx="595" cy="356" r="7" fill="#806D91"/><circle cx="735" cy="343" r="7" fill="#C58B68"/><circle cx="880" cy="298" r="7" fill="#E0B174"/>
+    <rect x="404" y="514" width="580" height="158" rx="30" fill="#F8F4F0" fill-opacity=".68" stroke="#C98F68" stroke-opacity=".38" stroke-width="2"/>
+    <path d="M440 550c26-18 49-18 75 0" stroke="#B98AA8" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/>
+    <path d="M440 592h300" stroke="#6F6379" stroke-opacity=".52" stroke-width="5" stroke-linecap="round"/>
+    <text x="440" y="630" fill="#806D91" fill-opacity=".78" font-family="sans-serif" font-size="18">请提问，或把资料拖进来</text>
+    <circle cx="908" cy="594" r="42" fill="url(#core)" stroke="#FFF9F2" stroke-width="4"/>
+    <circle cx="894" cy="588" r="5" fill="#5D536C"/><circle cx="922" cy="588" r="5" fill="#5D536C"/><path d="M894 608c10 10 20 10 30 0" stroke="#5D536C" stroke-width="4" stroke-linecap="round"/>
+    <path d="M862 532c30-30 75-25 96 4" stroke="#D1986C" stroke-opacity=".65" stroke-width="3"/>
+    <rect x="754" y="694" width="208" height="48" rx="20" fill="#806D91" fill-opacity=".9"/>
+    <text x="774" y="724" fill="#FFF9F2" font-family="sans-serif" font-size="15">我在这里帮你整理思路</text>
+  </g>
+  <g fill="#E4B477"><circle cx="344" cy="178" r="8"/><circle cx="1010" cy="410" r="8"/><circle cx="338" cy="596" r="6"/><circle cx="1048" cy="616" r="6"/></g>
+  <g fill="#806D91" opacity=".8"><circle cx="388" cy="110" r="5"/><circle cx="1042" cy="250" r="5"/><circle cx="282" cy="722" r="5"/></g>
++</svg>
