@@ -93,10 +93,12 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
 
         {onLocaleChange && <div className="header-language-switch">{languageSwitch}</div>}
 
-        <a className="header-download" href={links.download} target="_blank" rel="noreferrer">
-          <Download aria-hidden="true" />
-          {isEnglish ? 'Download' : '下载产品'}
-        </a>
+        {page === 'home' && (
+          <a className="header-download" href={links.download} target="_blank" rel="noreferrer">
+            <Download aria-hidden="true" />
+            {isEnglish ? 'Download' : '下载产品'}
+          </a>
+        )}
 
         <button
           className="mobile-menu-button"
@@ -119,9 +121,11 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
                 <span>0{index + 1}</span>{link.label}
               </a>
             ))}
-            <a className="mobile-menu__download" href={links.download} target="_blank" rel="noreferrer">
-              <Download aria-hidden="true" /> {isEnglish ? 'Download Kabuqina' : '下载卡布奇娜'}
-            </a>
+            {page === 'home' && (
+              <a className="mobile-menu__download" href={links.download} target="_blank" rel="noreferrer">
+                <Download aria-hidden="true" /> {isEnglish ? 'Download Kabuqina' : '下载卡布奇娜'}
+              </a>
+            )}
           </nav>
         </div>
       )}
