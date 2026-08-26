@@ -14,21 +14,15 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
   const [scrolled, setScrolled] = useState(false)
   const isEnglish = locale === 'en'
   const homeHref = './index.html'
-  const capabilitiesHref = './capabilities.html'
-  const scenariosHref = './scenarios.html'
   const aboutHref = './about.html'
 
   const navLinks = isEnglish
       ? [
           { label: 'Kabuqina', href: withLocale(homeHref, 'en'), current: page === 'home' },
-          { label: 'Capabilities', href: withLocale(capabilitiesHref, 'en'), current: page === 'capabilities' },
-          { label: 'Scenarios', href: withLocale(scenariosHref, 'en'), current: page === 'scenarios' },
           { label: 'About', href: withLocale(aboutHref, 'en'), current: page === 'about' },
         ]
       : [
           { label: '卡布奇娜', href: homeHref, current: page === 'home' },
-          { label: '能力', href: capabilitiesHref, current: page === 'capabilities' },
-          { label: '场景', href: scenariosHref, current: page === 'scenarios' },
           { label: '关于我们', href: aboutHref, current: page === 'about' },
         ]
 

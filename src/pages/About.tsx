@@ -74,7 +74,6 @@ const pageCopy = {
     heroTitleEmphasis: '软件。',
     heroLead: `${company.nameZh}是卡布奇娜的开发与长期维护团队。我们面向真实而复杂的信息工作，设计清晰、可靠、能够长期使用的智能软件。`,
     primaryAction: '认识卡布奇娜',
-    secondaryAction: '与我们联系',
     ledger: [
       { label: 'HEADQUARTERS', value: '深圳 · 中国' },
       { label: 'FOCUS', value: '智能生产力软件' },
@@ -144,7 +143,6 @@ const pageCopy = {
     heroTitleEmphasis: 'how.',
     heroLead: `${company.nameEn} is the team that designs, develops and maintains Kabuqina. We build clear, dependable intelligent software for real and complex information work.`,
     primaryAction: 'Meet Kabuqina',
-    secondaryAction: 'Contact us',
     ledger: [
       { label: 'HEADQUARTERS', value: 'Shenzhen, China' },
       { label: 'FOCUS', value: 'Intelligent productivity software' },
@@ -310,7 +308,6 @@ export default function About() {
                 <a className="about2-button about2-button--solid" href="./index.html">
                   {copy.primaryAction} <ArrowRight aria-hidden="true" />
                 </a>
-                <a className="about2-button about2-button--text" href={`mailto:${company.email}`}>{copy.secondaryAction}</a>
               </div>
             </div>
 
