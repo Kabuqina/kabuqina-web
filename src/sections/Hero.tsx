@@ -1,8 +1,10 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { Download, Github, Heart } from 'lucide-react';
+import { ArrowDown, Download, Heart } from 'lucide-react';
+import type { SiteLocale } from '../lib/locale';
 
-export default function Hero() {
+export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
+  const isEnglish = locale === 'en';
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -45,32 +47,31 @@ export default function Hero() {
               style={{ backgroundColor: 'rgba(184,169,201,0.12)', borderColor: 'rgba(184,169,201,0.25)', color: '#6B5580' }}
             >
               <span className="w-2 h-2 rounded-full bg-[#6B5580] animate-pulse" />
-              面向学生 · Windows 桌面端 · 开源
+              {isEnglish ? 'For personal self-study · Multimodal · Open source' : '面向个人自学 · 多模态 · 开源'}
             </div>
 
             {/* Main title */}
             <div className="hero-title flex flex-wrap items-end gap-x-4 gap-y-3 mb-4">
               <h1 className="hero-art-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" data-reveal>
-                卡布奇娜
+                {isEnglish ? 'Kabuqina' : '卡布奇娜'}
               </h1>
               <a
                 href="./about.html"
                 className="mb-1 inline-flex whitespace-nowrap rounded-full border border-[#D4C5E2] bg-[#F1E9F5] px-3 py-1.5 text-[11px] font-semibold tracking-wide text-[#6B5580] transition-colors duration-300 hover:border-[#B8A9C9] hover:bg-[#E8DFF0] md:text-xs"
               >
-                由深圳市爱与逻辑软件有限责任公司出品
+                {isEnglish ? 'A product by Ai & Logic Software' : '深圳市爱与逻辑软件有限责任公司设计、开发并长期维护'}
               </a>
             </div>
             <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-4">
-              把论文、课件和代码整理成报告与 PPT
+              {isEnglish ? 'Keep every study session moving forward' : '让每一段自习，都能继续向前'}
             </p>
             <p className="hero-subtitle text-lg md:text-xl text-[#6B5580] font-medium mb-8 tracking-wide">
-              论文精读 · 课程报告 · 答辩 PPT · 公式整理 · 代码说明
+              {isEnglish ? 'Understand materials · Analyze problems · Untangle ideas · Review later' : '理解材料 · 分析问题 · 梳理思路 · 持续复习'}
             </p>
 
             {/* Description */}
             <p className="hero-desc text-base md:text-lg text-[#8B7D9A] max-w-lg mb-10 leading-relaxed">
-              卡布奇娜是面向学生的 Windows 桌面学术助手。它帮你读材料、理结构、审提纲，
-              最后生成可继续修改的 PPT、Markdown、LaTeX 或报告草稿。
+              {isEnglish ? 'Kabuqina is a multimodal AI learning tool for personal self-study. Bring in a textbook, exercise, image or handwritten page, and get help understanding the material, finding the sticking point and taking the next step.' : '卡布奇娜是一款面向个人自学场景的多模态 AI 学习工具。你可以提供教材、练习题、图片或手写内容，它帮你理解眼前的材料、找到卡点，并把学习继续推进下去。'}
             </p>
 
             {/* CTA Buttons */}
@@ -82,22 +83,20 @@ export default function Hero() {
                 className="kq-btn-primary sm:w-auto"
               >
                 <Download className="w-5 h-5" />
-                下载 Windows 版
+                {isEnglish ? 'Try Kabuqina' : '立即体验'}
               </a>
               <a
-                href="https://github.com/Kabuqina/Kabuqina"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#self-study"
                 className="kq-btn-secondary sm:w-auto"
               >
-                <Github className="w-5 h-5" />
-                在 GitHub 查看源码
+                <ArrowDown className="w-5 h-5" />
+                {isEnglish ? 'See how it helps self-study' : '看看它如何帮助自学'}
               </a>
             </div>
 
             {/* Meta info */}
             <p className="hero-meta text-sm text-[#8B7D9A]">
-              最新版本 v0.4.0 · Apache 2.0 开源 · 64位 Windows
+              {isEnglish ? 'Latest v0.4.0 · Apache 2.0 open source · 64-bit Windows' : '最新版本 v0.4.0 · Apache 2.0 开源 · 64位 Windows'}
             </p>
           </div>
 
@@ -111,7 +110,7 @@ export default function Hero() {
               <div className="kq-float relative rounded-xl lg:rounded-2xl overflow-hidden border-2 border-[#8E76A5] bg-white shadow-[0_30px_80px_rgba(73,56,94,0.24)]">
                 <img
                   src="/app-screenshot.png"
-                  alt="卡布奇娜主界面截图"
+                  alt={isEnglish ? 'Kabuqina product interface screenshot' : '卡布奇娜主界面截图'}
                   className="w-full h-auto select-none"
                   draggable={false}
                 />
@@ -120,7 +119,7 @@ export default function Hero() {
               <div className="hero-heart hero-heart--two" aria-hidden="true"><Heart /></div>
               <img
                 src="/mascot.png"
-                alt="卡布奇娜 mascot"
+                alt={isEnglish ? 'Kabuqina mascot' : '卡布奇娜吉祥物'}
                 className="absolute -bottom-7 -right-7 w-24 h-24 sm:w-28 sm:h-28 object-contain select-none rounded-full bg-white p-1.5 shadow-[0_12px_34px_rgba(73,56,94,0.22)] border-2 border-[#D4A574] kq-float"
                 draggable={false}
               />

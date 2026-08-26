@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, Check, Github, Mail } from 'lucide-react'
 
 import AboutNavbar from '../components/AboutNavbar'
+import HeroGlassObjects from '../components/HeroGlassObjects'
 import AboutFooter from '../sections/AboutFooter'
 import { company, links } from '../lib/site'
+import { getInitialLocale } from '../lib/locale'
 import type { SiteLocale } from '../lib/locale'
 
 /* ----- Whole-heading gradients: each character gets the interpolated color
@@ -206,10 +208,6 @@ const pageCopy = {
   },
 } as const
 
-function getInitialLocale(): SiteLocale {
-  return new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'zh'
-}
-
 export default function About() {
   const [locale, setLocale] = useState<SiteLocale>(getInitialLocale)
   const copy = pageCopy[locale]
@@ -289,7 +287,7 @@ export default function About() {
   }, [locale])
 
   return (
-    <div className="company-site about-page-v2" data-locale={locale}>
+    <div key={locale} className="company-site about-page-v2" data-locale={locale}>
       <AboutNavbar page="about" locale={locale} onLocaleChange={setLocale} />
 
       <main>
@@ -316,18 +314,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="about2-poster-wrap" aria-hidden="true">
-              <div className="about2-poster">
-                <img
-                  className="about2-poster__art"
-                  src="/about-love-logic-poster.png"
-                  alt="爱与逻辑汇合的抽象图形"
-                  width={900}
-                  height={1200}
-                  decoding="async"
-                />
-              </div>
-            </div>
+            <HeroGlassObjects />
           </div>
 
           <span className="about2-float-heart about2-float-heart--gold" style={{ top: '22%', right: '6%', fontSize: 23, animationDelay: '-0.8s' }} aria-hidden="true">♥</span>
@@ -388,7 +375,9 @@ export default function About() {
             <div className="about2-product__copy">
               <div className="about2-section-index about2-section-index--light"><span>03</span><p>PRODUCT STEWARDSHIP<br />{copy.productIndex}</p></div>
               <p className="about2-product__eyebrow">{copy.productEyebrow}</p>
-              <h2 id="product-heading" data-reveal>{copy.productTitle}</h2>
+              <h2 id="product-heading" data-reveal>
+                {locale === 'zh' ? <>理念<br />要经得起一个真实产品的检验</> : copy.productTitle}
+              </h2>
               <p className="about2-product__lead">{copy.productLead}</p>
               <ul>{copy.stewardship.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul>
               <div className="about2-product__links">
@@ -400,7 +389,7 @@ export default function About() {
             <figure className="about2-product__screen">
               <div className="about2-product__chrome"><div><i /><i /><i /></div><span>KABUQINA / DESKTOP</span><span>01</span></div>
               <div className="about2-product__image">
-                <img src="/app-screenshot.png" alt={copy.screenshotAlt} width={1098} height={818} loading="lazy" decoding="async" />
+                <img src="/about-product.png" alt={copy.screenshotAlt} width={1169} height={850} loading="lazy" decoding="async" />
               </div>
               <figcaption>
                 <img src="/kabuqina_logo_48.png" alt="" />

@@ -27,103 +27,13 @@
 
 .about-page-v2 .site-header {
   border-bottom-color: rgba(83, 65, 80, 0.15);
-  background: rgba(248, 244, 236, 0.92);
-}
-
-.about-page-v2 .site-header .company-wordmark__mark,
-.about-page-v2 .header-download {
-  background: var(--about-ink);
-}
-
-.about-page-v2 .site-header .company-wordmark__text strong {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: 0.04em;
-}
-
-.about-page-v2 .site-header .company-wordmark__text small {
-  margin-top: 4px;
-  color: #514455;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-}
-
-.about-page-v2 .desktop-nav a {
-  font-size: 15px;
-  font-weight: 500;
+  background: rgba(248, 244, 236, 0.80);
 }
 
 .about-page-v2 a:focus-visible,
 .about-page-v2 button:focus-visible {
   outline: 2px solid var(--about-gold);
   outline-offset: 4px;
-}
-
-.about-page-v2 .header-download {
-  margin-left: 18px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.about-page-v2 .header-language-switch {
-  margin-left: 22px;
-}
-
-.about-page-v2 .language-switch {
-  min-height: 38px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 4px 6px;
-  border: 1px solid var(--about-line);
-  background: rgba(255, 253, 248, 0.72);
-}
-
-.about-page-v2 .language-switch > span {
-  color: #a79da5;
-  font-size: 13px;
-}
-
-.about-page-v2 .language-switch button {
-  min-width: 35px;
-  min-height: 28px;
-  padding: 0 7px;
-  border: 0;
-  background: transparent;
-  color: var(--about-muted);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.about-page-v2 .language-switch button[aria-pressed='true'] {
-  background: var(--about-ink);
-  color: var(--about-white);
-}
-
-.about-page-v2 .mobile-language-switch {
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-}
-
-.about-page-v2 .mobile-language-switch .language-switch {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.about-page-v2 .mobile-language-switch .language-switch button {
-  color: #c8becb;
-}
-
-.about-page-v2 .mobile-language-switch .language-switch button[aria-pressed='true'] {
-  background: var(--about-white);
-  color: var(--about-ink);
 }
 
 .about-page-v2 main {
@@ -384,6 +294,259 @@
 @keyframes about2-poster-float {
   0%, 100% { transform: translateY(-8px) scale(1.04); }
   50% { transform: translateY(8px) scale(1.04); }
+}
+
+/* ----- 首屏右侧 3D 玻璃浮动物件（立体感 + 实物感） ----- */
+.about2-glass-wrap {
+  position: relative;
+  width: min(100%, 560px);
+  aspect-ratio: 3 / 3.4;
+  justify-self: end;
+  pointer-events: none;
+}
+
+.about2-glass {
+  position: absolute;
+  z-index: 1;
+  user-select: none;
+  animation: about2-glass-float ease-in-out infinite;
+}
+
+.about2-glass__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* 爱心 + 星环（淡粉 3D 玻璃）：视觉中心，最大 */
+.about2-glass--heart {
+  top: 12%;
+  left: 4%;
+  width: min(80%, 365px);
+  aspect-ratio: 330 / 250;
+  z-index: 4;
+  animation-duration: 6.8s;
+  animation-delay: -0.5s;
+}
+
+/* 星光闪烁点缀（挂在爱心周围） */
+.about2-glass-spark {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    linear-gradient(#fffdf6, #fffdf6) center / 100% 2px no-repeat,
+    linear-gradient(#fffdf6, #fffdf6) center / 2px 100% no-repeat;
+  filter: drop-shadow(0 0 5px rgba(255, 240, 205, 0.95));
+  animation: about2-sparkle ease-in-out infinite;
+}
+
+.about2-glass-spark--1 { top: -1%; right: 8%; width: 24px; height: 24px; animation-duration: 3.4s; animation-delay: -0.2s; }
+.about2-glass-spark--2 { top: 38%; left: -5%; width: 17px; height: 17px; animation-duration: 4.2s; animation-delay: -1.6s; }
+.about2-glass-spark--3 { bottom: 9%; right: -3%; width: 20px; height: 20px; animation-duration: 3.8s; animation-delay: -2.7s; }
+
+@keyframes about2-sparkle {
+  0%, 100% { opacity: 0.12; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(22deg); }
+}
+
+/* </> 括号（淡紫 3D 玻璃）：左上 */
+.about2-glass--brackets {
+  top: 3%;
+  left: 2%;
+  width: min(30%, 130px);
+  aspect-ratio: 170 / 150;
+  z-index: 3;
+  animation-duration: 7.6s;
+  animation-delay: -2.1s;
+}
+
+/* 灯泡（淡黄 3D 玻璃）：右上 */
+.about2-glass--bulb {
+  top: 0;
+  right: 6%;
+  width: min(25%, 108px);
+  aspect-ratio: 160 / 210;
+  z-index: 3;
+  animation-duration: 7s;
+  animation-delay: -3.6s;
+}
+
+/* 立方体（淡紫 3D 玻璃）：中右 */
+.about2-glass--cube {
+  top: 34%;
+  right: 0;
+  width: min(26%, 112px);
+  aspect-ratio: 180 / 170;
+  z-index: 2;
+  animation-duration: 6.4s;
+  animation-delay: -1.4s;
+}
+
+/* 光标（淡粉 3D 玻璃）：中左 */
+.about2-glass--cursor {
+  top: 56%;
+  left: 5%;
+  width: min(17%, 74px);
+  aspect-ratio: 120 / 140;
+  z-index: 3;
+  animation-duration: 7.4s;
+  animation-delay: -4.8s;
+}
+
+/* 齿轮（淡黄 3D 玻璃）：下右 */
+.about2-glass--gear {
+  bottom: 16%;
+  right: 5%;
+  width: min(24%, 104px);
+  aspect-ratio: 1;
+  z-index: 3;
+  animation-duration: 8.2s;
+  animation-delay: -2.9s;
+}
+
+/* 浏览器窗口卡（淡蓝 3D 玻璃）：下方 */
+.about2-glass--card {
+  bottom: 2%;
+  left: 14%;
+  width: min(50%, 215px);
+  aspect-ratio: 230 / 170;
+  z-index: 4;
+  animation-duration: 7.2s;
+  animation-delay: -5.5s;
+}
+
+/* 卡片：双层玻璃 + 厚度感 */
+.about2-card__rim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 22px;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(214, 230, 248, 0.38) 45%,
+    rgba(255, 255, 255, 0.75) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(120, 150, 190, 0.12);
+}
+
+.about2-card__body {
+  position: absolute;
+  inset: 2px;
+  z-index: 2;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(174, 205, 238, 0.18) 50%,
+    rgba(150, 186, 226, 0.12) 100%
+  );
+  -webkit-backdrop-filter: blur(9px) saturate(1.05) brightness(1.04);
+  backdrop-filter: blur(9px) saturate(1.05) brightness(1.04);
+  box-shadow:
+    inset 0 -20px 32px rgba(120, 150, 190, 0.12),
+    inset 0 2px 3px rgba(255, 255, 255, 0.7);
+}
+
+/* 斜向镜面强反光 */
+.about2-card__glare {
+  position: absolute;
+  left: -12%;
+  top: -30%;
+  width: 72%;
+  height: 90%;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
+  transform: rotate(-14deg);
+  filter: blur(4px);
+}
+
+.about2-card__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 19%;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.about2-card__dot {
+  position: absolute;
+  top: 8.5%;
+  width: 6.5%;
+  padding-top: 6.5%;
+  border-radius: 50%;
+  box-shadow: inset 0 -1px 2px rgba(90, 66, 104, 0.25), 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.about2-card__dot--r { left: 6%; background: radial-gradient(circle at 35% 30%, #ffe9f1, #eda0be); }
+.about2-card__dot--y { left: 15%; background: radial-gradient(circle at 35% 30%, #fff8e2, #eccf8e); }
+.about2-card__dot--b { left: 24%; background: radial-gradient(circle at 35% 30%, #f0f7ff, #a8c8e8); }
+
+.about2-card__line {
+  position: relative;
+  display: block;
+  height: 6.5%;
+  border-radius: 999px;
+  margin-left: 12%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 2px rgba(120, 150, 190, 0.2);
+}
+
+.about2-card__line--dim { background: rgba(255, 255, 255, 0.42); }
+.about2-card__line--pink { background: rgba(249, 216, 228, 0.45); }
+
+@keyframes about2-glass-float {
+  0%, 100% { transform: translateY(-12px); }
+  50% { transform: translateY(12px); }
+}
+
+/* 四色玻璃气泡（带高光小球面感） */
+.about2-glass-bubble {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  z-index: 1;
+  animation: about2-glass-float ease-in-out infinite;
+}
+
+.about2-glass-bubble::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: 18%;
+  width: 26%;
+  height: 20%;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.85;
+  filter: blur(1px);
+}
+
+.about2-glass-bubble--pink { background: radial-gradient(circle at 34% 30%, rgba(255, 248, 251, 0.85), rgba(244, 200, 218, 0.22) 62%, rgba(236, 178, 202, 0.14)); box-shadow: inset -2px -3px 6px rgba(224, 172, 196, 0.18); }
+.about2-glass-bubble--yellow { background: radial-gradient(circle at 34% 30%, rgba(255, 252, 242, 0.85), rgba(247, 229, 190, 0.22) 62%, rgba(238, 212, 158, 0.14)); box-shadow: inset -2px -3px 6px rgba(228, 202, 148, 0.18); }
+.about2-glass-bubble--purple { background: radial-gradient(circle at 34% 30%, rgba(252, 248, 254, 0.85), rgba(224, 206, 242, 0.22) 62%, rgba(208, 184, 232, 0.14)); box-shadow: inset -2px -3px 6px rgba(196, 172, 222, 0.18); }
+.about2-glass-bubble--blue { background: radial-gradient(circle at 34% 30%, rgba(245, 250, 255, 0.85), rgba(206, 224, 244, 0.22) 62%, rgba(184, 208, 236, 0.14)); box-shadow: inset -2px -3px 6px rgba(172, 196, 224, 0.18); }
+
+.about2-glass-bubble--pink { top: 14%; right: 32%; width: 20px; height: 20px; animation-duration: 8.4s; animation-delay: -0.6s; }
+.about2-glass-bubble--yellow { bottom: 30%; left: 38%; width: 15px; height: 15px; animation-duration: 7.8s; animation-delay: -3.1s; }
+.about2-glass-bubble--purple { top: 44%; left: 30%; width: 17px; height: 17px; animation-duration: 9s; animation-delay: -5.2s; }
+.about2-glass-bubble--blue { top: 8%; left: 40%; width: 13px; height: 13px; animation-duration: 8.6s; animation-delay: -1.9s; }
+.about2-glass-bubble--s { transform: scale(0.7); }
+.about2-glass-bubble--blue.about2-glass-bubble--s { bottom: 12%; left: 6%; width: 12px; height: 12px; animation-delay: -4.4s; }
+.about2-glass-bubble--pink.about2-glass-bubble--s { top: 30%; right: 8%; width: 11px; height: 11px; animation-delay: -6.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .about2-glass,
+  .about2-glass-bubble,
+  .about2-glass-spark {
+    animation: none;
+  }
 }
 
 .about2-hero__ledger {
@@ -669,7 +832,7 @@
 
 .about2-product h2 {
   max-width: 620px;
-  font-size: clamp(39px, 4.2vw, 60px);
+  font-size: clamp(41px, 4.4vw, 62px);
   background: linear-gradient(112deg, #f7edfc 0%, #d9aee3 58%, #e3b6e6 76%, #f2c76a 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1007,6 +1170,10 @@
     animation: about2-rise 750ms 90ms ease-out both;
   }
 
+  .about2-glass-wrap {
+    animation: about2-rise 750ms 90ms ease-out both;
+  }
+
   @keyframes about2-rise {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1042,14 +1209,6 @@
 }
 
 @media (max-width: 900px) {
-  .about-page-v2 .header-language-switch {
-    margin-left: auto;
-  }
-
-  .about-page-v2 .mobile-menu-button {
-    margin-left: 8px;
-  }
-
   .about2-hero__inner {
     grid-template-columns: 1fr;
     gap: 78px;
@@ -1059,6 +1218,11 @@
 
   .about2-poster-wrap {
     width: min(76vw, 480px);
+    justify-self: center;
+  }
+
+  .about2-glass-wrap {
+    width: min(78vw, 470px);
     justify-self: center;
   }
 
@@ -1134,10 +1298,6 @@
 }
 
 @media (max-width: 640px) {
-  .about-page-v2 .header-language-switch {
-    display: none;
-  }
-
   .about2-label {
     flex-wrap: wrap;
     gap: 10px;
@@ -1187,6 +1347,19 @@
 
   .about2-poster-wrap {
     width: calc(100% - 22px);
+  }
+
+  .about2-glass-wrap {
+    width: calc(100% - 22px);
+    aspect-ratio: 3 / 3.1;
+  }
+
+  .about2-glass--heart {
+    width: min(70%, 285px);
+  }
+
+  .about2-glass--card {
+    width: min(54%, 200px);
   }
 
   .about2-poster-shadow {
@@ -1292,7 +1465,7 @@
   }
 
   .about2-product h2 {
-    font-size: 37px;
+    font-size: 39px;
   }
 
   .about2-product ul {
@@ -1395,6 +1568,70 @@
 @media (prefers-reduced-motion: reduce) {
   .about2-float-heart,
   .about2-poster__art {
+    animation: none;
+  }
+}
+
+/* ---------- Big headings: characters float up one by one on scroll ---------- */
+.about-page-v2 [data-reveal] .rv-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.52em);
+  transition:
+    opacity 480ms ease,
+    transform 700ms cubic-bezier(0.2, 0.62, 0.32, 1);
+  transition-delay: calc(min(var(--rv-i, 0), 30) * 24ms);
+  will-change: transform, opacity;
+}
+
+.about-page-v2 [data-reveal].is-revealed .rv-char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page-v2 [data-reveal] .rv-char {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- A few floating hearts, anchored inside sections (scroll with page) ---------- */
+.about2-float-heart {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  opacity: 0.32;
+  animation: about2-heart-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.about2-float-heart--gold {
+  color: #c39756;
+}
+
+.about2-float-heart--plum {
+  color: #9a7ba0;
+}
+
+@keyframes about2-heart-float {
+  0%,
+  100% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about2-float-heart,
+  .about2-object,
+  .about2-bubble,
+  .about2-orb {
     animation: none;
   }
 }

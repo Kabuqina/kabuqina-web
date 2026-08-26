@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FolderOpen, Search, CheckCircle, FileOutput } from 'lucide-react';
+import type { SiteLocale } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,9 +35,24 @@ const steps = [
     icon: FileOutput,
     iconColor: '#6B5580',
   },
+  {
+    num: '05',
+    title: '留下过程',
+    desc: '保留重要理解、问题和思考结果，方便之后修改与复习',
+    icon: FileOutput,
+    iconColor: '#D4A574',
+  },
 ];
 
-export default function GetStarted() {
+export default function GetStarted({ locale = 'zh' }: { locale?: SiteLocale }) {
+  const isEnglish = locale === 'en';
+  const translatedSteps = isEnglish ? [
+    ['Add materials', 'Add papers, courseware, code, tables or assignment requirements'],
+    ['Organize key points', 'Extract key arguments, formulas, tables, code snippets and citations'],
+    ['Confirm direction', 'Review the outline, logic and missing points before continuing'],
+    ['Get a draft', 'Generate editable slides, Markdown, LaTeX or report drafts'],
+    ['Keep the process', 'Save important insights, questions and thinking for later review'],
+  ] : steps.map((step) => [step.title, step.desc]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -68,17 +84,17 @@ export default function GetStarted() {
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="getstarted-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">工作流</span>
+            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Workflow' : '工作流'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4" data-reveal>
-            从资料到成稿，只需 4 步
+            {isEnglish ? 'From one page to continued learning in 5 steps' : '从眼前的一页开始，把学习继续下去'}
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            每一步都能检查，不用把结果全交给黑箱
+            {isEnglish ? 'Review every step instead of handing everything to a black box' : '每一步都能检查，不用把结果全交给黑箱'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
@@ -100,10 +116,10 @@ export default function GetStarted() {
                   </div>
 
                   <h3 className="text-xl font-bold text-[#49385E] mb-3">
-                    {step.title}
+                    {translatedSteps[i][0]}
                   </h3>
                   <p className="text-base text-[#5A4A6A] leading-relaxed flex-1">
-                    {step.desc}
+                    {translatedSteps[i][1]}
                   </p>
                 </div>
               </div>
@@ -114,7 +130,7 @@ export default function GetStarted() {
         <div className="mt-12 flex items-start gap-3 p-4 rounded-[12px] border border-[#E8E0ED] kq-glass-subtle">
           <CheckCircle className="w-5 h-5 text-[#6B5580] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-[#5A4A6A] leading-relaxed">
-            你可以在关键节点审阅和修改，确认后才进入下一步，减少「写出来才发现方向错了」的返工。
+            {isEnglish ? 'Review and revise at key checkpoints before moving on, reducing rework caused by discovering the wrong direction too late.' : '你可以在关键节点审阅和修改，确认后才进入下一步，减少「写出来才发现方向错了」的返工。'}
           </p>
         </div>
       </div>

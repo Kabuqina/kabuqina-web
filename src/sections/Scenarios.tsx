@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FileText, Microscope, Presentation, Calculator } from 'lucide-react';
+import type { SiteLocale } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +37,14 @@ const scenarios = [
   },
 ];
 
-export default function Scenarios() {
+export default function Scenarios({ locale = 'zh' }: { locale?: SiteLocale }) {
+  const isEnglish = locale === 'en';
+  const translatedScenarios = isEnglish ? [
+    ['Course reports and assignments', 'Add courseware, papers, code and requirements, get a clear outline first, then create an editable report draft.'],
+    ['Close reading and presentations', 'Quickly map research questions, methods, formulas, figures and conclusions for class presentations or literature sharing.'],
+    ['Course and defense slides', 'Confirm the narrative logic and page structure first, then generate .pptx for course showcases, paper reviews and code defenses.'],
+    ['Formulas and code', 'Make formulas, derivations and code clear: organize LaTeX, generate code notes and support understanding of implementation ideas.'],
+  ] : scenarios.map((scenario) => [scenario.title, scenario.desc]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -69,18 +77,18 @@ export default function Scenarios() {
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="scenarios-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">学生场景</span>
+            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Student scenarios' : '学生场景'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4" data-reveal>
-            这些任务，不必从空白文档开始
+            {isEnglish ? 'These tasks do not have to start from a blank document' : '这些任务，不必从空白文档开始'}
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            面向学生最常见的报告、汇报、答辩和材料整理场景
+            {isEnglish ? 'For the reports, presentations, defenses and material organization students do most often' : '面向学生最常见的报告、汇报、答辩和材料整理场景'}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {scenarios.map((s) => {
+          {scenarios.map((s, index) => {
             const Icon = s.icon;
             return (
               <div
@@ -97,10 +105,10 @@ export default function Scenarios() {
                 <div>
                   <h3 className="text-xl font-bold text-[#49385E] mb-2">
                     <span className="mr-2">{s.emoji}</span>
-                    {s.title}
+                    {translatedScenarios[index][0]}
                   </h3>
                   <p className="text-base text-[#5A4A6A] leading-relaxed">
-                    {s.desc}
+                    {translatedScenarios[index][1]}
                   </p>
                 </div>
               </div>

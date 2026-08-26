@@ -1,38 +1,39 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Lock, Shield, Users, Key } from 'lucide-react';
+import { Eye, MapPin, ArrowRight } from 'lucide-react';
+import type { SiteLocale } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const trustItems = [
   {
-    icon: Lock,
-    title: '代码完全开源',
-    desc: 'Apache 2.0 协议，GitHub 公开仓库。关心安全和实现细节的人，可以直接查看代码。',
+    icon: Eye,
+    title: '看见材料',
+    desc: '识别你正在阅读、练习或书写的内容，把图像、文字、公式和手写内容放进同一个理解过程。',
     iconColor: '#4F9DE8',
   },
   {
-    icon: Shield,
-    title: '零数据上报',
-    desc: '你的资料、对话和生成过程优先留在本机。不会主动收集，也不会做行为追踪。',
+    icon: MapPin,
+    title: '找到卡点',
+    desc: '结合眼前材料和你正在问的问题，帮助定位真正的理解障碍，而不是只给一段脱离上下文的答案。',
     iconColor: '#6B5580',
   },
   {
-    icon: Users,
-    title: '社区驱动',
-    desc: '欢迎提交 Issue、贡献插件、分享使用方法。一起把学生真正需要的工作流做扎实。',
+    icon: ArrowRight,
+    title: '推进下一步',
+    desc: '通过解释、提示和追问帮助你继续思考，让学习留下可以修改和复习的过程。',
     iconColor: '#D4A574',
-  },
-  {
-    icon: Key,
-    title: '凭据安全',
-    desc: 'API Key 存入 Windows Credential Manager，不写入普通配置文件或日志，减少误传和泄露风险。',
-    iconColor: '#F05D93',
   },
 ];
 
-export default function Trust() {
+export default function Trust({ locale = 'zh' }: { locale?: SiteLocale }) {
+  const isEnglish = locale === 'en';
+  const translatedItems = isEnglish ? [
+    ['See the material', 'Recognize what you are reading, solving or writing, bringing images, text, formulas and handwriting into one understanding process.'],
+    ['Find the sticking point', 'Combine the material in front of you with your question to locate the real barrier to understanding.'],
+    ['Take the next step', 'Use explanations, hints and questions to keep thinking, leaving a process you can revise and review.'],
+  ] : trustItems.map((item) => [item.title, item.desc]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -64,18 +65,18 @@ export default function Trust() {
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="trust-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">信任</span>
+            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Core value' : '核心价值'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4" data-reveal>
-            你的资料，留在你的电脑里
+            {isEnglish ? 'It understands more than the question' : '它理解的不只是问题，还有你眼前的材料'}
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            首页先讲好用，底层也尽量做到透明、可查、可控
+            {isEnglish ? 'Kabuqina starts from your real study material and helps you keep learning.' : '卡布奇娜从你正在使用的学习材料出发，把理解、分析和行动放进同一个过程。'}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {trustItems.map((item) => {
+          {trustItems.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
@@ -91,10 +92,10 @@ export default function Trust() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-[#49385E] mb-2">
-                      {item.title}
+                        {translatedItems[index][0]}
                     </h3>
                     <p className="text-base text-[#5A4A6A] leading-relaxed">
-                      {item.desc}
+                      {translatedItems[index][1]}
                     </p>
                   </div>
                 </div>

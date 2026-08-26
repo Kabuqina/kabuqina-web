@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FileSearch, Presentation, Search, FileOutput, CheckCircle, Mic, Calculator, BookOpen } from 'lucide-react';
+import type { SiteLocale } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +61,17 @@ const extensionFeatures = [
   },
 ];
 
-export default function Capabilities() {
+export default function Capabilities({ locale = 'zh' }: { locale?: SiteLocale }) {
+  const isEnglish = locale === 'en';
+  const readyEnglish = [
+    ['Precise document reading', 'Read PDF, DOCX, PPTX, XLSX, HTML, Markdown, CSV and images'],
+    ['Slide generation workflow', 'Read materials and confirm the outline before writing editable .pptx files'],
+    ['Material indexing', 'Break source materials into citable facts, formulas, tables and code snippets'],
+    ['Outline confirmation', 'Show structure, arguments and open questions before writing'],
+    ['Editable file output', 'Output PPTX, Markdown, LaTeX and report drafts'],
+    ['Formula extraction and LaTeX', 'Extract mathematical expressions from formula-heavy materials'],
+    ['Mathematical expression handling', 'Organize formulas, explain derivations and help create code notes'],
+  ];
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -95,13 +106,13 @@ export default function Capabilities() {
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="cap-title text-center mb-16 lg:mb-20">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">处理能力</span>
+            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Capabilities' : '处理能力'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-4" data-reveal>
-            它现在能处理什么
+            {isEnglish ? 'What it can handle today' : '它现在能处理什么'}
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            常用学术材料可以直接处理，进阶能力也能继续扩展
+            {isEnglish ? 'Common academic materials are ready to use, with room to extend further' : '常用学术材料可以直接处理，进阶能力也能继续扩展'}
           </p>
         </div>
 
@@ -110,10 +121,10 @@ export default function Capabilities() {
           <div className="cap-left">
             <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#6B5580]" />
-              已支持
+              {isEnglish ? 'Available now' : '已支持'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {readyFeatures.map((f) => {
+              {readyFeatures.map((f, index) => {
                 const Icon = f.icon;
                 return (
                   <div
@@ -127,8 +138,8 @@ export default function Capabilities() {
                       <Icon className="w-5 h-5" style={{ color: f.color }} />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="text-base font-bold text-[#49385E] mb-1">{f.title}</h4>
-                      <p className="text-sm text-[#5A4A6A] leading-relaxed break-words">{f.desc}</p>
+                      <h4 className="text-base font-bold text-[#49385E] mb-1">{isEnglish ? readyEnglish[index][0] : f.title}</h4>
+                      <p className="text-sm text-[#5A4A6A] leading-relaxed break-words">{isEnglish ? readyEnglish[index][1] : f.desc}</p>
                     </div>
                   </div>
                 );
@@ -140,7 +151,7 @@ export default function Capabilities() {
           <div className="cap-right">
             <h3 className="text-lg font-bold text-[#49385E] mb-6 flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#8B7D9A]" />
-              可扩展能力
+              {isEnglish ? 'Extensible' : '可扩展能力'}
             </h3>
             <div className="mx-auto grid max-w-3xl grid-cols-1 gap-4">
               {extensionFeatures.map((f) => {
@@ -158,7 +169,7 @@ export default function Capabilities() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h4 className="text-base font-bold text-[#49385E]">{f.title}</h4>
+                        <h4 className="text-base font-bold text-[#49385E]">{isEnglish ? 'Local speech recognition' : f.title}</h4>
                         <span
                           className="text-xs px-2 py-0.5 rounded-full font-medium"
                           style={{
@@ -166,10 +177,10 @@ export default function Capabilities() {
                             color: f.status === '规划中' ? '#6B5580' : '#4F9DE8',
                           }}
                         >
-                          {f.status}
+                          {isEnglish ? 'Extensible' : f.status}
                         </span>
                       </div>
-                      <p className="text-sm text-[#5A4A6A] leading-relaxed break-words">{f.desc}</p>
+                      <p className="text-sm text-[#5A4A6A] leading-relaxed break-words">{isEnglish ? 'Turn class recordings and spoken notes into text' : f.desc}</p>
                     </div>
                   </div>
                 );

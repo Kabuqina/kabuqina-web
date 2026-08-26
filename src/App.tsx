@@ -1,22 +1,39 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import Navbar from './components/Navbar';
+import AboutNavbar from './components/AboutNavbar';
 import Hero from './sections/Hero';
-import FourLayerFramework from './sections/FourLayerFramework';
-import Capabilities from './sections/Capabilities';
-import Scenarios from './sections/Scenarios';
 import GetStarted from './sections/GetStarted';
 import Trust from './sections/Trust';
 import FooterCTA from './sections/FooterCTA';
 import Footer from './sections/Footer';
+import SelfStudy from './sections/SelfStudy';
+import { getInitialLocale } from './lib/locale';
+import type { SiteLocale } from './lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  const [locale, setLocale] = useState<SiteLocale>(getInitialLocale);
   const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    document.documentElement.lang = locale === 'en' ? 'en' : 'zh-CN';
+    document.title = locale === 'en'
+      ? 'Kabuqina | A multimodal AI learning tool for personal self-study'
+      : '卡布奇娜 Kabuqina｜面向个人自学场景的多模态AI学习工具';
+    document.querySelector('meta[name="description"]')?.setAttribute('content', locale === 'en'
+      ? 'Kabuqina helps personal learners understand textbooks, exercises, images and handwriting through multimodal understanding and interactive support.'
+      : '卡布奇娜从教材、练习、图片和手写内容出发，通过多模态理解与交互式辅助，帮助个人用户理解材料、分析问题并继续推进自己的学习。');
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', locale === 'en'
+      ? 'Kabuqina | A multimodal AI learning tool for personal self-study'
+      : '卡布奇娜 Kabuqina｜面向个人自学场景的多模态AI学习工具');
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', locale === 'en'
+      ? 'Understand materials, analyze problems and keep learning through multimodal interactive support.'
+      : '从教材、练习、图片和手写内容出发，帮助个人用户理解材料、分析问题并继续推进自己的学习。');
+  }, [locale]);
 
   useEffect(() => {
     // Initialize Lenis smooth scroll
@@ -100,17 +117,15 @@ export default function App() {
 
   return (
     <div className="home-shell relative min-h-screen">
-      <Navbar />
+      <AboutNavbar page="home" locale={locale} onLocaleChange={setLocale} />
       <main>
-        <Hero />
-        <FourLayerFramework />
-        <Scenarios />
-        <GetStarted />
-        <Capabilities />
-        <Trust />
-        <FooterCTA />
+        <Hero locale={locale} />
+        <SelfStudy locale={locale} />
+        <GetStarted locale={locale} />
+        <Trust locale={locale} />
+        <FooterCTA locale={locale} />
       </main>
-      <Footer />
+      <Footer locale={locale} />
     </div>
   );
 }

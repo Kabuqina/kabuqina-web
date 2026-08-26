@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { BookOpen, FileSearch, ClipboardList, PenTool } from 'lucide-react';
+import type { SiteLocale } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,14 @@ const layers = [
   },
 ];
 
-export default function FourLayerFramework() {
+export default function FourLayerFramework({ locale = 'zh' }: { locale?: SiteLocale }) {
+  const isEnglish = locale === 'en';
+  const translatedLayers = isEnglish ? [
+    ['Read materials', 'Understand first', 'Read papers, courseware, tables, images and code snippets', 'Papers / courseware / code -> paragraphs, formulas, tables, key points'],
+    ['Structure ideas', 'Organize next', 'Turn scattered content into a citable, checkable material list', 'Raw materials -> key points, terminology, citation locations'],
+    ['Review outline', 'You confirm', 'Show structure and open questions before writing', 'Materials + assignment -> report outline, slide structure, missing points'],
+    ['Create files', 'Deliver last', 'Generate editable files instead of a temporary answer', 'Confirmed outline -> .pptx / Markdown / LaTeX / report draft'],
+  ] : layers.map((layer) => [layer.label, layer.title, layer.desc, layer.io]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -102,15 +110,15 @@ export default function FourLayerFramework() {
         {/* Header */}
         <div className="fl-header text-center mb-16">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">为什么不只是聊天</span>
+            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Why this is more than chat' : '为什么不只是聊天'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-6 leading-tight" data-reveal>
-            不是问一句答一句，而是一步步做出文件
+            {isEnglish ? 'Not just one question and one answer, but a file built step by step' : '不是问一句答一句，而是一步步做出文件'}
           </h2>
           <p className="text-base md:text-lg text-[#8B7D9A] max-w-2xl mx-auto leading-relaxed">
-            普通聊天机器人容易直接给一段答案，但作业、汇报和答辩需要可检查的过程。
+            {isEnglish ? 'Chatbots often jump straight to an answer, but assignments, presentations and defenses need a checkable process.' : '普通聊天机器人容易直接给一段答案，但作业、汇报和答辩需要可检查的过程。'}
             <br className="hidden md:block" />
-            卡布奇娜先读清楚材料，再整理依据，让你确认提纲，最后写出可编辑的文件。
+            {isEnglish ? 'Kabuqina reads the materials, organizes the evidence, lets you confirm the outline, then creates an editable file.' : '卡布奇娜先读清楚材料，再整理依据，让你确认提纲，最后写出可编辑的文件。'}
           </p>
         </div>
 
@@ -135,19 +143,19 @@ export default function FourLayerFramework() {
 
                 {/* Title */}
                 <h3 className="text-lg font-bold text-[#49385E] mb-1 break-words">
-                  {layer.label}
-                  <span className="text-[#8B7D9A] font-normal text-sm ml-2">{layer.title}</span>
+                  {translatedLayers[i][0]}
+                  <span className="text-[#8B7D9A] font-normal text-sm ml-2">{translatedLayers[i][1]}</span>
                 </h3>
 
                 {/* Description */}
                 <p className="text-sm text-[#5A4A6A] leading-relaxed mb-4 flex-1">
-                  {layer.desc}
+                  {translatedLayers[i][2]}
                 </p>
 
                 {/* IO example */}
                 <div className="bg-[#F3EDF6]/60 rounded-lg p-3 mt-auto">
                   <p className="text-xs text-[#8B7D9A] leading-relaxed break-words">
-                    {layer.io}
+                    {translatedLayers[i][3]}
                   </p>
                 </div>
               </div>

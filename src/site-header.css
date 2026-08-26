@@ -1,0 +1,317 @@
+/* ── Shared site header (used by both index.html and about.html) ──
+   Extracted from about-shell.css so the home page and the about page
+   render the exact same navbar. Variables are scoped to .site-header
+   so the header stays self-contained on either page. */
+
+.site-header {
+  --ink: #241a2b;
+  --ink-soft: #3c3045;
+  --plum: #6c5181;
+  --plum-deep: #4b365c;
+  --muted: #756b79;
+}
+
+.company-container {
+  width: min(100% - 48px, 1280px);
+  margin-inline: auto;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 2px solid rgba(222, 215, 224, 0.82);
+  border-radius: 0 0 14px 14px;
+  background: rgba(246, 243, 239, 0.80);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: background 220ms ease, box-shadow 220ms ease, height 220ms ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(246, 243, 239, 0.88);
+  box-shadow: 0 10px 30px rgba(36, 26, 43, 0.12);
+}
+
+.site-header.is-scrolled .site-header__inner {
+  height: 64px;
+}
+
+.site-header__inner {
+  height: 76px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.company-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.company-wordmark__logo {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+.company-wordmark__mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--ink);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+}
+
+.company-wordmark__mark span {
+  margin-inline: 1px;
+  color: #d8b58d;
+  font-size: 10px;
+}
+
+.company-wordmark__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.company-wordmark__text strong {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+}
+
+.company-wordmark__text small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.desktop-nav {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: 0;
+  transform: translateX(-50%);
+}
+
+.desktop-nav a {
+  position: relative;
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 1px;
+  background: var(--plum);
+  transform: scaleX(0);
+  transition: transform 180ms ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.header-language-switch {
+  position: absolute;
+  right: 0;
+}
+
+.language-switch {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 6px;
+  border: 1px solid #d8cfc4;
+  background: rgba(255, 253, 248, 0.72);
+}
+
+.language-switch > span {
+  color: #a79da5;
+  font-size: 13px;
+}
+
+.language-switch button {
+  min-width: 35px;
+  min-height: 28px;
+  padding: 0 7px;
+  border: 0;
+  background: transparent;
+  color: #746a70;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.language-switch button[aria-pressed='true'] {
+  background: var(--ink);
+  color: #fffdf8;
+}
+
+.header-download {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  border-radius: 5px;
+  background: var(--ink);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.header-download svg {
+  width: 17px;
+  height: 17px;
+}
+
+.header-download:hover {
+  background: var(--plum-deep);
+  transform: translateY(-2px);
+}
+
+.mobile-menu-button {
+  width: 44px;
+  height: 44px;
+  display: none;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mobile-menu-button svg {
+  width: 22px;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 77px 0 0;
+  min-height: calc(100vh - 77px);
+  padding: 44px 24px;
+  background: var(--ink);
+  color: white;
+}
+
+.mobile-menu nav {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  display: grid;
+}
+
+.mobile-menu nav > a {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 21px;
+}
+
+.mobile-menu nav > a span {
+  color: #bda7c9;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.mobile-language-switch {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.mobile-language-switch .language-switch {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mobile-language-switch .language-switch button {
+  color: #c8becb;
+}
+
+.mobile-language-switch .language-switch button[aria-pressed='true'] {
+  background: #fffdf8;
+  color: var(--ink);
+}
+
+.mobile-menu .mobile-menu__download {
+  justify-content: center;
+  margin-top: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: white;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .desktop-nav {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .desktop-nav,
+  .header-download {
+    display: none;
+  }
+
+  .header-language-switch {
+    right: 52px;
+  }
+
+  .mobile-menu-button {
+    margin-left: 8px;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .company-container {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .company-wordmark__logo {
+    height: 30px;
+  }
+
+  .company-wordmark__text strong {
+    font-size: 14px;
+  }
+
+  .header-language-switch {
+    display: none;
+  }
+}

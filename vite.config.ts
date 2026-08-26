@@ -20,6 +20,8 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         about: path.resolve(__dirname, 'about.html'),
+        capabilities: path.resolve(__dirname, 'capabilities.html'),
+        scenarios: path.resolve(__dirname, 'scenarios.html'),
       },
     },
   },

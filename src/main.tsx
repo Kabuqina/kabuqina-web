@@ -9,6 +9,7 @@ import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
 import './assets/fonts/noto-sans-sc.css'
 import './index.css'
+import './site-header.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

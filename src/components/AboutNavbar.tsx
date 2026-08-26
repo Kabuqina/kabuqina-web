@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Download, Menu, X } from 'lucide-react'
-import { links } from '../lib/site'
+import { Menu, X } from 'lucide-react'
+import { withLocale } from '../lib/locale'
 import type { SiteLocale } from '../lib/locale'
 
 type NavbarProps = {
-  page?: 'home' | 'about'
+  page?: 'home' | 'about' | 'capabilities' | 'scenarios'
   locale?: SiteLocale
   onLocaleChange?: (locale: SiteLocale) => void
 }
@@ -13,27 +13,23 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const isEnglish = locale === 'en'
-  const homePrefix = page === 'about' ? './index.html' : ''
-  const aboutHref = isEnglish ? './about.html?lang=en' : './about.html'
+  const homeHref = './index.html'
+  const capabilitiesHref = './capabilities.html'
+  const scenariosHref = './scenarios.html'
+  const aboutHref = './about.html'
 
-  const navLinks = page === 'home'
-    ? [
-        { label: '能力', href: '#capabilities' },
-        { label: '开源与安全', href: '#trust' },
-        { label: '关于公司', href: aboutHref, current: false },
-      ]
-    : isEnglish
+  const navLinks = isEnglish
       ? [
-          { label: 'Kabuqina', href: homePrefix },
-          { label: 'Capabilities', href: `${homePrefix}#capabilities` },
-          { label: 'Scenarios', href: `${homePrefix}#scenarios` },
-          { label: 'About', href: aboutHref, current: true },
+          { label: 'Kabuqina', href: withLocale(homeHref, 'en'), current: page === 'home' },
+          { label: 'Capabilities', href: withLocale(capabilitiesHref, 'en'), current: page === 'capabilities' },
+          { label: 'Scenarios', href: withLocale(scenariosHref, 'en'), current: page === 'scenarios' },
+          { label: 'About', href: withLocale(aboutHref, 'en'), current: page === 'about' },
         ]
       : [
-          { label: '卡布奇娜', href: homePrefix },
-          { label: '能力', href: `${homePrefix}#capabilities` },
-          { label: '场景', href: `${homePrefix}#scenarios` },
-          { label: '关于我们', href: aboutHref, current: true },
+          { label: '卡布奇娜', href: homeHref, current: page === 'home' },
+          { label: '能力', href: capabilitiesHref, current: page === 'capabilities' },
+          { label: '场景', href: scenariosHref, current: page === 'scenarios' },
+          { label: '关于我们', href: aboutHref, current: page === 'about' },
         ]
 
   useEffect(() => {
@@ -60,45 +56,55 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const languageSwitch = onLocaleChange && (
+  const changeLocale = (nextLocale: SiteLocale) => {
+    const url = new URL(window.location.href)
+    if (nextLocale === 'en') url.searchParams.set('lang', 'en')
+    else url.searchParams.delete('lang')
+    window.history.replaceState(null, '', url)
+    if (onLocaleChange) onLocaleChange(nextLocale)
+    else window.location.href = withLocale(window.location.pathname.split('/').pop() || './index.html', nextLocale)
+  }
+
+  const languageSwitch = (
     <div className="language-switch" aria-label={isEnglish ? 'Language' : '语言'}>
-      <button type="button" aria-pressed={!isEnglish} onClick={() => onLocaleChange('zh')}>中文</button>
+      <button type="button" aria-pressed={!isEnglish} onClick={() => changeLocale('zh')}>中文</button>
       <span aria-hidden="true">/</span>
-      <button type="button" aria-pressed={isEnglish} onClick={() => onLocaleChange('en')}>EN</button>
+      <button type="button" aria-pressed={isEnglish} onClick={() => changeLocale('en')}>EN</button>
     </div>
   )
+
+  // Same-page anchor links scroll smoothly instead of jumping.
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return
+    event.preventDefault()
+    const target = document.querySelector(href)
+    if (target) target.scrollIntoView({ behavior: 'smooth' })
+    setMobileOpen(false)
+  }
 
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="company-container site-header__inner">
-        {page === 'home' ? (
-          <a className="product-wordmark" href="./index.html" aria-label="卡布奇娜首页">
-            <img src="/kabuqina_logo_48.png" alt="" />
-            <span><strong>卡布奇娜</strong><small>KABUQINA</small></span>
-          </a>
-        ) : (
-          <a className="company-wordmark" href="./index.html" aria-label={isEnglish ? 'Ai & Logic home' : '爱与逻辑首页'}>
-            <img src="/company-logo.png" alt="" className="company-wordmark__logo" />
-            <span className="company-wordmark__text">
-              <strong>爱与逻辑</strong>
-            </span>
-          </a>
-        )}
-
+        <a className="company-wordmark" href="./index.html" aria-label={isEnglish ? 'Ai & Logic home' : '爱与逻辑首页'}>
+          <img src="/company-logo.png" alt="" className="company-wordmark__logo" />
+          <span className="company-wordmark__text">
+            <strong>{isEnglish ? 'Ai & Logic' : '爱与逻辑'}</strong>
+          </span>
+        </a>
         <nav className="desktop-nav" aria-label={isEnglish ? 'Main navigation' : '主导航'}>
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
+            <a
+              key={link.label}
+              href={link.href}
+              aria-current={link.current ? 'page' : undefined}
+              onClick={(e) => handleLinkClick(e, link.href)}
+            >
+              {link.label}
+            </a>
           ))}
         </nav>
 
-        {onLocaleChange && <div className="header-language-switch">{languageSwitch}</div>}
-
-        {page === 'home' && (
-          <a className="header-download" href={links.download} target="_blank" rel="noreferrer">
-            <Download aria-hidden="true" />
-            {isEnglish ? 'Download' : '下载产品'}
-          </a>
-        )}
+        <div className="header-language-switch">{languageSwitch}</div>
 
         <button
           className="mobile-menu-button"
@@ -115,17 +121,17 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
       {mobileOpen && (
         <div id="mobile-menu" className="mobile-menu">
           <nav aria-label={isEnglish ? 'Mobile navigation' : '移动端导航'}>
-            {onLocaleChange && <div className="mobile-language-switch">{languageSwitch}</div>}
+            <div className="mobile-language-switch">{languageSwitch}</div>
             {navLinks.map((link, index) => (
-              <a key={link.label} href={link.href} onClick={() => setMobileOpen(false)} aria-current={link.current ? 'page' : undefined}>
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
+                aria-current={link.current ? 'page' : undefined}
+              >
                 <span>0{index + 1}</span>{link.label}
               </a>
             ))}
-            {page === 'home' && (
-              <a className="mobile-menu__download" href={links.download} target="_blank" rel="noreferrer">
-                <Download aria-hidden="true" /> {isEnglish ? 'Download Kabuqina' : '下载卡布奇娜'}
-              </a>
-            )}
           </nav>
         </div>
       )}
