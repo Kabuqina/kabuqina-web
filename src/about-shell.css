@@ -42,16 +42,17 @@
 }
 
 .about-page-v2 .company-footer {
-  padding: 84px 0 30px;
+  min-height: 180px;
+  padding: 28px 0 18px;
   background: #17101c;
   color: white;
 }
 
 .about-page-v2 .company-footer__main {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 90px;
-  padding-bottom: 72px;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(460px, 1.15fr);
+  gap: clamp(56px, 8vw, 120px);
+  padding-bottom: 28px;
 }
 
 .about-page-v2 .company-wordmark--footer .company-wordmark__logo {
@@ -64,7 +65,7 @@
 }
 
 .about-page-v2 .company-footer__brand > p {
-  margin: 24px 0 0;
+  margin: 10px 0 0;
   color: #a99eae;
   font-size: 12px;
 }
@@ -72,14 +73,14 @@
 .about-page-v2 .company-footer__brand .company-footer__tagline {
   color: #d9d2dc;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.45;
 }
 
 .about-page-v2 .footer-email {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin-top: 26px;
+  margin-top: 12px;
   color: #d8b58d;
   font-size: 13px;
 }
@@ -87,11 +88,11 @@
 .about-page-v2 .company-footer__nav {
   display: grid;
   grid-template-columns: repeat(2, minmax(150px, 1fr));
-  gap: 68px;
+  gap: 42px;
 }
 
 .about-page-v2 .company-footer__nav h2 {
-  margin: 0 0 22px;
+  margin: 0 0 10px;
   color: #8f8494;
   font-size: 10px;
   font-weight: 700;
@@ -102,7 +103,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 13px 0;
+  margin: 7px 0;
   color: #ded6e1;
   font-size: 13px;
 }
@@ -122,7 +123,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
-  padding-top: 26px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   color: #8f8494;
   font-size: 10px;
@@ -153,7 +154,9 @@
 
 @media (max-width: 640px) {
   .about-page-v2 .company-footer {
-    padding-top: 66px;
+    min-height: 0;
+    padding-top: 24px;
+    padding-bottom: 16px;
   }
 
   .about-page-v2 .company-footer__main {

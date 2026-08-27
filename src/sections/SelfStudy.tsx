@@ -15,7 +15,7 @@ type PainPoint = {
 const painPoints: PainPoint[] = [
   {
     icon: BookOpen,
-    zh: { title: '材料看不懂', desc: '教材就在眼前，却不知道关键概念是什么。' },
+    zh: { title: '眼前材料看不懂', desc: '教材或练习就在眼前，却不知道关键概念和下一步。' },
     en: { title: 'The material is hard to follow', desc: 'The page is right in front of you, but the key idea is still unclear.' },
     color: '#4F9DE8',
   },
@@ -27,13 +27,13 @@ const painPoints: PainPoint[] = [
   },
   {
     icon: ScanText,
-    zh: { title: '手写过程难整理', desc: '草稿、笔记和推导分散，难以继续利用。' },
+    zh: { title: '手写过程难整理', desc: '草稿、笔记和推导分散，之后很难继续利用和复习。' },
     en: { title: 'Handwritten work is scattered', desc: 'Drafts, notes and derivations are hard to organize and reuse.' },
     color: '#F05D93',
   },
   {
     icon: MessageCircle,
-    zh: { title: '问完就结束', desc: '普通问答解决了当下问题，却没有留下可复习的过程。' },
+    zh: { title: '问完就结束', desc: '只拿到一个答案，却没有留下理解、修改和复习的过程。' },
     en: { title: 'The conversation ends too soon', desc: 'A quick answer solves the moment, but leaves no process to revisit.' },
     color: '#6B5580',
   },

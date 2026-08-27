@@ -16,7 +16,7 @@ const readyFeatures = [
   {
     icon: Presentation,
     title: 'PPT 生成流程',
-    desc: '先读材料、确认提纲，再写出可编辑的 .pptx',
+    desc: '从材料理解开始，必要时再写出可编辑的 .pptx',
     color: '#F5B642',
   },
   {
@@ -112,7 +112,7 @@ export default function Capabilities({ locale = 'zh' }: { locale?: SiteLocale })
             {isEnglish ? 'What it can handle today' : '它现在能处理什么'}
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            {isEnglish ? 'Common academic materials are ready to use, with room to extend further' : '常用学术材料可以直接处理，进阶能力也能继续扩展'}
+            {isEnglish ? 'Study materials are ready to explore, with multimodal and tablet-oriented work continuing' : '常见学习材料可以直接处理，多模态与平板端能力持续建设中'}
           </p>
         </div>
 

@@ -558,16 +558,17 @@
 }
 
 .about2-hero__ledger .company-container {
+  width: min(100% - 48px, 1180px);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .about2-hero__ledger .company-container > div {
-  min-height: 92px;
+  min-height: 68px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 20px 28px;
+  gap: 14px;
+  padding: 12px 28px;
   border-left: 1px solid var(--about-line);
 }
 

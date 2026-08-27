@@ -10,29 +10,29 @@ const scenarios = [
   {
     icon: FileText,
     emoji: '📄',
-    title: '课程报告与作业',
-    desc: '把课件、论文、代码和作业要求放进去，先得到清晰提纲，再生成可继续修改的报告草稿。',
+    title: '课后阅读与材料理解',
+    desc: '把教材、图片或笔记放进来，先弄清关键概念、图表和推导，再继续往下读。',
     color: '#4F9DE8',
   },
   {
     icon: Microscope,
     emoji: '🔬',
-    title: '论文精读与汇报',
-    desc: '快速梳理研究问题、方法、公式图表和关键结论，帮你准备课堂汇报或文献分享。',
+    title: '练习与卡点分析',
+    desc: '提供练习题或手写过程，定位卡住的那一步，用提示和追问继续自己的思路。',
     color: '#F5B642',
   },
   {
     icon: Presentation,
     emoji: '🎤',
-    title: '课程与答辩 PPT',
-    desc: '先确认讲述逻辑和页面结构，再生成 .pptx，适合课程展示、论文精读和代码答辩。',
+    title: '整理笔记与复习',
+    desc: '把草稿、笔记和阶段性理解整理成之后可以继续修改和复习的过程。',
     color: '#F05D93',
   },
   {
     icon: Calculator,
     emoji: '🧮',
-    title: '公式与代码处理',
-    desc: '把公式、推导和代码讲清楚：整理 LaTeX 表达，生成代码说明，辅助理解实现思路。',
+    title: '公式、图像与手写内容',
+    desc: '识别公式、图像、文字和手写内容，把分散的信息放进同一个理解过程。',
     color: '#6B5580',
   },
 ];
@@ -40,10 +40,10 @@ const scenarios = [
 export default function Scenarios({ locale = 'zh' }: { locale?: SiteLocale }) {
   const isEnglish = locale === 'en';
   const translatedScenarios = isEnglish ? [
-    ['Course reports and assignments', 'Add courseware, papers, code and requirements, get a clear outline first, then create an editable report draft.'],
-    ['Close reading and presentations', 'Quickly map research questions, methods, formulas, figures and conclusions for class presentations or literature sharing.'],
-    ['Course and defense slides', 'Confirm the narrative logic and page structure first, then generate .pptx for course showcases, paper reviews and code defenses.'],
-    ['Formulas and code', 'Make formulas, derivations and code clear: organize LaTeX, generate code notes and support understanding of implementation ideas.'],
+    ['Reading and material understanding', 'Bring in a textbook, image or note, clarify key concepts, figures and derivations, then keep reading.'],
+    ['Exercises and sticking points', 'Share an exercise or handwritten work, locate the blocked step and continue your own thinking with hints.'],
+    ['Notes and review', 'Turn drafts, notes and partial understanding into a process you can revise and revisit later.'],
+    ['Formulas, images and handwriting', 'Recognize formulas, images, text and handwriting, bringing scattered information into one understanding process.'],
   ] : scenarios.map((scenario) => [scenario.title, scenario.desc]);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -83,7 +83,7 @@ export default function Scenarios({ locale = 'zh' }: { locale?: SiteLocale }) {
             {isEnglish ? 'These tasks do not have to start from a blank document' : '这些任务，不必从空白文档开始'}
           </h2>
           <p className="text-lg md:text-xl text-[#8B7D9A]">
-            {isEnglish ? 'For the reports, presentations, defenses and material organization students do most often' : '面向学生最常见的报告、汇报、答辩和材料整理场景'}
+            {isEnglish ? 'For the reading, exercises, notes and review that make up frequent personal self-study' : '面向个人自学中持续发生的阅读、练习、笔记和复习'}
           </p>
         </div>
 

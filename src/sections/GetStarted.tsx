@@ -9,36 +9,36 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     num: '01',
-    title: '放入资料',
-    desc: '把论文、课件、代码、表格或作业要求放进来',
+    title: '带上眼前材料',
+    desc: '提供正在阅读的教材、练习题、图片、手写内容或其他个人学习材料',
     icon: FolderOpen,
     iconColor: '#4F9DE8',
   },
   {
     num: '02',
-    title: '整理重点',
-    desc: '自动提取关键论点、公式、表格、代码片段和引用位置',
+    title: '看懂材料结构',
+    desc: '识别文字、公式、图像和手写过程，整理关键概念与它们之间的关系',
     icon: Search,
     iconColor: '#F5B642',
   },
   {
     num: '03',
-    title: '确认方向',
-    desc: '先看提纲、逻辑和待补充点，确认没跑题再继续',
+    title: '找到真正卡点',
+    desc: '结合材料和你的问题，确认已经理解的部分与真正需要继续想的地方',
     icon: CheckCircle,
     iconColor: '#F05D93',
   },
   {
     num: '04',
-    title: '拿到成稿',
-    desc: '生成 PPT、Markdown、LaTeX 或报告草稿，打开后还能继续修改',
+    title: '继续自己的思路',
+    desc: '通过解释、提示和追问推进理解，把下一步交还给你的判断，而不是替你完成',
     icon: FileOutput,
     iconColor: '#6B5580',
   },
   {
     num: '05',
-    title: '留下过程',
-    desc: '保留重要理解、问题和思考结果，方便之后修改与复习',
+    title: '留下可复习过程',
+    desc: '保留重要理解、问题和思考结果，之后可以修改、回看并继续学习',
     icon: FileOutput,
     iconColor: '#D4A574',
   },
@@ -47,11 +47,11 @@ const steps = [
 export default function GetStarted({ locale = 'zh' }: { locale?: SiteLocale }) {
   const isEnglish = locale === 'en';
   const translatedSteps = isEnglish ? [
-    ['Add materials', 'Add papers, courseware, code, tables or assignment requirements'],
-    ['Organize key points', 'Extract key arguments, formulas, tables, code snippets and citations'],
-    ['Confirm direction', 'Review the outline, logic and missing points before continuing'],
-    ['Get a draft', 'Generate editable slides, Markdown, LaTeX or report drafts'],
-    ['Keep the process', 'Save important insights, questions and thinking for later review'],
+    ['Bring the material', 'Bring the textbook, exercise, image, handwritten page or other personal study material in front of you'],
+    ['Read its structure', 'Recognize text, formulas, images and handwriting, then connect the key ideas'],
+    ['Find the real sticking point', 'Combine the material with your question to separate what you understand from what needs more thought'],
+    ['Keep your thinking moving', 'Use explanations, hints and questions to continue, without handing over the work'],
+    ['Keep a reviewable process', 'Save important insights, questions and thinking so you can revise, revisit and keep learning'],
   ] : steps.map((step) => [step.title, step.desc]);
   const sectionRef = useRef<HTMLElement>(null);
 

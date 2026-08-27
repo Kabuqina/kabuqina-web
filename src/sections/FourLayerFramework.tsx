@@ -11,32 +11,32 @@ const layers = [
     icon: BookOpen,
     label: '读材料',
     title: '先理解',
-    desc: '读取论文、课件、表格、图片和代码片段',
-    io: '论文 PDF / 课件 / 代码 → 段落、公式、表格、重点',
+    desc: '读取教材、练习题、图片、手写内容和其他学习材料',
+    io: '教材 / 练习 / 图片 / 手写内容 → 文字、公式、图像、重点',
     color: '#4F9DE8',
   },
   {
     icon: FileSearch,
     label: '理结构',
     title: '再整理',
-    desc: '把零散内容整理成可引用、可检查的材料清单',
-    io: '原始材料 → 重点清单、术语解释、引用位置',
+    desc: '把零散内容整理成容易理解、可以继续追问的材料结构',
+    io: '眼前材料 → 重点、术语解释、公式和图像关系',
     color: '#F5B642',
   },
   {
     icon: ClipboardList,
     label: '审提纲',
     title: '你确认',
-    desc: '先给出结构和待确认点，避免直接写偏',
-    io: '材料 + 作业要求 → 报告大纲、PPT 结构、待补充点',
+    desc: '确认你理解到哪里、卡在哪里，再决定下一步怎么做',
+    io: '材料 + 你的问题 → 卡点、提示、追问和下一步',
     color: '#F05D93',
   },
   {
     icon: PenTool,
     label: '出文件',
     title: '再交付',
-    desc: '生成能继续修改的文件，而不是一段临时答案',
-    io: '确认后的提纲 → .pptx / Markdown / LaTeX / 报告草稿',
+    desc: '用解释、提示和可修改的结果推进学习，而不是替你完成',
+    io: '确认后的思路 → 可修改记录、笔记和复习过程',
     color: '#6B5580',
   },
 ];
@@ -110,15 +110,15 @@ export default function FourLayerFramework({ locale = 'zh' }: { locale?: SiteLoc
         {/* Header */}
         <div className="fl-header text-center mb-16">
           <div className="kq-section-header inline-flex mx-auto mb-6">
-            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Why this is more than chat' : '为什么不只是聊天'}</span>
+            <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Why this starts from material' : '为什么不只是聊天'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-6 leading-tight" data-reveal>
-            {isEnglish ? 'Not just one question and one answer, but a file built step by step' : '不是问一句答一句，而是一步步做出文件'}
+            {isEnglish ? 'Not just one question and one answer, but a learning process you can continue' : '不是问一句答一句，而是一个可以继续的学习过程'}
           </h2>
           <p className="text-base md:text-lg text-[#8B7D9A] max-w-2xl mx-auto leading-relaxed">
-            {isEnglish ? 'Chatbots often jump straight to an answer, but assignments, presentations and defenses need a checkable process.' : '普通聊天机器人容易直接给一段答案，但作业、汇报和答辩需要可检查的过程。'}
+            {isEnglish ? 'A blank chat starts with a question. Kabuqina starts with the material, your understanding and the point where you are stuck.' : '空白聊天框从一个问题开始，卡布奇娜从你眼前的材料、理解位置和卡点开始。'}
             <br className="hidden md:block" />
-            {isEnglish ? 'Kabuqina reads the materials, organizes the evidence, lets you confirm the outline, then creates an editable file.' : '卡布奇娜先读清楚材料，再整理依据，让你确认提纲，最后写出可编辑的文件。'}
+            {isEnglish ? 'It helps you understand, think and take the next step, leaving a process you can revise and review.' : '它帮助你理解、思考并推进下一步，留下可以修改和复习的过程。'}
           </p>
         </div>
 

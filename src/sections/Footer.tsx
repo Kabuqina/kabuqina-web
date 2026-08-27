@@ -12,10 +12,10 @@ const footerLinks = [
 export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
   const isEnglish = locale === 'en';
   return (
-    <footer className="w-full py-10 lg:py-12" style={{ backgroundColor: '#3D2E4E' }}>
-      <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+    <footer className="kq-site-footer w-full" style={{ backgroundColor: '#3D2E4E' }}>
+      <div className="kq-site-footer__inner w-full px-6 lg:px-12 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[1.15fr_1.65fr_auto] items-center gap-6 md:gap-14">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
             <span className="text-base font-semibold text-[#E8DFF0]">
               {isEnglish ? 'Kabuqina' : '卡布奇娜'}
             </span>
@@ -27,7 +27,7 @@ export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {footerLinks.map((link) => (
               <a
                 key={link.label}
@@ -42,11 +42,11 @@ export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
             ))}
           </div>
 
-          <p className="text-center text-sm text-[#8B7D9A] break-words">
+          <p className="text-center md:text-right text-sm text-[#8B7D9A] break-words">
             {isEnglish ? 'Contact: ' : '联系方式：'}<a href="mailto:contact@kabuqina.com" className="text-[#D4C5E2] hover:underline">contact@kabuqina.com</a>
           </p>
         </div>
-        <div className="flex justify-center mt-6 pt-6 border-t border-[#6B5580]">
+        <div className="flex justify-center mt-4 pt-4 border-t border-[#6B5580]">
           <p className="text-center text-sm text-[#8B7D9A] break-words">
             © 2026 Shenzhen Ai and Logic Software Co., Ltd. All rights reserved.
           </p>

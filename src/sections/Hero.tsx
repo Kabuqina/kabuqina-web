@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ArrowDown, Download, Heart } from 'lucide-react';
 import type { SiteLocale } from '../lib/locale';
@@ -6,6 +6,22 @@ import type { SiteLocale } from '../lib/locale';
 export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
   const isEnglish = locale === 'en';
   const heroRef = useRef<HTMLElement>(null);
+  const [activeProduct, setActiveProduct] = useState(1);
+  const [isResettingProduct, setIsResettingProduct] = useState(false);
+
+  const showNextProduct = () => setActiveProduct((current) => current + 1);
+  const showPreviousProduct = () => setActiveProduct((current) => current - 1);
+
+  useEffect(() => {
+    const timer = window.setTimeout(showNextProduct, 5000);
+    return () => window.clearTimeout(timer);
+  }, [activeProduct]);
+
+  useEffect(() => {
+    if (!isResettingProduct) return;
+    const frame = window.requestAnimationFrame(() => setIsResettingProduct(false));
+    return () => window.cancelAnimationFrame(frame);
+  }, [isResettingProduct]);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -47,7 +63,7 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
               style={{ backgroundColor: 'rgba(184,169,201,0.12)', borderColor: 'rgba(184,169,201,0.25)', color: '#6B5580' }}
             >
               <span className="w-2 h-2 rounded-full bg-[#6B5580] animate-pulse" />
-              {isEnglish ? 'For personal self-study · Multimodal · Open source' : '面向个人自学 · 多模态 · 开源'}
+              {isEnglish ? 'For personal self-study · Multimodal · Tablet-oriented design' : '面向个人自学 · 多模态 · 平板端设计'}
             </div>
 
             {/* Main title */}
@@ -63,15 +79,15 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
               </a>
             </div>
             <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-4">
-              {isEnglish ? 'Keep every study session moving forward' : '让每一段自习，都能继续向前'}
+              {isEnglish ? 'Help you learn, not learn for you' : '帮你学，而不是替你学'}
             </p>
             <p className="hero-subtitle text-lg md:text-xl text-[#6B5580] font-medium mb-8 tracking-wide">
-              {isEnglish ? 'Understand materials · Analyze problems · Untangle ideas · Review later' : '理解材料 · 分析问题 · 梳理思路 · 持续复习'}
+              {isEnglish ? 'Understand materials · Find the sticking point · Take the next step · Review later' : '理解材料 · 找到卡点 · 推进下一步 · 留下过程'}
             </p>
 
             {/* Description */}
             <p className="hero-desc text-base md:text-lg text-[#8B7D9A] max-w-lg mb-10 leading-relaxed">
-              {isEnglish ? 'Kabuqina is a multimodal AI learning tool for personal self-study. Bring in a textbook, exercise, image or handwritten page, and get help understanding the material, finding the sticking point and taking the next step.' : '卡布奇娜是一款面向个人自学场景的多模态 AI 学习工具。你可以提供教材、练习题、图片或手写内容，它帮你理解眼前的材料、找到卡点，并把学习继续推进下去。'}
+              {isEnglish ? 'Kabuqina is a multimodal AI learning tool for personal self-study. Bring in the textbook, exercise, image, handwritten note or other material in front of you, then get help understanding it, locating the sticking point and deciding what to do next.' : '卡布奇娜是一款面向个人自学场景的多模态 AI 学习工具。你可以提供正在阅读的教材、练习题、图片、手写内容或其他个人学习材料，它帮助你理解眼前的内容、找到卡点，并决定下一步怎么继续。'}
             </p>
 
             {/* CTA Buttons */}
@@ -96,7 +112,7 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
 
             {/* Meta info */}
             <p className="hero-meta text-sm text-[#8B7D9A]">
-              {isEnglish ? 'Latest v0.4.0 · Apache 2.0 open source · 64-bit Windows' : '最新版本 v0.4.0 · Apache 2.0 开源 · 64位 Windows'}
+              {isEnglish ? 'Latest v0.4.0 · Apache 2.0 open source · Designed for tablet-oriented multimodal study' : '最新版本 v0.4.0 · Apache 2.0 开源 · 面向平板端与多模态自学场景设计'}
             </p>
           </div>
 
@@ -107,13 +123,68 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
                 className="absolute inset-x-8 bottom-6 h-20 rounded-full blur-3xl"
                 style={{ backgroundColor: 'rgba(184,169,201,0.28)' }}
               />
-              <div className="kq-float relative rounded-xl lg:rounded-2xl overflow-hidden border-2 border-[#8E76A5] bg-white shadow-[0_30px_80px_rgba(73,56,94,0.24)]">
-                <img
-                  src="/app-screenshot.png"
-                  alt={isEnglish ? 'Kabuqina product interface screenshot' : '卡布奇娜主界面截图'}
-                  className="w-full h-auto select-none"
-                  draggable={false}
-                />
+              <div
+                className="kq-float relative rounded-xl lg:rounded-2xl overflow-hidden border-2 border-[#8E76A5] bg-white shadow-[0_30px_80px_rgba(73,56,94,0.24)]"
+              >
+                <div
+                  className="hero-product-track"
+                  onTransitionEnd={() => {
+                    if (activeProduct === 3) {
+                      setIsResettingProduct(true);
+                      setActiveProduct(1);
+                    } else if (activeProduct === 0) {
+                      setIsResettingProduct(true);
+                      setActiveProduct(2);
+                    }
+                  }}
+                  style={{
+                    transform: `translateX(-${activeProduct * 25}%)`,
+                    transition: isResettingProduct ? 'none' : undefined,
+                  }}
+                >
+                  <img
+                    src="/about-product.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="hero-product-image w-1/4 h-auto shrink-0 select-none"
+                    draggable={false}
+                  />
+                  <img
+                    src="/app-screenshot.png"
+                    alt={isEnglish ? 'Kabuqina product interface screenshot' : '卡布奇娜主界面截图'}
+                    className="hero-product-image w-1/4 h-auto shrink-0 select-none"
+                    draggable={false}
+                  />
+                  <img
+                    src="/about-product.png"
+                    alt={isEnglish ? 'Kabuqina product interface alternate screenshot' : '卡布奇娜产品界面截图'}
+                    className="hero-product-image w-1/4 h-auto shrink-0 select-none"
+                    draggable={false}
+                  />
+                  <img
+                    src="/app-screenshot.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="hero-product-image w-1/4 h-auto shrink-0 select-none"
+                    draggable={false}
+                  />
+                </div>
+                <button
+                  type="button"
+                  className="hero-product-next hero-product-previous"
+                  onClick={showPreviousProduct}
+                  aria-label={isEnglish ? 'Show previous product image' : '查看上一张产品图片'}
+                >
+                  <span aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className="hero-product-next"
+                  onClick={showNextProduct}
+                  aria-label={isEnglish ? 'Show next product image' : '查看下一张产品图片'}
+                >
+                  <span aria-hidden="true" />
+                </button>
               </div>
               <div className="hero-heart hero-heart--one" aria-hidden="true"><Heart /></div>
               <div className="hero-heart hero-heart--two" aria-hidden="true"><Heart /></div>
