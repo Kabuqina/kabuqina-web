@@ -29,7 +29,6 @@ export default function AboutFooter({ locale = 'zh' }: FooterProps) {
           links: [
             { label: 'Download for Windows', href: links.download, external: true },
             { label: 'GitHub', href: links.github, external: true },
-            { label: 'Release notes', href: links.releases, external: true },
           ],
         },
       ]
@@ -47,7 +46,6 @@ export default function AboutFooter({ locale = 'zh' }: FooterProps) {
           links: [
             { label: '下载 Windows 版', href: links.download, external: true },
             { label: 'GitHub', href: links.github, external: true },
-            { label: '更新日志', href: links.releases, external: true },
           ],
         },
       ]
@@ -84,7 +82,6 @@ export default function AboutFooter({ locale = 'zh' }: FooterProps) {
         <div className="company-footer__legal">
           <div>
             <p>© 2026 {company.nameEn} All rights reserved.</p>
-            <p>{isEnglish ? 'Kabuqina source code is available under the Apache License 2.0.' : 'Kabuqina 源代码按 Apache License 2.0 开放。'}</p>
             <p>
               <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">粤ICP备2026121865号-1</a>
             </p>

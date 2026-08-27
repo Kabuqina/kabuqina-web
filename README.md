@@ -1,5 +1,22 @@
 # React + TypeScript + Vite
 
+## 本地浏览网站
+
+请先安装 [Node.js](https://nodejs.org/)（20.19 或更高版本，或 22.12 及更高版本）。在项目根目录运行：
+
+```bash
+npm install
+npm run dev
+```
+
+启动成功后，在浏览器中打开：
+
+```text
+http://localhost:3000/
+```
+
+停止本地服务时，在运行命令的终端按 `Ctrl+C`。
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

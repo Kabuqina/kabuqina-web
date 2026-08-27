@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 
 const navLinks = [
-  { label: '能力', href: '#capabilities' },
-  { label: '场景', href: '#scenarios' },
   { label: '关于公司', href: './about.html' },
-  { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
 ];
 
 export default function Navbar() {

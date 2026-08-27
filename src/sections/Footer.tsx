@@ -3,10 +3,7 @@ import type { SiteLocale } from '../lib/locale';
 
 const footerLinks = [
   { label: '关于公司', href: './about.html' },
-  { label: '文档', href: 'https://github.com/Kabuqina/Kabuqina' },
   { label: 'GitHub', href: 'https://github.com/Kabuqina/Kabuqina' },
-  { label: '更新日志', href: 'https://github.com/Kabuqina/Kabuqina/releases' },
-  { label: '隐私政策', href: '#' },
 ];
 
 export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
@@ -36,7 +33,7 @@ export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className="flex items-center gap-1 text-sm text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300"
               >
-                {isEnglish && link.label === '关于公司' ? 'About us' : isEnglish && link.label === '文档' ? 'Documentation' : isEnglish && link.label === '更新日志' ? 'Changelog' : isEnglish && link.label === '隐私政策' ? 'Privacy' : link.label}
+                {isEnglish && link.label === '关于公司' ? 'About us' : link.label}
                 {link.href.startsWith('http') && <ExternalLink className="w-3 h-3" />}
               </a>
             ))}
