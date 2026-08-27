@@ -73,7 +73,6 @@ const pageCopy = {
     heroTitleMiddle: '用逻辑做好',
     heroTitleEmphasis: '软件。',
     heroLead: `${company.nameZh}是卡布奇娜的开发与长期维护团队。我们面向真实而复杂的信息工作，设计清晰、可靠、能够长期使用的智能软件。`,
-    primaryAction: '认识卡布奇娜',
     ledger: [
       { label: 'HEADQUARTERS', value: '深圳 · 中国' },
       { label: 'FOCUS', value: '智能生产力软件' },
@@ -142,7 +141,6 @@ const pageCopy = {
     heroTitleMiddle: 'Logic shapes ',
     heroTitleEmphasis: 'how.',
     heroLead: `${company.nameEn} is the team that designs, develops and maintains Kabuqina. We build clear, dependable intelligent software for real and complex information work.`,
-    primaryAction: 'Meet Kabuqina',
     ledger: [
       { label: 'HEADQUARTERS', value: 'Shenzhen, China' },
       { label: 'FOCUS', value: 'Intelligent productivity software' },
@@ -304,11 +302,6 @@ export default function About() {
                 {copy.heroTitleStart}<br />{copy.heroTitleMiddle}<span className="about2-hero__gradient-text">{copy.heroTitleEmphasis.slice(0, -1)}</span><span className="about2-hero__punctuation">{copy.heroTitleEmphasis.slice(-1)}</span>
               </h1>
               <p className="about2-hero__lead">{copy.heroLead}</p>
-              <div className="about2-hero__actions">
-                <a className="about2-button about2-button--solid" href="./index.html">
-                  {copy.primaryAction} <ArrowRight aria-hidden="true" />
-                </a>
-              </div>
             </div>
 
             <HeroGlassObjects />
