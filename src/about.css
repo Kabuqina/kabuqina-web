@@ -40,27 +40,37 @@
   overflow: hidden;
 }
 
-.about2-label {
+/* 品牌区：三行竖排 —— 金色 ABOUT 眉头 / 大号品牌名 / 次级语言名称，
+   避免同一行内字号悬殊造成的突兀感 */
+.about2-brand {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 34px;
-  color: var(--about-muted);
-  font-size: var(--about-label-size);
-  font-weight: 700;
-  letter-spacing: 0.13em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 42px;
 }
 
-.about2-label span {
+.about2-brand__eyebrow {
   color: var(--about-gold);
+  font-size: var(--about-label-size);
+  font-weight: 700;
   letter-spacing: 0.16em;
 }
 
-.about2-label strong {
-  color: var(--about-ink-soft);
-  font-size: inherit;
+.about2-brand strong {
+  color: var(--about-ink);
+  font-size: clamp(30px, 3.6vw, 48px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+.about2-brand em {
+  color: var(--about-muted);
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-style: normal;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .about2-hero {
@@ -170,10 +180,10 @@
 
 .about2-hero h1 {
   margin: 0;
-  font-size: clamp(55px, 6.3vw, 92px);
+  font-size: clamp(30px, 3.8vw, 52px);
   font-weight: 700;
   line-height: 1.08;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.05em;
   color: var(--about-ink);
 }
 
@@ -187,72 +197,12 @@
   font-style: normal;
 }
 
-.about2-hero__punctuation {
-  color: var(--about-ink);
-}
-
 .about2-hero__lead {
   max-width: 660px;
   margin: 46px 0 0;
   color: var(--about-muted);
   font-size: 19px;
   line-height: 1.9;
-}
-
-.about2-poster-wrap {
-  position: relative;
-  width: min(100%, 620px);
-  justify-self: end;
-  isolation: isolate;
-}
-
-.about2-poster-wrap::before,
-.about2-poster-wrap::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(28px);
-}
-
-.about2-poster-wrap::before {
-  inset: 5% -16% 8% -11%;
-  background: rgba(140, 100, 170, 0.18);
-  transform: rotate(-10deg);
-}
-
-.about2-poster-wrap::after {
-  inset: 17% 5% 2% -15%;
-  aspect-ratio: 3 / 4;
-  background: rgba(220, 190, 140, 0.16);
-  transform: rotate(12deg);
-}
-
-.about2-poster {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background: transparent;
-}
-
-.about2-poster__art {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  /* 透明度加高：整图半透明融入页面背景，边缘再通过 mask 渐隐 */
-  opacity: 0.6;
-  -webkit-mask-image: radial-gradient(122% 118% at 50% 45%, #000 62%, rgba(0, 0, 0, 0.88) 82%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
-  mask-image: radial-gradient(122% 118% at 50% 45%, #000 62%, rgba(0, 0, 0, 0.88) 82%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
-  animation: about2-poster-float 7s ease-in-out infinite;
-}
-
-
-@keyframes about2-poster-float {
-  0%, 100% { transform: translateY(-8px) scale(1.04); }
-  50% { transform: translateY(8px) scale(1.04); }
 }
 
 /* ----- 首屏右侧 3D 玻璃浮动物件（立体感 + 实物感） ----- */
@@ -1057,43 +1007,14 @@
   letter-spacing: 0.1em;
 }
 
-.about-page-v2 .company-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.about-page-v2 .company-footer__brand > p {
-  font-size: 15px;
-}
-
-.about-page-v2 .company-footer__brand .company-footer__tagline {
-  font-size: 17px;
-}
-
-.about-page-v2 .company-wordmark--footer .company-wordmark__text small {
-  color: #b8acbd;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.about-page-v2 .footer-email,
-.about-page-v2 .company-footer__nav a {
-  font-size: 15px;
-}
-
-.about-page-v2 .company-footer__nav h2,
-.about-page-v2 .company-footer__legal {
-  font-size: 13px;
-}
-
 .about-page-v2[data-locale='en'] {
   --about-body-size: 18px;
 }
 
 .about-page-v2[data-locale='en'] .about2-hero h1 {
   max-width: 760px;
-  font-size: clamp(54px, 5.8vw, 84px);
-  letter-spacing: -0.05em;
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -0.03em;
 }
 
 .about-page-v2[data-locale='en'] .about2-hero__lead {
@@ -1121,10 +1042,6 @@
     animation: about2-rise 650ms ease-out both;
   }
 
-  .about2-poster-wrap {
-    animation: about2-rise 750ms 90ms ease-out both;
-  }
-
   .about2-glass-wrap {
     animation: about2-rise 750ms 90ms ease-out both;
   }
@@ -1139,10 +1056,6 @@
   .about2-hero__inner {
     grid-template-columns: minmax(0, 1fr) minmax(360px, 0.68fr);
     gap: 64px;
-  }
-
-  .about2-poster {
-    padding-inline: 23px;
   }
 
   .about2-thesis__layout,
@@ -1169,11 +1082,6 @@
     gap: 78px;
     padding-top: 92px;
     padding-bottom: 100px;
-  }
-
-  .about2-poster-wrap {
-    width: min(76vw, 480px);
-    justify-self: center;
   }
 
   .about2-glass-wrap {
@@ -1253,9 +1161,8 @@
 }
 
 @media (max-width: 640px) {
-  .about2-label {
-    flex-wrap: wrap;
-    gap: 10px;
+  .about2-brand {
+    gap: 6px;
     margin-bottom: 30px;
   }
 
@@ -1267,7 +1174,7 @@
   }
 
   .about2-hero h1 {
-    font-size: 44px;
+    font-size: 28px;
     line-height: 1.13;
   }
 
@@ -1278,15 +1185,11 @@
   }
 
   .about-page-v2[data-locale='en'] .about2-hero h1 {
-    font-size: 40px;
+    font-size: 26px;
   }
 
   .about-page-v2[data-locale='en'] .about2-hero__lead {
     font-size: 18px;
-  }
-
-  .about2-poster-wrap {
-    width: calc(100% - 22px);
   }
 
   .about2-glass-wrap {
@@ -1300,10 +1203,6 @@
 
   .about2-glass--card {
     width: min(54%, 200px);
-  }
-
-  .about2-poster-shadow {
-    inset: 13px -11px -11px 14px;
   }
 
   .about2-hero__ledger .company-container {
@@ -1507,70 +1406,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .about2-float-heart,
-  .about2-poster__art {
-    animation: none;
-  }
-}
-
-/* ---------- Big headings: characters float up one by one on scroll ---------- */
-.about-page-v2 [data-reveal] .rv-char {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.52em);
-  transition:
-    opacity 480ms ease,
-    transform 700ms cubic-bezier(0.2, 0.62, 0.32, 1);
-  transition-delay: calc(min(var(--rv-i, 0), 30) * 24ms);
-  will-change: transform, opacity;
-}
-
-.about-page-v2 [data-reveal].is-revealed .rv-char {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-page-v2 [data-reveal] .rv-char {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* ---------- A few floating hearts, anchored inside sections (scroll with page) ---------- */
-.about2-float-heart {
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  user-select: none;
-  line-height: 1;
-  opacity: 0.32;
-  animation: about2-heart-float 7s ease-in-out infinite;
-  will-change: transform;
-}
-
-.about2-float-heart--gold {
-  color: #c39756;
-}
-
-.about2-float-heart--plum {
-  color: #9a7ba0;
-}
-
-@keyframes about2-heart-float {
-  0%,
-  100% {
-    transform: translateY(-8px);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about2-float-heart,
-  .about2-object,
-  .about2-bubble,
   .about2-orb {
     animation: none;
   }

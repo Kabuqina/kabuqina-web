@@ -1,6 +1,7 @@
 export const company = {
   nameZh: '深圳市爱与逻辑软件有限责任公司',
   nameEn: 'Shenzhen Ai and Logic Software Co., Ltd.',
+  shortNameZh: '爱与逻辑',
   shortNameEn: 'Ai & Logic Software',
   signature: 'Ai ❤ Logic',
   email: 'contact@kabuqina.com',

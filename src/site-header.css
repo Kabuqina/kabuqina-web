@@ -16,6 +16,14 @@
   margin-inline: auto;
 }
 
+/* 与首页 Tailwind 区块（max-w-7xl + lg:px-12）的实际内容宽度对齐：
+   ≥1024px 时两侧各 48px，内容最宽 1184px */
+@media (min-width: 1024px) {
+  .company-container {
+    width: min(100% - 96px, 1184px);
+  }
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -58,47 +66,6 @@
   object-fit: contain;
   display: block;
   transform: translateY(4px);
-}
-
-.company-wordmark__mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--ink);
-  color: white;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.08em;
-}
-
-.company-wordmark__mark span {
-  margin-inline: 1px;
-  color: #d8b58d;
-  font-size: 10px;
-}
-
-.company-wordmark__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.company-wordmark__text strong {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: 0.04em;
-}
-
-.company-wordmark__text small {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
 }
 
 .desktop-nav {
@@ -144,57 +111,38 @@
   min-height: 38px;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 4px 6px;
-  border: 1px solid #d8cfc4;
-  background: rgba(255, 253, 248, 0.72);
-}
-
-.language-switch > span {
-  color: #a79da5;
-  font-size: 13px;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid rgba(107, 85, 128, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .language-switch button {
-  min-width: 35px;
-  min-height: 28px;
-  padding: 0 7px;
+  min-width: 44px;
+  min-height: 30px;
+  padding: 0 12px;
   border: 0;
+  border-radius: 999px;
   background: transparent;
-  color: #746a70;
+  color: var(--muted);
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
 }
 
-.language-switch button[aria-pressed='true'] {
-  background: var(--ink);
-  color: #fffdf8;
+.language-switch button:hover {
+  background: rgba(107, 85, 128, 0.08);
+  color: var(--plum-deep);
 }
 
-.header-download {
-  height: 38px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 16px;
-  border-radius: 5px;
-  background: var(--ink);
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-  transition: transform 180ms ease, background 180ms ease;
-}
-
-.header-download svg {
-  width: 17px;
-  height: 17px;
-}
-
-.header-download:hover {
+.language-switch button[aria-pressed='true'],
+.language-switch button[aria-pressed='true']:hover {
   background: var(--plum-deep);
-  transform: translateY(-2px);
+  color: #fffdf8;
 }
 
 .mobile-menu-button {
@@ -264,26 +212,14 @@
   color: var(--ink);
 }
 
-.mobile-menu .mobile-menu__download {
-  justify-content: center;
-  margin-top: 32px;
-  border: 0;
-  border-radius: 6px;
-  background: white;
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 700;
-}
-
 @media (max-width: 1100px) {
   .desktop-nav {
     gap: 20px;
   }
 }
 
-@media (max-width: 900px) {
-  .desktop-nav,
-  .header-download {
+@media (max-width: 1023px) {
+  .desktop-nav {
     display: none;
   }
 
@@ -308,10 +244,6 @@
   .company-wordmark__logo {
     width: 72px;
     height: 68px;
-  }
-
-  .company-wordmark__text strong {
-    font-size: 14px;
   }
 
   .header-language-switch {

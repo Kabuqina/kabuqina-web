@@ -140,43 +140,6 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* ── Breathing animation for logo ── */
-@keyframes breathe {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.cup-foam {
-  animation: breathe 3s ease-in-out infinite;
-}
-
-/* ── Steam animation ── */
-@keyframes steam {
-  0% { opacity: 0; transform: translateY(0) scaleX(1); }
-  50% { opacity: 0.6; }
-  100% { opacity: 0; transform: translateY(-20px) scaleX(1.5); }
-}
-
-.steam-line {
-  animation: steam 4s ease-out infinite;
-}
-
-.steam-line-delayed {
-  animation: steam 4s ease-out infinite;
-  animation-delay: 1.5s;
-}
-
-/* ── Scroll reveal base ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ── Glass card (brand signature) ── */
 .kq-glass-subtle {
   border: 2px solid rgba(107, 85, 128, 0.28);
@@ -457,15 +420,6 @@ html.lenis, html.lenis body {
     text-align: center;
     white-space: normal;
   }
-}
-
-/* ── Matrix row hover ── */
-.kq-matrix-row:hover {
-  background: var(--kq-color-primary-pale);
-}
-
-.kq-matrix-row:hover .matrix-dot {
-  background-color: var(--kq-color-primary-dark);
 }
 
 /* ── 首页艺术字：整句中紫（无渐变），滚动进入视口时逐字上浮 ── */

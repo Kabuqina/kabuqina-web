@@ -62,8 +62,8 @@ export default function SelfStudy({ locale = 'zh' }: SelfStudyProps) {
   return (
     <section id="self-study" ref={sectionRef} className="relative w-full py-28 lg:py-36" style={{ backgroundColor: 'rgba(250, 248, 251, 0.82)' }}>
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="self-study-title max-w-3xl mb-14 lg:mb-18">
-          <div className="kq-section-header inline-flex mb-6">
+        <div className="self-study-title text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          <div className="kq-section-header inline-flex mx-auto mb-6">
             <span className="text-sm font-medium text-[#6B5580]">{isEnglish ? 'Self-study, in real life' : '真实的自学现场'}</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#49385E] mb-5 leading-tight" data-reveal>

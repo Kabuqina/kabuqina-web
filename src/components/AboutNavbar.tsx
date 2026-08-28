@@ -4,7 +4,7 @@ import { withLocale } from '../lib/locale'
 import type { SiteLocale } from '../lib/locale'
 
 type NavbarProps = {
-  page?: 'home' | 'about' | 'capabilities' | 'scenarios'
+  page?: 'home' | 'about'
   locale?: SiteLocale
   onLocaleChange?: (locale: SiteLocale) => void
 }
@@ -62,7 +62,6 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
   const languageSwitch = (
     <div className="language-switch" aria-label={isEnglish ? 'Language' : '语言'}>
       <button type="button" aria-pressed={!isEnglish} onClick={() => changeLocale('zh')}>中文</button>
-      <span aria-hidden="true">/</span>
       <button type="button" aria-pressed={isEnglish} onClick={() => changeLocale('en')}>EN</button>
     </div>
   )

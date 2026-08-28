@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download, Github, MessageCircle } from 'lucide-react';
+import { Download, Github } from 'lucide-react';
 import type { SiteLocale } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -82,15 +82,6 @@ export default function FooterCTA({ locale = 'zh' }: { locale?: SiteLocale }) {
           >
             <Github className="w-5 h-5" />
             {isEnglish ? 'View source on GitHub' : '查看 GitHub 源码'}
-          </a>
-
-          {/* Discuss - Ghost style on dark */}
-          <a
-            href="#"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-10 py-5 bg-transparent text-[#E8DFF0] text-lg font-semibold text-center rounded-[12px] border border-[#B8A9C9]/40 transition-all duration-300 hover:bg-[#D4C5E2]/15 hover:border-[#D4C5E2]/70 active:scale-[0.97]"
-          >
-            <MessageCircle className="w-5 h-5" />
-            {isEnglish ? 'Join the student community' : '加入学生讨论群'}
           </a>
         </div>
       </div>

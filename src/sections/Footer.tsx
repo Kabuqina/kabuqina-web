@@ -11,8 +11,8 @@ export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
   ];
 
   return (
-    <footer className="kq-site-footer w-full" style={{ backgroundColor: '#3D2E4E' }}>
-      <div className="kq-site-footer__inner w-full px-6 lg:px-6 max-w-[1600px] mx-auto">
+    <footer className="kq-site-footer w-full" style={{ backgroundColor: '#3D2E4E', borderTop: '1px solid rgba(212, 197, 226, 0.16)' }}>
+      <div className="kq-site-footer__inner w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1.15fr_1.65fr_auto] items-center gap-4 md:gap-8">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
             <span className="text-base font-semibold text-[#E8DFF0]">

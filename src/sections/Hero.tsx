@@ -43,7 +43,7 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-screen flex items-center overflow-hidden"
+      className="relative w-full min-h-[calc(100svh-96px)] flex items-center overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #e5d8ef 0%, #f8eee8 52%, #f6dfbd 100%)' }}
     >
       {/* Subtle background decoration */}
@@ -54,7 +54,7 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
           style={{ background: 'radial-gradient(circle, #d4a574 0%, transparent 70%)' }} />
       </div>
 
-      <div className="relative z-10 w-full px-6 lg:px-12 py-32">
+      <div className="relative z-10 w-full px-6 lg:px-12 py-24 lg:py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-center">
           {/* Left: Text */}
           <div className="text-left">
@@ -68,16 +68,18 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
             </div>
 
             {/* Main title */}
-            <div className="hero-title flex flex-wrap items-end gap-x-4 gap-y-3 mb-4">
+            <div className="hero-title flex flex-wrap items-center gap-x-4 gap-y-3 mb-6">
+              <img
+                src="/kabuqina-app-icon.png"
+                alt=""
+                width={64}
+                height={64}
+                className="h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 select-none"
+                draggable={false}
+              />
               <h1 className="hero-art-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" data-reveal>
                 {isEnglish ? 'Kabuqina' : '卡布奇娜'}
               </h1>
-              <a
-                href="./about.html"
-                className="mb-1 inline-flex whitespace-nowrap rounded-full border border-[#D4C5E2] bg-[#F1E9F5] px-3 py-1.5 text-[11px] font-semibold tracking-wide text-[#6B5580] transition-colors duration-300 hover:border-[#B8A9C9] hover:bg-[#E8DFF0] md:text-xs"
-              >
-                {isEnglish ? 'A product by Ai & Logic Software' : '深圳市爱与逻辑软件有限责任公司设计、开发并长期维护'}
-              </a>
             </div>
             <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl font-semibold text-[#5A4A6A] mb-4">
               {isEnglish ? 'Help you learn, not learn for you' : '帮你学，而不是替你学'}
@@ -192,9 +194,9 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
               <div className="hero-heart hero-heart--one" aria-hidden="true"><Heart /></div>
               <div className="hero-heart hero-heart--two" aria-hidden="true"><Heart /></div>
               <img
-                src="/mascot.png"
+                src="/kq-cup-steam-128.png"
                 alt={isEnglish ? 'Kabuqina mascot' : '卡布奇娜吉祥物'}
-                className="absolute -bottom-7 -right-7 w-24 h-24 sm:w-28 sm:h-28 object-contain select-none rounded-full bg-white p-1.5 shadow-[0_12px_34px_rgba(73,56,94,0.22)] border-2 border-[#D4A574] kq-float"
+                className="absolute -bottom-7 -right-7 w-24 h-24 sm:w-28 sm:h-28 object-contain select-none [image-rendering:pixelated] drop-shadow-[0_12px_24px_rgba(73,56,94,0.28)] kq-float"
                 draggable={false}
               />
             </div>

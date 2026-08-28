@@ -71,7 +71,7 @@ const pageCopy = {
     metaDescription: '了解深圳市爱与逻辑软件有限责任公司的使命、产品观，以及我们如何开发并长期维护卡布奇娜。',
     heroTitleStart: '用爱理解人，',
     heroTitleMiddle: '用逻辑做好',
-    heroTitleEmphasis: '软件。',
+    heroTitleEmphasis: '产品。',
     heroLead: `${company.nameZh}是卡布奇娜的开发与长期维护团队。我们面向真实而复杂的信息工作，设计清晰、可靠、能够长期使用的智能软件。`,
     ledger: [
       { label: 'HEADQUARTERS', value: '深圳 · 中国' },
@@ -240,7 +240,6 @@ export default function About() {
       let globalIndex = 0
       textNodes.forEach((node) => {
         const inHeroEm = el.id === 'about-heading' && Boolean(node.parentElement?.closest('em'))
-        const inPunctuation = Boolean(node.parentElement?.closest('.about2-hero__punctuation'))
         const gradient = inHeroEm || el.id !== 'about-heading' ? HEADING_GRADIENTS[el.id] : undefined
         const frag = document.createDocumentFragment()
         Array.from(node.nodeValue ?? '').forEach((ch, localIndex) => {
@@ -248,9 +247,7 @@ export default function About() {
           span.className = 'rv-char'
           span.textContent = ch
           span.style.setProperty('--rv-i', String(globalIndex))
-          if (inPunctuation) {
-            span.style.color = 'var(--about-ink)'
-          } else if (gradient) {
+          if (gradient) {
             const gradientLength = inHeroEm ? (node.nodeValue?.length ?? 1) : total
             const gradientIndex = inHeroEm ? localIndex : globalIndex
             const t = gradientLength <= 1 ? 0 : gradientIndex / (gradientLength - 1)
@@ -297,9 +294,13 @@ export default function About() {
 
           <div className="about2-hero__inner company-container">
             <div className="about2-hero__copy">
-              <p className="about2-label"><span>ABOUT</span><strong>{company.shortNameEn}</strong></p>
+              <div className="about2-brand">
+                <span className="about2-brand__eyebrow">ABOUT</span>
+                <strong>{locale === 'zh' ? company.shortNameZh : company.shortNameEn}</strong>
+                <em>{locale === 'zh' ? company.shortNameEn : company.shortNameZh}</em>
+              </div>
               <h1 id="about-heading">
-                {copy.heroTitleStart}<br />{copy.heroTitleMiddle}<span className="about2-hero__gradient-text">{copy.heroTitleEmphasis.slice(0, -1)}</span><span className="about2-hero__punctuation">{copy.heroTitleEmphasis.slice(-1)}</span>
+                {copy.heroTitleStart}<br />{copy.heroTitleMiddle}<span className="about2-hero__gradient-text">{copy.heroTitleEmphasis}</span>
               </h1>
               <p className="about2-hero__lead">{copy.heroLead}</p>
             </div>
@@ -382,7 +383,7 @@ export default function About() {
                 <img src="/about-product.png" alt={copy.screenshotAlt} width={1169} height={850} loading="lazy" decoding="async" />
               </div>
               <figcaption>
-                <img src="/kabuqina_logo_48.png" alt="" />
+                <img src="/kabuqina-app-icon.png" alt="" />
                 <div><strong>{copy.productName}</strong><span>{copy.productCaption}</span></div>
               </figcaption>
             </figure>
