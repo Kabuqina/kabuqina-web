@@ -279,13 +279,13 @@ html.lenis, html.lenis body {
 }
 
 .kq-site-footer {
-  min-height: 180px;
+  min-height: 0;
   box-sizing: border-box;
 }
 
 .kq-site-footer__inner {
-  padding-top: 28px;
-  padding-bottom: 16px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 @media (max-width: 768px) {
@@ -294,8 +294,8 @@ html.lenis, html.lenis body {
   }
 
   .kq-site-footer__inner {
-    padding-top: 24px;
-    padding-bottom: 14px;
+    padding-top: 18px;
+    padding-bottom: 10px;
   }
 }
 

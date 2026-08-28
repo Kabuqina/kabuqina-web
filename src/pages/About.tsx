@@ -3,7 +3,7 @@ import { ArrowRight, Check, Github, Mail } from 'lucide-react'
 
 import AboutNavbar from '../components/AboutNavbar'
 import HeroGlassObjects from '../components/HeroGlassObjects'
-import AboutFooter from '../sections/AboutFooter'
+import Footer from '../sections/Footer'
 import { company, links } from '../lib/site'
 import { getInitialLocale } from '../lib/locale'
 import type { SiteLocale } from '../lib/locale'
@@ -421,7 +421,7 @@ export default function About() {
         </section>
       </main>
 
-      <AboutFooter locale={locale} />
+      <Footer locale={locale} />
     </div>
   )
 }

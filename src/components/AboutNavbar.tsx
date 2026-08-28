@@ -80,10 +80,7 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="company-container site-header__inner">
         <a className="company-wordmark" href="./index.html" aria-label={isEnglish ? 'Ai & Logic home' : '爱与逻辑首页'}>
-          <img src="/company-logo.png" alt="" className="company-wordmark__logo" />
-          <span className="company-wordmark__text">
-            <strong>{isEnglish ? 'Ai & Logic' : '爱与逻辑'}</strong>
-          </span>
+          <img src="/ai-logic-logo.png" alt="Ai logic" className="company-wordmark__logo" />
         </a>
         <nav className="desktop-nav" aria-label={isEnglish ? 'Main navigation' : '主导航'}>
           {navLinks.map((link) => (

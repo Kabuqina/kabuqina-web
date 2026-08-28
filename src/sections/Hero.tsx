@@ -9,10 +9,11 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
   const [activeProduct, setActiveProduct] = useState(1);
   const [isResettingProduct, setIsResettingProduct] = useState(false);
 
-  const showNextProduct = () => setActiveProduct((current) => current + 1);
-  const showPreviousProduct = () => setActiveProduct((current) => current - 1);
+  const showNextProduct = () => setActiveProduct((current) => Math.min(3, current + 1));
+  const showPreviousProduct = () => setActiveProduct((current) => Math.max(0, current - 1));
 
   useEffect(() => {
+    if (activeProduct === 0 || activeProduct === 3) return;
     const timer = window.setTimeout(showNextProduct, 5000);
     return () => window.clearTimeout(timer);
   }, [activeProduct]);
@@ -128,11 +129,13 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
               >
                 <div
                   className="hero-product-track"
-                  onTransitionEnd={() => {
+                  onTransitionEnd={(event) => {
+                    if (event.propertyName !== 'transform') return;
                     if (activeProduct === 3) {
                       setIsResettingProduct(true);
                       setActiveProduct(1);
-                    } else if (activeProduct === 0) {
+                    }
+                    if (activeProduct === 0) {
                       setIsResettingProduct(true);
                       setActiveProduct(2);
                     }
