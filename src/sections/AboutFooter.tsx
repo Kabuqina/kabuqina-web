@@ -56,7 +56,7 @@ export default function AboutFooter({ locale = 'zh' }: FooterProps) {
         <div className="company-footer__main">
           <div className="company-footer__brand">
             <div className="company-wordmark company-wordmark--footer">
-              <img src="/company-logo.png" alt="" className="company-wordmark__logo" />
+              <img src="/ai-logic-logo.png?v=2" alt="Ai logic" className="company-wordmark__logo" />
             </div>
             <p>{isEnglish ? company.nameEn : company.nameZh}</p>
             <p className="company-footer__tagline">
