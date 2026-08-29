@@ -43,7 +43,7 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-[calc(100svh-96px)] flex items-center overflow-hidden"
+      className="relative w-full min-h-[calc(100svh-68px)] sm:min-h-[calc(100svh-96px)] flex items-center overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #e5d8ef 0%, #f8eee8 52%, #f6dfbd 100%)' }}
     >
       {/* Subtle background decoration */}
@@ -54,7 +54,7 @@ export default function Hero({ locale = 'zh' }: { locale?: SiteLocale }) {
           style={{ background: 'radial-gradient(circle, #d4a574 0%, transparent 70%)' }} />
       </div>
 
-      <div className="relative z-10 w-full px-6 lg:px-12 py-24 lg:py-32">
+      <div className="relative z-10 w-full px-6 lg:px-12 pt-24 pb-16 lg:py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-center">
           {/* Left: Text */}
           <div className="text-left">

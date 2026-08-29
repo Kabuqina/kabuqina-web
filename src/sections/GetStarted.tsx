@@ -78,7 +78,7 @@ export default function GetStarted({ locale = 'zh' }: { locale?: SiteLocale }) {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-32 lg:py-40"
+      className="relative w-full py-24 lg:py-40"
       style={{ backgroundColor: 'rgba(244, 238, 245, 0.78)' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">

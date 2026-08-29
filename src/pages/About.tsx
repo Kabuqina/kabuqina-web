@@ -242,7 +242,17 @@ export default function About() {
         const inHeroEm = el.id === 'about-heading' && Boolean(node.parentElement?.closest('em'))
         const gradient = inHeroEm || el.id !== 'about-heading' ? HEADING_GRADIENTS[el.id] : undefined
         const frag = document.createDocumentFragment()
+        // 只有包含空格的文本（英文）才按词分组并禁止词内换行；
+        // 中文等无空格文本保持逐字直接排列，否则整句不可换行会溢出
+        const groupWords = (node.nodeValue ?? '').includes(' ')
+        let word: HTMLSpanElement | null = null
         Array.from(node.nodeValue ?? '').forEach((ch, localIndex) => {
+          if (groupWords && ch === ' ') {
+            word = null
+            frag.appendChild(document.createTextNode(' '))
+            globalIndex++
+            return
+          }
           const span = document.createElement('span')
           span.className = 'rv-char'
           span.textContent = ch
@@ -253,7 +263,16 @@ export default function About() {
             const t = gradientLength <= 1 ? 0 : gradientIndex / (gradientLength - 1)
             span.style.color = lerpGradient(gradient, t)
           }
-          frag.appendChild(span)
+          if (groupWords) {
+            if (!word) {
+              word = document.createElement('span')
+              word.className = 'rv-word'
+              frag.appendChild(word)
+            }
+            word.appendChild(span)
+          } else {
+            frag.appendChild(span)
+          }
           globalIndex++
         })
         node.parentNode?.replaceChild(frag, node)

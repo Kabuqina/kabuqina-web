@@ -59,7 +59,7 @@ export default function Trust({ locale = 'zh' }: { locale?: SiteLocale }) {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-32 lg:py-40"
+      className="relative w-full py-24 lg:py-40"
       style={{ backgroundColor: 'rgba(250, 248, 251, 0.82)' }}
     >
       <div className="w-full px-6 lg:px-12 max-w-7xl mx-auto">

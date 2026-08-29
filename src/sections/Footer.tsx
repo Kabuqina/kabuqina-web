@@ -42,7 +42,7 @@ export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
             {isEnglish ? 'Contact: ' : '联系方式：'}<a href="mailto:contact@kabuqina.com" className="text-[#D4C5E2] hover:underline">contact@kabuqina.com</a>
           </p>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 mt-3 pt-3 border-t border-[#6B5580]">
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 md:gap-x-6 md:gap-y-1 mt-3 pt-3 border-t border-[#6B5580]">
           <p className="text-center text-sm text-[#8B7D9A] break-words">
             {isEnglish ? `© 2026 ${company.nameEn}. All rights reserved.` : `© 2026 ${company.nameZh} 版权所有`}
           </p>
@@ -50,7 +50,7 @@ export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
             href="https://beian.miit.gov.cn/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300"
+            className="text-center text-xs text-[#8B7D9A] hover:text-[#D4C5E2] transition-colors duration-300"
           >
             粤ICP备2026121865号-1
           </a>

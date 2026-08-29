@@ -423,8 +423,16 @@ html.lenis, html.lenis body {
 }
 
 /* ── 首页艺术字：整句中紫（无渐变），滚动进入视口时逐字上浮 ── */
+.home-shell [data-reveal] .kq-rv-word {
+  display: inline-block;
+  /* 词内禁止换行：逐字拆分的字符是独立 inline-block，否则英文会从单词中间断开 */
+  white-space: nowrap;
+}
+
 .home-shell [data-reveal] .kq-rv {
   display: inline-block;
+  /* 同 .rv-char：保住英文标题中被拆成独立字符的空格 */
+  white-space: pre;
   opacity: 0;
   transform: translateY(0.5em);
   transition:

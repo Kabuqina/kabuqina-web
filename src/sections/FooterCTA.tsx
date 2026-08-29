@@ -26,7 +26,7 @@ export default function FooterCTA({ locale = 'zh' }: { locale?: SiteLocale }) {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-32 lg:py-40 overflow-hidden"
+      className="relative w-full py-24 lg:py-40 overflow-hidden"
       style={{ backgroundColor: '#49385E' }}
     >
       <div className="absolute top-12 right-12 lg:top-16 lg:right-24 opacity-20">

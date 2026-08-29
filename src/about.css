@@ -1079,9 +1079,10 @@
 @media (max-width: 900px) {
   .about2-hero__inner {
     grid-template-columns: 1fr;
-    gap: 78px;
-    padding-top: 92px;
-    padding-bottom: 100px;
+    gap: 48px;
+    /* 顶栏为 fixed 96px，首屏内容需完全避开 */
+    padding-top: 140px;
+    padding-bottom: 88px;
   }
 
   .about2-glass-wrap {
@@ -1168,9 +1169,10 @@
 
   .about2-hero__inner {
     min-height: auto;
-    gap: 54px;
-    padding-top: 58px;
-    padding-bottom: 68px;
+    gap: 36px;
+    /* 顶栏为 fixed 68px（≤640px），留出 50px 呼吸空间 */
+    padding-top: 118px;
+    padding-bottom: 60px;
   }
 
   .about2-hero h1 {
@@ -1224,8 +1226,12 @@
   }
 
   .about2-hero__ledger small {
-    width: 96px;
-    flex: 0 0 96px;
+    /* 自适应宽度，避免 HEADQUARTERS 等长词在单词中间断行 */
+    width: auto;
+    flex: 0 0 auto;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    word-break: keep-all;
   }
 
   .about2-hero__ledger span {
@@ -1350,8 +1356,17 @@
 }
 
 /* ---------- Big headings: characters float up one by one on scroll ---------- */
+.about-page-v2 [data-reveal] .rv-word {
+  display: inline-block;
+  /* 词内禁止换行：逐字拆分的字符是独立 inline-block，否则英文会从单词中间断开 */
+  white-space: nowrap;
+}
+
 .about-page-v2 [data-reveal] .rv-char {
   display: inline-block;
+  /* 逐字拆分后，纯空格字符的 inline-block 宽度会坍缩为 0，
+     用 pre 保住空格，否则英文标题的空格全部丢失 */
+  white-space: pre;
   opacity: 0;
   transform: translateY(0.52em);
   transition:

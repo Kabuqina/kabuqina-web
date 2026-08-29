@@ -227,10 +227,7 @@
     right: 52px;
   }
 
-  .mobile-menu-button {
-    margin-left: 8px;
-  }
-
+  /* 保持 margin-left: auto，让汉堡按钮始终贴在头部右端 */
   .mobile-menu-button {
     display: inline-flex;
   }
@@ -241,9 +238,25 @@
     width: min(100% - 32px, 1280px);
   }
 
-  .company-wordmark__logo {
-    width: 72px;
+  /* 手机端降低头部高度，避免占据过多首屏空间 */
+  .site-header__inner {
     height: 68px;
+  }
+
+  .site-header.is-scrolled .site-header__inner {
+    height: 58px;
+  }
+
+  .company-wordmark__logo {
+    width: 60px;
+    height: 56px;
+    transform: translateY(2px);
+  }
+
+  .mobile-menu {
+    inset: 68px 0 0;
+    min-height: calc(100vh - 68px);
+    padding: 32px 20px;
   }
 
   .header-language-switch {

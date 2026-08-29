@@ -84,13 +84,32 @@ export default function App() {
       let globalIndex = 0;
       textNodes.forEach((node) => {
         const frag = document.createDocumentFragment();
+        // 只有包含空格的文本（英文）才按词分组并禁止词内换行；
+        // 中文等无空格文本保持逐字直接排列，否则整句不可换行会溢出
+        const groupWords = (node.nodeValue ?? '').includes(' ');
+        let word: HTMLSpanElement | null = null;
         Array.from(node.nodeValue ?? '').forEach((ch) => {
+          if (groupWords && ch === ' ') {
+            word = null;
+            frag.appendChild(document.createTextNode(' '));
+            globalIndex++;
+            return;
+          }
           const span = document.createElement('span');
           span.className = 'kq-rv';
           span.textContent = ch;
           span.style.setProperty('--rv-i', String(globalIndex));
           span.style.color = color;
-          frag.appendChild(span);
+          if (groupWords) {
+            if (!word) {
+              word = document.createElement('span');
+              word.className = 'kq-rv-word';
+              frag.appendChild(word);
+            }
+            word.appendChild(span);
+          } else {
+            frag.appendChild(span);
+          }
           globalIndex++;
         });
         node.parentNode?.replaceChild(frag, node);
