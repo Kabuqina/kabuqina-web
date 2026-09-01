@@ -67,8 +67,8 @@ function lerpGradient(stops: readonly GradientStop[], t: number): string {
 
 const pageCopy = {
   zh: {
-    metaTitle: '关于爱与逻辑 —— 深圳市爱与逻辑软件有限责任公司',
-    metaDescription: '了解深圳市爱与逻辑软件有限责任公司的使命、产品观，以及我们如何开发并长期维护卡布奇娜。',
+    metaTitle: '深圳市爱与逻辑软件有限责任公司｜用爱理解人，用逻辑做好产品',
+    metaDescription: '深圳市爱与逻辑软件有限责任公司是卡布奇娜（Kabuqina）的开发与长期维护团队，面向真实而复杂的信息工作，设计清晰、可靠、能够长期使用的智能软件。',
     heroTitleStart: '用爱理解人，',
     heroTitleMiddle: '用逻辑做好',
     heroTitleEmphasis: '产品。',
@@ -135,8 +135,8 @@ const pageCopy = {
     emailUs: '联系我们',
   },
   en: {
-    metaTitle: `About ${company.shortNameEn}`,
-    metaDescription: `Learn about ${company.nameEn}, our product principles, and our long-term stewardship of Kabuqina.`,
+    metaTitle: `${company.nameEn} | Ai & Logic Software`,
+    metaDescription: `${company.nameEn} is the team that designs, develops and maintains Kabuqina. We build clear, dependable intelligent software for real and complex information work.`,
     heroTitleStart: 'Care guides why.',
     heroTitleMiddle: 'Logic shapes ',
     heroTitleEmphasis: 'how.',
