@@ -136,7 +136,7 @@ export default function App() {
 
   return (
     <div className="home-shell relative min-h-screen">
-      <AboutNavbar page="home" locale={locale} onLocaleChange={setLocale} />
+      <AboutNavbar page="product" locale={locale} onLocaleChange={setLocale} />
       <main>
         <Hero locale={locale} />
         <SelfStudy locale={locale} />

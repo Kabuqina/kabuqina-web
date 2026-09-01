@@ -4,7 +4,7 @@ import { withLocale } from '../lib/locale'
 import type { SiteLocale } from '../lib/locale'
 
 type NavbarProps = {
-  page?: 'home' | 'about'
+  page?: 'home' | 'product'
   locale?: SiteLocale
   onLocaleChange?: (locale: SiteLocale) => void
 }
@@ -14,16 +14,16 @@ export default function AboutNavbar({ page = 'home', locale = 'zh', onLocaleChan
   const [scrolled, setScrolled] = useState(false)
   const isEnglish = locale === 'en'
   const homeHref = './index.html'
-  const aboutHref = './about.html'
+  const productHref = './product.html'
 
   const navLinks = isEnglish
       ? [
-          { label: 'Kabuqina', href: withLocale(homeHref, 'en'), current: page === 'home' },
-          { label: 'About', href: withLocale(aboutHref, 'en'), current: page === 'about' },
+          { label: 'Home', href: withLocale(homeHref, 'en'), current: page === 'home' },
+          { label: 'Kabuqina', href: withLocale(productHref, 'en'), current: page === 'product' },
         ]
       : [
-          { label: '卡布奇娜', href: homeHref, current: page === 'home' },
-          { label: '关于我们', href: aboutHref, current: page === 'about' },
+          { label: '首页', href: homeHref, current: page === 'home' },
+          { label: '卡布奇娜', href: productHref, current: page === 'product' },
         ]
 
   useEffect(() => {

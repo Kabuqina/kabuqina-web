@@ -19,7 +19,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        about: path.resolve(__dirname, 'about.html'),
+        product: path.resolve(__dirname, 'product.html'),
       },
     },
   },

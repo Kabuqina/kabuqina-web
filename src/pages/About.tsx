@@ -300,7 +300,7 @@ export default function About() {
 
   return (
     <div key={locale} className="company-site about-page-v2" data-locale={locale}>
-      <AboutNavbar page="about" locale={locale} onLocaleChange={setLocale} />
+      <AboutNavbar page="home" locale={locale} onLocaleChange={setLocale} />
 
       <main>
         <section className="about2-hero" aria-labelledby="about-heading">
@@ -391,7 +391,7 @@ export default function About() {
               <p className="about2-product__lead">{copy.productLead}</p>
               <ul>{copy.stewardship.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul>
               <div className="about2-product__links">
-                <a href="./index.html">{copy.productLink} <ArrowRight aria-hidden="true" /></a>
+                <a href="./product.html">{copy.productLink} <ArrowRight aria-hidden="true" /></a>
                 <a href={links.github} target="_blank" rel="noreferrer"><Github aria-hidden="true" />GitHub</a>
               </div>
             </div>

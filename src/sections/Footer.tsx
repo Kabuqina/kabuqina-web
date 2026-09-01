@@ -5,7 +5,7 @@ import { company, links } from '../lib/site';
 export default function Footer({ locale = 'zh' }: { locale?: SiteLocale }) {
   const isEnglish = locale === 'en';
   const footerLinks = [
-    { label: isEnglish ? 'About us' : '关于我们', href: isEnglish ? './about.html?lang=en' : './about.html' },
+    { label: isEnglish ? 'Home' : '首页', href: './index.html' },
     { label: isEnglish ? 'Download' : '下载', href: links.download },
     { label: 'GitHub', href: links.github },
   ];
